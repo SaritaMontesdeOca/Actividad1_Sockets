@@ -3,8 +3,7 @@
   
 #define TEST_H	
   
-	
-int test(void);	
-  	
+		
+int test(void);
+int testEquipoSockets(float);
 #endif
-
