@@ -1,15 +1,10 @@
-#ifndef	
-  TEST_H	
+
+#ifndef TEST_H	
   
-#define	
-  TEST_H	
-  
-	
-  
-int	
-  test(void);	
+#define TEST_H	
   
 	
-  
+int test(void);	
+  	
 #endif
 

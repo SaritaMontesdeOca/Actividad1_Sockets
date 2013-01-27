@@ -22,6 +22,10 @@ void funcion3(void){
   
 }
 
+void funcionSockets(void){	
+  printf("FuncionSockets\n");	 
+}	
+
   	
   
 

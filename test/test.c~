@@ -1,11 +1,11 @@
 //test.c	
   
-	
+//realizando cambios desde la rama master	
   
 int test(void)	
   {	
   
-return 1;	
+return 0;	
  	
   
 }	

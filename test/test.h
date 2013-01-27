@@ -5,6 +5,7 @@
   
 	
 int test(void);	
+int equipo(void);
   	
 #endif
 
