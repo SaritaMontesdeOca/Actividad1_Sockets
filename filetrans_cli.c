@@ -1,4 +1,5 @@
-
+// Fatima Gonzalez
+// Sahara Montes de Oca
 // Cliente Filetransfer
 
 #include <stdio.h>
