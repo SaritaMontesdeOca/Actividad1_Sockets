@@ -1,0 +1,23 @@
+A Continuacion se muestran las instrucciones de uso para el Servidor Web 
+1.- Entar a la terminal y ejecutar el archivo web_server.c para que se cree el archivo .o
+
+Ejemplo:
+gcc web_server.c -o web_server
+
+ 2.- Ejecutar el archivo .o
+ 
+ Ejemplo:
+ ./web_Server
+ 
+3.- Abrir un navegador y en la barra de direcciones pedir el archivo .test al servidor.  
+
+Ejemplo:
+
+ 127.0.0.1/test.html 
+ 
+ El navegador regresara el contenido de dicho archivo y en caso de que no se encuentre nos enviara un mensaje 404 de error.
+
+Nota: Cualquier archivo que se quiera consultar debe existir en la carpeta donde se encuentra el servidor web de otra forma obtendremos el mensaje de error es decir, el navegador nos regresara por default el archivo 404.html.
+
+
+
