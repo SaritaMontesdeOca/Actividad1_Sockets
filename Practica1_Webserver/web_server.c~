@@ -9,7 +9,7 @@
 #include <unistd.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
-#define PORT 80
+#define PORT 8081
 #define LISTENQ 23 // Cola de espera para los clientes
 #define BUFFERSIZE 8096
 
@@ -19,7 +19,7 @@ int
 main (int argc, char **argv)
 {
 	int listenfd, socketfd, pid;
-	size_t length;
+	socklen_t length;
 	static struct sockaddr_in serv_addr;
 	static struct sockaddr_in cli_addr;
 
@@ -39,7 +39,7 @@ main (int argc, char **argv)
 	for (; ;) {
 		length = sizeof (cli_addr);
 		//socketfd = accept (listenfd, (struct sockaddr *) &cli_addr, &length);
-		socketfd = accept (listenfd, (struct sockaddr *) &cli_addr, sizeof (cli_addr));
+		socketfd = accept (listenfd, (struct sockaddr *) &cli_addr, &length);
 		if ((pid = fork ()) == 0) {
 			close (listenfd);
 			web (socketfd);
@@ -85,7 +85,8 @@ web (int fd)
 			file_fd = open ("404.html", O_RDONLY);
 			fstat (file_fd, &st);
 			size = st.st_size;
-			sprintf (buffer, "HTTP/1.0 404 Not Found\r\nCintent-Type: text/html\r\nContent-Length: %ld\r\n\r\n",size);
+	sprintf (buffer, "HTTP/1.0 404 Not Found\r\nCintent-Type: text/html\r\nContent-Length: %ld\r\n\r\n",size);
+	
 		} else { // Si el archivo existe se muestra el contenido
 			fstat (file_fd, &st);
 			size = st.st_size;		
@@ -95,7 +96,7 @@ web (int fd)
 
 		write (fd, buffer, strlen (buffer));
 		
-		// Obtenemos el archivo completo
+		// Obtenemos el archivo completo para poder cerrar el socket
 		while ((ret = read (file_fd, buffer, BUFFERSIZE)) > 0 ) {
 			write (fd, buffer, ret);
 		}
