@@ -1,0 +1,8 @@
+1.- Primero observamos los metodos de aproximacion de PI.Despues observamos el merodo que vamos a utilizar y lo separamos por segmentos teniendo cuidado de no paralelizar variables que sean dependientes para el calculo de PI.
+
+2.- POr dpminio.
+
+3.- Si, porque utilizan un modelo SPMT para hacer la recoleccion de datos.
+4.- La sincronizacion de los datos y la reparticion de tareas.
+5.- Si, en el modelo SPMD (if I am Master) para la recolecicon de datos.
+

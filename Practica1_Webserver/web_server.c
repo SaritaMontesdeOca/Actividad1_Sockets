@@ -1,3 +1,6 @@
+
+//Practica Web Server v1.0
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -9,7 +12,7 @@
 #include <unistd.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
-#define PORT 8081
+#define PORT 8090
 #define LISTENQ 23 // Cola de espera para los clientes
 #define BUFFERSIZE 8096
 
@@ -22,6 +25,7 @@ main (int argc, char **argv)
 	socklen_t length;
 	static struct sockaddr_in serv_addr;
 	static struct sockaddr_in cli_addr;
+	
 
 	// Se crea el socket de escuaha
 	listenfd = socket (AF_INET, SOCK_STREAM, 0);
@@ -56,6 +60,7 @@ web (int fd)
 	long ret, size;
 	static char buffer[BUFFERSIZE+1];
 	struct stat st;
+	char * ext;
 
 	ret = read (fd, buffer, BUFFERSIZE);
 	
@@ -85,15 +90,31 @@ web (int fd)
 			file_fd = open ("404.html", O_RDONLY);
 			fstat (file_fd, &st);
 			size = st.st_size;
-	sprintf (buffer, "HTTP/1.0 404 Not Found\r\nCintent-Type: text/html\r\nContent-Length: %ld\r\n\r\n",size);
+	                sprintf (buffer, "HTTP/1.0 404 Not Found\r\nContent-Type: text/html\r\nContent-Lenhttp://localhost/test.htmlhttp://localhost/test.htmlgth: %ld\r\n\r\n",size);
 	
 		} else { // Si el archivo existe se muestra el contenido
 			fstat (file_fd, &st);
-			size = st.st_size;		
-			sprintf (buffer, "HTTP/1.0 200 OK\r\nContent-Type: text/html\r\nContent-Length: %ld\r\n\r\n",
-				 size);
+			size = st.st_size;
+			
+					
+			ext = strstr(buffer,".");
+			ext = ext+1;
+			fprintf(stderr,"%s",ext);
+			if(strcmp("html",ext)==0){
+			 
+		        sprintf (buffer, "HTTP/1.1 200 OK\r\nContent-Type: text/html \r\nContent-Length: %ld\r\n\r\n", size);
+			} else if(strcmp("jpg",ext)==0){
+		
+			sprintf (buffer, "HTTP/1.1 200 OK\r\nContent-Type: image/jpeg \r\nContent-Length: %ld\r\n\r\n", size);
+			} else if (strcmp("txt",ext)==0){
+		
+			sprintf (buffer, "HTTP/1.1 200 OK\r\nContent-Type: text/plain \r\nContent-Length: %ld\r\n\r\n", size);
+			} else{
+			
+			sprintf (buffer, "HTTP/1.1 200 OK\r\nContent-Type: unknown/unknown \r\nContent-Length: %ld\r\n\r\n", size);
+			}
 		}
-
+		
 		write (fd, buffer, strlen (buffer));
 		
 		// Obtenemos el archivo completo para poder cerrar el socket
