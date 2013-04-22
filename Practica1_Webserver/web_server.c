@@ -18,8 +18,7 @@
 
 void web (int);
 
-int
-main (int argc, char **argv)
+int main (int argc, char **argv)
 {
 	int listenfd, socketfd, pid;
 	socklen_t length;
