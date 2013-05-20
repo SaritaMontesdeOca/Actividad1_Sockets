@@ -1,5 +1,5 @@
 //Sahara MOntes de Oca
-//Fatima de Niz
+//Fatima Gonzalez De Niz
 //Host discover prueba 4 - Client
 
 #include <stdio.h>
@@ -11,7 +11,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
-#define PORT 5001 //Puerto
+#define PORT 5000 //Puerto
 #define MAXLINE 1024
 
 void BrCast (FILE *, int, const struct sockaddr *, socklen_t);  //Prototipo de funcion

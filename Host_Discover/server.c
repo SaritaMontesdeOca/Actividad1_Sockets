@@ -12,7 +12,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
-#define PORT 5000 //Puerto
+#define PORT 5001 //Puerto
 #define MAXLINE 1024
 
 int main (void) //Main client 
