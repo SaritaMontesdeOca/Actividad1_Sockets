@@ -1,0 +1,155 @@
+\hypertarget{UDPClient_8c}{
+\section{Referencia del Archivo UDPClient.c}
+\label{UDPClient_8c}\index{UDPClient.c@{UDPClient.c}}
+}
+
+
+Funciones Referentes al Cliente UDP Funciones en las que el cliente descubre a los servidores por medio de un broadcast y crea la lista de servidores con la cual se realizara la conexion TCP a uno de ellos.  
+
+
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdarg.h$>$}\par
+{\ttfamily \#include $<$arpa/inet.h$>$}\par
+{\ttfamily \#include $<$sys/socket.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$inttypes.h$>$}\par
+{\ttfamily \#include $<$unistd.h$>$}\par
+{\ttfamily \#include $<$sys/types.h$>$}\par
+{\ttfamily \#include $<$fcntl.h$>$}\par
+{\ttfamily \#include $<$sys/uio.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include \char`\"{}UDPClient.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}Client.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}TCPClient.h\char`\"{}}\par
+\subsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{group__ClienteUDP_gad3b8e412c17b609ee2b34814bba6db77}{startUDPClient} (const u\_\-short port)
+\begin{DoxyCompactList}\small\item\em Inicia el cliente UDP Host Discover. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{UDPClient_8c_ad41e465b11575618bf82f1d45efced5a}{server} = 0
+\item 
+char \hyperlink{UDPClient_8c_a11764cc96bb263d1f257bcc01205a787}{flag} = 2
+\item 
+char \hyperlink{UDPClient_8c_a1aa15651e462efeaf67dede9b2e436af}{lista} \mbox{[}254\mbox{]}\mbox{[}23\mbox{]}
+\item 
+int \hyperlink{UDPClient_8c_acb559820d9ca11295b4500f179ef6392}{i} = 0
+\item 
+int \hyperlink{UDPClient_8c_a37d972ae0b47b9099e30983131d31916}{j}
+\item 
+char \hyperlink{UDPClient_8c_a40cd45cbd69a8727a2c2600d89440506}{ipServ} \mbox{[}18\mbox{]} = \char`\"{}0.0.0.0\char`\"{}
+\item 
+int \hyperlink{UDPClient_8c_ab66ed8e0098c0a86b458672a55a9cca9}{k}
+\end{DoxyCompactItemize}
+
+
+\subsection{Descripción detallada}
+Funciones Referentes al Cliente UDP Funciones en las que el cliente descubre a los servidores por medio de un broadcast y crea la lista de servidores con la cual se realizara la conexion TCP a uno de ellos. \begin{DoxyAuthor}{Autor}
+Alfredo Huerta Larios (\href{mailto:rt676272@iteso.mx}{\tt rt676272@iteso.mx}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Fecha}
+Abril 2012 
+\end{DoxyDate}
+\begin{DoxyVersion}{Versión}
+0.0.1 
+\end{DoxyVersion}
+
+
+Definición en el archivo \hyperlink{UDPClient_8c_source}{UDPClient.c}.
+
+
+
+\subsection{Documentación de las variables}
+\hypertarget{UDPClient_8c_a11764cc96bb263d1f257bcc01205a787}{
+\index{UDPClient.c@{UDPClient.c}!flag@{flag}}
+\index{flag@{flag}!UDPClient.c@{UDPClient.c}}
+\subsubsection[{flag}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf flag} = 2}}
+\label{UDPClient_8c_a11764cc96bb263d1f257bcc01205a787}
+
+
+Definición en la línea 29 del archivo UDPClient.c.
+
+
+
+Referenciado por startUDPClient().
+
+\hypertarget{UDPClient_8c_acb559820d9ca11295b4500f179ef6392}{
+\index{UDPClient.c@{UDPClient.c}!i@{i}}
+\index{i@{i}!UDPClient.c@{UDPClient.c}}
+\subsubsection[{i}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf i} = 0}}
+\label{UDPClient_8c_acb559820d9ca11295b4500f179ef6392}
+
+
+Definición en la línea 31 del archivo UDPClient.c.
+
+
+
+Referenciado por cabecera(), FileInfo(), FileList(), processArguments(), startTCPClient() y startUDPClient().
+
+\hypertarget{UDPClient_8c_a40cd45cbd69a8727a2c2600d89440506}{
+\index{UDPClient.c@{UDPClient.c}!ipServ@{ipServ}}
+\index{ipServ@{ipServ}!UDPClient.c@{UDPClient.c}}
+\subsubsection[{ipServ}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf ipServ}\mbox{[}18\mbox{]} = \char`\"{}0.0.0.0\char`\"{}}}
+\label{UDPClient_8c_a40cd45cbd69a8727a2c2600d89440506}
+
+
+Definición en la línea 33 del archivo UDPClient.c.
+
+
+
+Referenciado por startUDPClient().
+
+\hypertarget{UDPClient_8c_a37d972ae0b47b9099e30983131d31916}{
+\index{UDPClient.c@{UDPClient.c}!j@{j}}
+\index{j@{j}!UDPClient.c@{UDPClient.c}}
+\subsubsection[{j}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf j}}}
+\label{UDPClient_8c_a37d972ae0b47b9099e30983131d31916}
+
+
+Definición en la línea 32 del archivo UDPClient.c.
+
+
+
+Referenciado por startUDPClient().
+
+\hypertarget{UDPClient_8c_ab66ed8e0098c0a86b458672a55a9cca9}{
+\index{UDPClient.c@{UDPClient.c}!k@{k}}
+\index{k@{k}!UDPClient.c@{UDPClient.c}}
+\subsubsection[{k}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf k}}}
+\label{UDPClient_8c_ab66ed8e0098c0a86b458672a55a9cca9}
+
+
+Definición en la línea 34 del archivo UDPClient.c.
+
+
+
+Referenciado por DialogosTCP(), FileInfo(), FileList(), FileTransfer() y startUDPClient().
+
+\hypertarget{UDPClient_8c_a1aa15651e462efeaf67dede9b2e436af}{
+\index{UDPClient.c@{UDPClient.c}!lista@{lista}}
+\index{lista@{lista}!UDPClient.c@{UDPClient.c}}
+\subsubsection[{lista}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf lista}\mbox{[}254\mbox{]}\mbox{[}23\mbox{]}}}
+\label{UDPClient_8c_a1aa15651e462efeaf67dede9b2e436af}
+
+
+Definición en la línea 30 del archivo UDPClient.c.
+
+
+
+Referenciado por FileList(), sendList() y startUDPClient().
+
+\hypertarget{UDPClient_8c_ad41e465b11575618bf82f1d45efced5a}{
+\index{UDPClient.c@{UDPClient.c}!server@{server}}
+\index{server@{server}!UDPClient.c@{UDPClient.c}}
+\subsubsection[{server}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf server} = 0}}
+\label{UDPClient_8c_ad41e465b11575618bf82f1d45efced5a}
+
+
+Definición en la línea 28 del archivo UDPClient.c.
+
+
+
+Referenciado por startUDPClient().
+

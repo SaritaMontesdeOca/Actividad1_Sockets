@@ -1,0 +1,38 @@
+\hypertarget{process_8h}{
+\section{Referencia del Archivo tcp/process.h}
+\label{process_8h}\index{tcp/process.h@{tcp/process.h}}
+}
+
+
+Funciones Referentes al servidor TCP.  
+
+
+\subsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{group__ServidorTCP_gaf7a41b28b4112b5ba274364a03bb05e8}{DialogosTCP} (int clientSocket, int \hyperlink{TCPServer_8c_a4bf947cca001e8ca0cd9def2b8d058c7}{client})
+\begin{DoxyCompactList}\small\item\em Analiza la solicitud del cliente. \end{DoxyCompactList}\item 
+int \hyperlink{group__ServidorTCP_ga4c824f1f3f4b874a325f4d333402f114}{FileList} (int clientSocket, char $\ast$msg)
+\begin{DoxyCompactList}\small\item\em Envia lista de archivos al cliente. \end{DoxyCompactList}\item 
+int \hyperlink{group__ServidorTCP_gafd8c9cb8cbdf6c5017849bdf4aec3c5c}{FileTransfer} (int clientSocket, char $\ast$msg)
+\begin{DoxyCompactList}\small\item\em Envia el archivo al cliente. \end{DoxyCompactList}\item 
+int \hyperlink{group__ServidorTCP_gabe2cfb9e0f85f447660b1d1e74137e91}{FileInfo} (int clientSocket, char $\ast$msg)
+\begin{DoxyCompactList}\small\item\em Envia la informacion del archivo seleccionado. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descripción detallada}
+Funciones Referentes al servidor TCP. Funcion que contesta las peticiones del usuario TCP
+
+\begin{DoxyAuthor}{Autor}
+Alfredo Huerta (\href{mailto:rt676272@iteso.mx}{\tt rt676272@iteso.mx}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Fecha}
+Marzo 2012 
+\end{DoxyDate}
+\begin{DoxyVersion}{Versión}
+0.0.1 
+\end{DoxyVersion}
+
+
+Definición en el archivo \hyperlink{process_8h_source}{process.h}.
+

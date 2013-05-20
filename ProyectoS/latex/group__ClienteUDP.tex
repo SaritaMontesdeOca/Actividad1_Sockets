@@ -1,0 +1,154 @@
+\hypertarget{group__ClienteUDP}{
+\section{ClienteUDP}
+\label{group__ClienteUDP}\index{ClienteUDP@{ClienteUDP}}
+}
+\subsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{group__ClienteUDP_gad3b8e412c17b609ee2b34814bba6db77}{startUDPClient} (const u\_\-short port)
+\begin{DoxyCompactList}\small\item\em Inicia el cliente UDP Host Discover. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Documentación de las funciones}
+\hypertarget{group__ClienteUDP_gad3b8e412c17b609ee2b34814bba6db77}{
+\index{ClienteUDP@{ClienteUDP}!startUDPClient@{startUDPClient}}
+\index{startUDPClient@{startUDPClient}!ClienteUDP@{ClienteUDP}}
+\subsubsection[{startUDPClient}]{\setlength{\rightskip}{0pt plus 5cm}int startUDPClient (
+\begin{DoxyParamCaption}
+\item[{const u\_\-short}]{port}
+\end{DoxyParamCaption}
+)}}
+\label{group__ClienteUDP_gad3b8e412c17b609ee2b34814bba6db77}
+
+
+Inicia el cliente UDP Host Discover. 
+
+Inicia la Operaciones del Cliente UDP File transfer.
+
+Función que envia un broadcast y recibe las respuestas de los servidores conectados
+
+
+\begin{DoxyParams}{Parámetros}
+{\em port} & Puerto al que se debera de conectar.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Estado con el que finaliza el cliente. 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Valores devueltos}
+{\em 1} & termino sin errores \\
+\hline
+{\em -\/1} & termino con errores.\\
+\hline
+\end{DoxyRetVals}
+Ejemplo de Uso: 
+\begin{DoxyCode}
+                int status;
+                status = startClient("127.0.0.1",1024) // Inicia el servidor en t
+      odas las interfaces en el puerto 1024 
+\end{DoxyCode}
+ 
+
+Definición en la línea 43 del archivo UDPClient.c.
+
+
+
+Hace referencia a flag, i, ipServ, j, k, lista, server y startTCPClient().
+
+
+
+Referenciado por main().
+
+
+\begin{DoxyCode}
+                                       {
+        int udpSocket;
+        struct sockaddr_in udpServer, udpClient;
+        int status;
+        socklen_t addrlen = sizeof(udpClient),len;
+        char *buffer;
+        char opcion[2]="";
+        u_short clientPort;
+        int option;     
+        //char conc[23]="";     
+        char ip[18]="0.0.0.0";  
+        char Sel[2]="";         
+
+        pid_t forkID;
+        
+
+        udpSocket = socket(AF_INET, SOCK_DGRAM,0);
+        if (udpSocket == -1) {
+                fprintf(stderr,"Can't create UDP Socket");
+                return -1;
+        }
+        
+        udpServer.sin_family = AF_INET;
+        inet_pton(AF_INET,"192.168.1.255",&udpServer.sin_addr.s_addr);
+        udpServer.sin_port = htons(port);
+        len = sizeof(option);
+        getsockopt(udpSocket, SOL_SOCKET, SO_SNDBUF, (void *)&option, &len);
+
+        option = 1;
+        status = setsockopt(udpSocket, SOL_SOCKET, SO_BROADCAST, (void *)&option,
+       len);
+        if (status == -1) {
+                printf("Error en poner la opcion\n");   
+                return -1;
+        }
+        buffer = (char *)malloc(9000);
+        status = sendto(udpSocket,"Hello - Alfredo",strlen("Hello - Alfredo"),0,(
+      struct sockaddr*)&udpServer,sizeof(udpServer));
+        
+        while (1){
+                server ++;
+                if (flag != 2){
+                        printf("Deseas realizar una conexion?\n");
+                        printf("1. Si\n2. No\n");
+                        gets(opcion);
+                        if (strcmp(opcion,"1")==0){
+                                //system("cls");
+                                printf("Lista de Servidores\n\n");
+                                for (j=0;j<i;j++){
+                                        printf("\n%i. [%s]\n",j+1,lista[j]);                    
+                                }
+                                printf("Introduce el numero de servidor al que te
+       deseas conectar:\n");
+                                gets(Sel);
+                                k = atoi(Sel);
+                                strcpy(ipServ,lista[k-1]);
+                                startTCPClient(ipServ,port);
+                }
+                else {
+                        system("clear");        
+                }
+                }
+                status = recvfrom(udpSocket,buffer,9000,0,(struct sockaddr*)&udpC
+      lient, &addrlen);
+                inet_ntop(AF_INET,&(udpClient.sin_addr),ip,INET_ADDRSTRLEN);
+                strcpy(lista[i],ip);
+                for (j=0;j<=i;j++){
+                        printf("\n%i. [%s] : %s\n",j+1,lista[j],buffer);                        
+                }
+        
+                i++;
+                flag = 0;
+                forkID = fork();
+                if (forkID == -1){
+                        perror("fork"); }
+                else if (forkID == 0) {
+                        fflush(stdout);
+                        close(udpSocket);
+                        break;
+                } else {
+                
+                }
+        
+
+        }
+        return 0;
+
+
+}
+\end{DoxyCode}

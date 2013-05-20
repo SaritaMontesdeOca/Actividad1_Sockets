@@ -1,0 +1,5 @@
+
+
+int startClient(const char *ip,const u_short port);
+
+

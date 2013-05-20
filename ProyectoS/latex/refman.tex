@@ -1,0 +1,89 @@
+\documentclass[a4paper]{book}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{ifthen}
+\usepackage[table]{xcolor}
+\usepackage{textcomp}
+\usepackage{alltt}
+\usepackage{ifpdf}
+\ifpdf
+\usepackage[pdftex,
+            pagebackref=true,
+            colorlinks=true,
+            linkcolor=blue,
+            unicode
+           ]{hyperref}
+\else
+\usepackage[ps2pdf,
+            pagebackref=true,
+            colorlinks=true,
+            linkcolor=blue,
+            unicode
+           ]{hyperref}
+\usepackage{pspicture}
+\fi
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{mathptmx}
+\usepackage[scaled=.90]{helvet}
+\usepackage{courier}
+\usepackage{sectsty}
+\usepackage[titles]{tocloft}
+\usepackage{doxygen}
+\lstset{language=C++,inputencoding=utf8,basicstyle=\footnotesize,breaklines=true,breakatwhitespace=true,tabsize=8,numbers=left }
+\makeindex
+\setcounter{tocdepth}{3}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\familydefault}{\sfdefault}
+\begin{document}
+\hypersetup{pageanchor=false}
+\begin{titlepage}
+\vspace*{7cm}
+\begin{center}
+{\Large PROYECTO }\\
+\vspace*{1cm}
+{\large Generado por Doxygen 1.7.4}\\
+\vspace*{0.5cm}
+{\small Lunes, 7 de Mayo de 2012 22:58:00}\\
+\end{center}
+\end{titlepage}
+\clearemptydoublepage
+\pagenumbering{roman}
+\tableofcontents
+\clearemptydoublepage
+\pagenumbering{arabic}
+\hypersetup{pageanchor=true}
+\chapter{Indice de módulos}
+\input{modules}
+\chapter{Indice de archivos}
+\input{files}
+\chapter{Documentación de módulos}
+\input{group__sockets}
+\input{group__ServidorUDP}
+\input{group__ServidorTCP}
+\input{group__ClienteTCP}
+\input{group__ClienteUDP}
+\chapter{Documentación de archivos}
+\input{main1_8c}
+\input{ipFunc_8c}
+\input{ipFunc_8h}
+\input{tcpServer_8c}
+\input{tcpServer_8h}
+\input{Querys_8c}
+\input{Querys_8h}
+\input{process_8c}
+\input{process_8h}
+\input{TCPClient_8c}
+\input{TCPClient_8h}
+\input{TCPServer_8c}
+\input{TCPServer_8h}
+\input{UDPClient_8c}
+\input{UDPClient_8h}
+\input{UDPServer_8c}
+\input{UDPServer_8h}
+\printindex
+\end{document}

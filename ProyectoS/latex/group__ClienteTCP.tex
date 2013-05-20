@@ -1,0 +1,449 @@
+\hypertarget{group__ClienteTCP}{
+\section{ClienteTCP}
+\label{group__ClienteTCP}\index{ClienteTCP@{ClienteTCP}}
+}
+\subsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{group__ClienteTCP_ga12ebdfb9e35bbb700a78ce3b959a7830}{startTCPClient} (const char $\ast$ip, const u\_\-short port)
+\begin{DoxyCompactList}\small\item\em Inicia el cliente TCP. \end{DoxyCompactList}\item 
+int \hyperlink{group__ClienteTCP_gadce04814cdf2461a26ac337caa99121f}{GetFileList} (int socket)
+\begin{DoxyCompactList}\small\item\em Obteniendo lista de archivos. \end{DoxyCompactList}\item 
+int \hyperlink{group__ClienteTCP_ga255bbe1b9da33d9400f7dd6d6a808576}{GetFile} (int socket)
+\begin{DoxyCompactList}\small\item\em Solicita un archivo al servidor. \end{DoxyCompactList}\item 
+int \hyperlink{group__ClienteTCP_ga764ea48dd644e5e7ecd382abf3f775dd}{GetFileInfo} (int socket)
+\begin{DoxyCompactList}\small\item\em Obtener informacion del archivo. \end{DoxyCompactList}\item 
+int \hyperlink{group__ClienteTCP_gafec9ff7dc95839aec9ba00120a1bf0c0}{cabecera} (char $\ast$cab)
+\begin{DoxyCompactList}\small\item\em Procesar las cabeceras recibidas con el archivo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Documentación de las funciones}
+\hypertarget{group__ClienteTCP_gafec9ff7dc95839aec9ba00120a1bf0c0}{
+\index{ClienteTCP@{ClienteTCP}!cabecera@{cabecera}}
+\index{cabecera@{cabecera}!ClienteTCP@{ClienteTCP}}
+\subsubsection[{cabecera}]{\setlength{\rightskip}{0pt plus 5cm}int cabecera (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{cab}
+\end{DoxyParamCaption}
+)}}
+\label{group__ClienteTCP_gafec9ff7dc95839aec9ba00120a1bf0c0}
+
+
+Procesar las cabeceras recibidas con el archivo. 
+
+Funcion que procesa las cabeceras adjuntas al archivo, para poder identificar el total de transmisiones y la transmision actual 
+
+Definición en la línea 243 del archivo TCPClient.c.
+
+
+
+Hace referencia a i, npart y total.
+
+
+
+Referenciado por GetFile().
+
+
+\begin{DoxyCode}
+                        {
+        
+        //printf("%s\n",cab);
+        char *partnum,*parts,*partnum_str,*parts_str,*ptrptr,*btrbtr,*btkbtk;
+        strtok_r(cab,"\n\r",&ptrptr);
+        for (int i=0;i<4;i++)
+                strtok_r(NULL,"\n\r",&ptrptr);
+        partnum_str = strtok_r(NULL,"\n\r",&ptrptr);
+        parts_str = strtok_r(NULL,"\n\r",&ptrptr);
+        strtok_r(partnum_str," ",&btrbtr);
+        partnum = strtok_r(NULL,"\n\r",&btrbtr);
+        strtok_r(parts_str," ",&btkbtk);
+        parts = strtok_r(NULL,"\n\r",&btkbtk);
+        npart = atoi(partnum);
+        total = atoi(parts);
+        printf("Recibido %i de %i\n",npart,total);      
+        
+}
+\end{DoxyCode}
+\hypertarget{group__ClienteTCP_ga255bbe1b9da33d9400f7dd6d6a808576}{
+\index{ClienteTCP@{ClienteTCP}!GetFile@{GetFile}}
+\index{GetFile@{GetFile}!ClienteTCP@{ClienteTCP}}
+\subsubsection[{GetFile}]{\setlength{\rightskip}{0pt plus 5cm}int GetFile (
+\begin{DoxyParamCaption}
+\item[{int}]{socket}
+\end{DoxyParamCaption}
+)}}
+\label{group__ClienteTCP_ga255bbe1b9da33d9400f7dd6d6a808576}
+
+
+Solicita un archivo al servidor. 
+
+Pide algun archivo al servidor.
+
+Funcion que solicita un archivo al servidor
+
+
+\begin{DoxyParams}{Parámetros}
+{\em port} & Puerto al que se debera de conectar. \\
+\hline
+{\em ip} & direccion Ip del servidor\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Estado con el que finaliza el cliente. 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Valores devueltos}
+{\em 1} & termino sin errores \\
+\hline
+{\em -\/1} & termino con errores.\\
+\hline
+\end{DoxyRetVals}
+Ejemplo de Uso: 
+\begin{DoxyCode}
+                int status;
+                status = startTCPClient("127.0.0.1",1024) // Inicia el servidor e
+      n todas las interfaces en el puerto 1024
+\end{DoxyCode}
+ 
+
+Definición en la línea 131 del archivo TCPClient.c.
+
+
+
+Hace referencia a cabecera(), npart y total.
+
+
+
+Referenciado por startTCPClient().
+
+
+\begin{DoxyCode}
+                       {
+        
+        int bytes;
+        char fileName[500]="";
+        char msg[1024]="";
+        char s[100]="";
+        char newFile[500]="";
+        char status_t[500]="";
+        char byteIni[10]="";
+        char byteFin[10]="";
+        int bytes_rec;
+        char *request,*start,*end,*fullsize,*part,*acpart,*sizedat;
+        char *text;
+        char buffer[2048]="";
+        char resp[2048]="";
+        char fileby[2048]="";
+        FILE *file;
+        system("clear");
+        printf("\t..:: DESCARGA DE ARCHIVO ::..\n");
+        printf("Escribe el nombre del archivo:\n");
+        bzero(fileName,500);
+        bzero(status_t,500);
+        bzero(newFile,500);
+        bzero(byteIni,10);
+        bzero(byteFin,10);
+        gets(fileName);
+        fflush(stdout);
+        printf("Escribe el byte inicial:\n");
+        gets(byteIni);
+        fflush(stdout);
+        printf("Escribe el byte final(0 para recibir hasta el EOF):\n");
+        gets(byteFin);
+        fflush(stdout);
+        strcpy(msg,"GetFile\n\r");
+        strcat(msg,"Name: ");
+        strcat(msg,fileName);
+        strcat(msg,"\n\r");
+        strcat(msg,"StarBytes: ");
+        strcat(msg,byteIni);
+        strcat(msg,"\n\r");
+        strcat(msg,"EndBytes: ");
+        strcat(msg,byteFin);
+        strcat(msg,"\n\r");
+        strcat(msg,"SizeDatos: 0\n\r\n\r");
+        char *lh=(char *)malloc(strlen(buffer));;
+        bytes = write(socket,msg,strlen(msg)); 
+        file = fopen(fileName,"w");
+        fflush(stdout);
+        system("clear");
+        while(npart != total) {
+                
+                bzero(buffer,2048);
+                bzero(resp,2048);
+                bzero(fileby,2048);
+                bytes_rec = read(socket,buffer,2048);
+                strcpy(resp,buffer);
+                cabecera(resp);
+                bytes_rec = read(socket,fileby,2048);
+                int writeb = fwrite(fileby,1,bytes_rec,file);
+
+        }
+        printf("\n\t..:: ARCHIVO RECIBIDO ::..\n");
+        char letra[1];
+        fflush(stdout);
+        printf("Presiona una letra para continuar ... \n");     
+        gets(letra);    
+        fclose(file);
+        return 0;
+}
+\end{DoxyCode}
+\hypertarget{group__ClienteTCP_ga764ea48dd644e5e7ecd382abf3f775dd}{
+\index{ClienteTCP@{ClienteTCP}!GetFileInfo@{GetFileInfo}}
+\index{GetFileInfo@{GetFileInfo}!ClienteTCP@{ClienteTCP}}
+\subsubsection[{GetFileInfo}]{\setlength{\rightskip}{0pt plus 5cm}int GetFileInfo (
+\begin{DoxyParamCaption}
+\item[{int}]{socket}
+\end{DoxyParamCaption}
+)}}
+\label{group__ClienteTCP_ga764ea48dd644e5e7ecd382abf3f775dd}
+
+
+Obtener informacion del archivo. 
+
+Pide la informacion de algun archivo al servidor.
+
+Funcion que solicita al servidor la informacion de un archivo en especial (cadena MD5)
+
+
+\begin{DoxyParams}{Parámetros}
+{\em socket} & socket en el que se conecta al servidor\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Estado con el que finaliza el cliente. 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Valores devueltos}
+{\em 1} & termino sin errores \\
+\hline
+{\em -\/1} & termino con errores.\\
+\hline
+\end{DoxyRetVals}
+Ejemplo de Uso: 
+\begin{DoxyCode}
+                int status;
+                status = startTCPClient("127.0.0.1",1024) // Inicia el servidor e
+      n todas las interfaces en el puerto 1024
+\end{DoxyCode}
+ 
+
+Definición en la línea 208 del archivo TCPClient.c.
+
+
+
+Referenciado por startTCPClient().
+
+
+\begin{DoxyCode}
+                           {
+
+        int bytes;
+        char Filename[100]="";
+        char s2[1024]="";
+        char buffer[1024]="";   
+        system("clear");
+        printf("\t..:: INFORMACION DE ARCHIVO ::..\n");
+        printf("Introduza el nombre del archivo del que desea la informacion:\n")
+      ;
+        bzero(Filename,100);
+        bzero(s2,1024); 
+        bzero(buffer,1024);
+        gets(Filename);
+        strcpy(s2,"GetFileInfo\n\r");
+        strcat(s2,"Name: ");
+        strcat(s2,Filename);
+        strcat(s2,"\n\r");
+        strcat(s2,"SizeDatos: 0\n\r\n\r");
+        
+        bytes = write(socket,s2,strlen(s2));
+        printf("Esperando respuesta ..::\n");
+        bytes = read(socket,buffer,1024);
+        printf("server: %s\n",buffer);
+
+        return 0;
+}
+\end{DoxyCode}
+\hypertarget{group__ClienteTCP_gadce04814cdf2461a26ac337caa99121f}{
+\index{ClienteTCP@{ClienteTCP}!GetFileList@{GetFileList}}
+\index{GetFileList@{GetFileList}!ClienteTCP@{ClienteTCP}}
+\subsubsection[{GetFileList}]{\setlength{\rightskip}{0pt plus 5cm}int GetFileList (
+\begin{DoxyParamCaption}
+\item[{int}]{socket}
+\end{DoxyParamCaption}
+)}}
+\label{group__ClienteTCP_gadce04814cdf2461a26ac337caa99121f}
+
+
+Obteniendo lista de archivos. 
+
+Pide la lista de archivos al servidor.
+
+Funcion que solicita al servidor conectado la lista de archivos con un filtro en especial
+
+
+\begin{DoxyParams}{Parámetros}
+{\em port} & Puerto al que se debera de conectar. \\
+\hline
+{\em ip} & direccion Ip del servidor\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Estado con el que finaliza el cliente. 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Valores devueltos}
+{\em 1} & termino sin errores \\
+\hline
+{\em -\/1} & termino con errores.\\
+\hline
+\end{DoxyRetVals}
+Ejemplo de Uso: 
+\begin{DoxyCode}
+                int status;
+                status = startTCPClient("127.0.0.1",1024) // Inicia el servidor e
+      n todas las interfaces en el puerto 1024
+\end{DoxyCode}
+ 
+
+Definición en la línea 93 del archivo TCPClient.c.
+
+
+
+Referenciado por startTCPClient().
+
+
+\begin{DoxyCode}
+                           {
+
+        int bytes;
+        char s2[1024]="";
+        char *buffer;
+        char filter[10]="";     
+        char letra[1];
+
+        buffer = (char *)malloc(9000);
+        system("clear");
+        printf("\t..:: LISTA DE ARCHIVOS ::..\n");
+        printf("Introduzca el filtro de extensiones (0 para recibir todos los doc
+      umentos)\n");
+        gets(filter);
+        fflush(stdout);
+        strcpy(s2,"GetFileList\n\r");
+        
+        strcat(s2,"Filter = ");
+        strcat(s2,filter);
+        strcat(s2,"\n\r");
+        strcat(s2,"SizeDatos = 0\n\r");
+        strcat(s2,"\n\r");
+        bytes = write(socket,s2,strlen(s2)); 
+        system("clear");
+        printf("\t..:: LISTA DE ARCHIVOS ::..\n");
+        bytes = read(socket,buffer,9000);
+        printf("%s\n",buffer);
+        printf("Presiona una letra para continuar ... \n");     
+        scanf(letra);   
+        return 0;
+}
+\end{DoxyCode}
+\hypertarget{group__ClienteTCP_ga12ebdfb9e35bbb700a78ce3b959a7830}{
+\index{ClienteTCP@{ClienteTCP}!startTCPClient@{startTCPClient}}
+\index{startTCPClient@{startTCPClient}!ClienteTCP@{ClienteTCP}}
+\subsubsection[{startTCPClient}]{\setlength{\rightskip}{0pt plus 5cm}int startTCPClient (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ip, }
+\item[{const u\_\-short}]{port}
+\end{DoxyParamCaption}
+)}}
+\label{group__ClienteTCP_ga12ebdfb9e35bbb700a78ce3b959a7830}
+
+
+Inicia el cliente TCP. 
+
+Inicia la Operaciones del Cliente TCP.
+
+Funcion que inicia al cliente TCP conectandolo al servidor deseado
+
+
+\begin{DoxyParams}{Parámetros}
+{\em port} & Puerto al que se debera de conectar. \\
+\hline
+{\em ip} & direccion Ip del servidor\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Estado con el que finaliza el cliente. 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Valores devueltos}
+{\em 1} & termino sin errores \\
+\hline
+{\em -\/1} & termino con errores.\\
+\hline
+\end{DoxyRetVals}
+Ejemplo de Uso: 
+\begin{DoxyCode}
+                int status;
+                status = startTCPClient(listenIP,listenPort) 
+\end{DoxyCode}
+ 
+
+Definición en la línea 41 del archivo TCPClient.c.
+
+
+
+Hace referencia a GetFile(), GetFileInfo(), GetFileList(), i y newTCPClientSocket4().
+
+
+
+Referenciado por startUDPClient().
+
+
+\begin{DoxyCode}
+                                                       {
+
+        int socket;
+        char msg[1024]="";
+        char newFile[500]="";
+        int i=0;
+        char opcion[2]="";
+        int bytes;
+        char buffer[1024]="";
+        FILE *file;
+        //char ip[18]="0.0.0.0";
+
+        socket =newTCPClientSocket4(ip,port);
+        if (socket == -1) {
+                return -1;
+        }
+        
+        printf("\nNos conectamos a %s:%u\n",ip,port);
+        while(1){
+                bzero(opcion,2);
+                bzero(msg,1024);
+                system("clear");
+                printf("\t..:: CLIENTE TCP - CONECTADO A %s ::..\n",ip);
+                printf("Selecciona una accion a realizar:\n");
+                printf("1. Solicitar Lista de archivos\n2. Solicitar Archivo\n3. 
+      Solicitar Informacion de archivo\n");
+                gets(opcion);
+                fflush(stdout);
+                if(strcmp(opcion,"1") == 0) {
+                        
+                        GetFileList(socket);
+                         }
+                else if(strcmp(opcion,"2") == 0) {
+                        //printf("\tOPCION 2\n");
+                        GetFile(socket); }
+                else if(strcmp(opcion,"3") == 0) {
+                        GetFileInfo(socket); }
+                else {
+                        printf("Opcion Invalida\n");                    
+                        }
+                
+        
+        }
+        
+        return 0;
+}
+\end{DoxyCode}

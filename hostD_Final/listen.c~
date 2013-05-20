@@ -1,0 +1,96 @@
+#include <stdio.h>      
+#include <sys/socket.h> 
+#include <arpa/inet.h>  
+#include <stdlib.h>     
+#include <string.h>     
+#include <unistd.h>
+
+int main(int argc, char* argv[]) {
+	
+	int udpSocket;
+	struct sockaddr_in udpServer, udpClient;
+	socklen_t addrlen = sizeof(udpClient);
+	char buffer[255];
+	char ip[17];
+	u_short clientPort;	
+	int status;
+	
+	//////
+	pid_t ForkDiscover;
+    	//int var_lcl = 0;
+	
+	/////
+
+	//Creamos el Socket
+	udpSocket = socket(PF_INET, SOCK_DGRAM, IPPROTO_UDP);
+	if(udpSocket == -1) {
+		fprintf(stderr,"Can't create UDP Socket");
+		return 1;
+	}
+	
+    udpServer.sin_family = AF_INET;
+    inet_pton(AF_INET,"0.0.0.0",&udpServer.sin_addr.s_addr);
+    udpServer.sin_port = htons(5000);
+	
+    status = bind(udpSocket, (struct sockaddr*)&udpServer,sizeof(udpServer));
+	
+    if(status != 0) { 
+	  fprintf(stderr,"Can't bind");
+    }
+//////////////////////// COmenzamos con el fork
+
+ ForkDiscover = fork();
+
+    if(ForkDiscover >= 0) // fork was successful
+    {
+        if(ForkDiscover == 0) // child process
+        {
+        // Debera enviar en Brodcast un mensaje cada 10 segundos hacia el puerto UDP/5000 con el mensaje "WHO [su_nombre] 					[puerto_respuesta]\r\n\r\n"
+        
+    
+    
+    
+    
+    
+        } ///Aqui termina el proceso hijo
+        
+        
+        else //Parent process
+        {
+            var_lcl = 10;
+            var_glb = 20;
+            printf("\n Parent process :: var_lcl = [%d], var_glb[%d]\n", var_lcl, var_glb);
+        }
+    }
+    else // fork failed
+    {
+        printf("\n Fork failed, quitting!!!!!!\n");
+        return 1;
+    }
+
+    return 0;
+}
+
+	
+	
+	
+	
+	
+	
+/////////////////////////////////////////////////	
+	while(true) {
+		bzero(buffer,255);
+		status = recvfrom(udpSocket, buffer, 255, 0, (struct sockaddr*)&udpClient, &addrlen );
+		inet_ntop(AF_INET,&(udpClient.sin_addr),ip,INET_ADDRSTRLEN);
+		clientPort = ntohs(udpClient.sin_port);
+		
+		printf("Recibimos: [%s:%i] %s\n",ip,clientPort,buffer);
+
+   	    fflush(stdout);
+	}
+	
+	close(udpSocket);
+	
+	return 0;
+	
+}

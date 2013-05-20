@@ -1,0 +1,470 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>PROYECTO: Funciones Referentes a Sockets</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Generado por Doxygen 1.7.4 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">PROYECTO</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="modules.html"><span>Módulos</span></a></li>
+      <li><a href="files.html"><span>Archivos</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funciones</a>  </div>
+  <div class="headertitle">
+<div class="title">Funciones Referentes a Sockets</div>  </div>
+</div>
+<div class="contents">
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Funciones</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__sockets.html#gadd88367e2f2c1ed8f81e910250a06180">buildIP4addr</a> (const char *ip, struct sockaddr_in *addr)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Completa una estructura addr con una dirección IPv4.  <a href="#gadd88367e2f2c1ed8f81e910250a06180"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__sockets.html#ga88bd320eafca5b9f4c54c4b5f3a17925">getTCPSocket</a> (int addrType)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea un nuevo servidor TCP Generico.  <a href="#ga88bd320eafca5b9f4c54c4b5f3a17925"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__sockets.html#ga944d699e112e8607aaa4a070d86d6e65">newTCPServerSocket4</a> (const char *ip, const u_short port, int q_size)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea un nuevo servidor TCP en IPv4.  <a href="#ga944d699e112e8607aaa4a070d86d6e65"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__sockets.html#gac7d9d9b68342787f3d6ef71e91459e35">waitConnection</a> (int socket, char *clientIP=NULL, u_short *clientPort=NULL)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Espera la conexión de un nuevo cliente.  <a href="#gac7d9d9b68342787f3d6ef71e91459e35"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__sockets.html#ga2d8f76b55a8d6bdefb097ff1554efa54">newTCPClientSocket4</a> (const char *ip, const u_short port)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea un Socket Cliente TCP IPv4.  <a href="#ga2d8f76b55a8d6bdefb097ff1554efa54"></a><br/></td></tr>
+</table>
+<hr/><h2>Documentación de las funciones</h2>
+<a class="anchor" id="gadd88367e2f2c1ed8f81e910250a06180"></a><!-- doxytag: member="ipFunc.h::buildIP4addr" ref="gadd88367e2f2c1ed8f81e910250a06180" args="(const char *ip, struct sockaddr_in *addr)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int buildIP4addr </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>ip</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct sockaddr_in *&#160;</td>
+          <td class="paramname"><em>addr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Completa una estructura addr con una dirección IPv4. </p>
+<p>Inicializa una estructura sockaddr_in zero y completa los valores adecuados con la dirección IPv4 que se recive.</p>
+<dl><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ip</td><td>dirección IP en escritura natural (Ej: 148.201.1.1) </td></tr>
+    <tr><td class="paramname">addr</td><td>Apuntador a la estrucutra que se completara.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>status. </dd></dl>
+<dl><dt><b>Valores devueltos:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">0</td><td>Se completo correctamente la estrucutra. </td></tr>
+    <tr><td class="paramname">-1</td><td>Ocurrio un Error y no se pudo completar la estrucutra</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Ejemplo de Uso: </p>
+<div class="fragment"><pre class="fragment">                <span class="keyword">struct </span>sockaddr_in addr;        
+                <a class="code" href="group__sockets.html#gadd88367e2f2c1ed8f81e910250a06180" title="Completa una estructura addr con una dirección IPv4.">buildIP4addr</a>(<span class="stringliteral">&quot;0.0.0.0&quot;</span>, &amp;addr): <span class="comment">// Completa al estructura addr con la dirección IPv4 0.0.0.0</span>
+</pre></div> 
+<p>Definición en la línea <a class="el" href="ipFunc_8c_source.html#l00022">22</a> del archivo <a class="el" href="ipFunc_8c_source.html">ipFunc.c</a>.</p>
+
+<p>Referenciado por <a class="el" href="tcpServer_8c_source.html#l00113">newTCPClientSocket4()</a> y <a class="el" href="tcpServer_8c_source.html#l00058">newTCPServerSocket4()</a>.</p>
+<div class="fragment"><pre class="fragment">                                                           {
+        
+        <span class="keywordtype">int</span> status;
+        
+        <span class="keywordflow">if</span> (ip==NULL) {
+                fprintf(stderr,<span class="stringliteral">&quot;ERROR: La direccion IP es nula\n&quot;</span>);
+                <span class="keywordflow">return</span> -1;
+        }
+        
+        <span class="keywordflow">if</span>(addr == NULL) {
+                fprintf(stderr,<span class="stringliteral">&quot;ERROR: El espacio de memoria de la estructura de direcciones es nula\n&quot;</span>);
+                <span class="keywordflow">return</span> -1;
+        }
+        
+        bzero(addr, <span class="keyword">sizeof</span>(addr));
+        
+        addr-&gt;sin_family=AF_INET;
+        status=inet_pton(AF_INET,ip,&amp;(addr-&gt;sin_addr.s_addr));
+        
+        <span class="keywordflow">if</span>(status==-1) {
+                fprintf(stderr,<span class="stringliteral">&quot;ERROR: Direccion IP %s no valida\n&quot;</span>,ip);
+                <span class="keywordflow">return</span> -1;
+        }
+        <span class="keywordflow">return</span> 0;
+}
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="ga88bd320eafca5b9f4c54c4b5f3a17925"></a><!-- doxytag: member="tcpServer.c::getTCPSocket" ref="ga88bd320eafca5b9f4c54c4b5f3a17925" args="(int addrType)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int getTCPSocket </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>addrType</em></td><td>)</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Crea un nuevo servidor TCP Generico. </p>
+<p>Crea un nuevo Servidor TCP utilizando el direccionamiento indicado.</p>
+<dl><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">addrType</td><td>Tipo de Direccionamiento a utilizar.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Identificador del Socket </dd></dl>
+<dl><dt><b>Valores devueltos:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">-1</td><td>Ocurrio un Error y no se pudo crear el Socket</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Ejemplo de Uso: </p>
+<div class="fragment"><pre class="fragment">                <a class="code" href="group__sockets.html#ga88bd320eafca5b9f4c54c4b5f3a17925" title="Crea un nuevo servidor TCP Generico.">getTCPSocket</a>(AF_INET) <span class="comment">// Crea un nuevo socket que utiliza IPv4 </span>
+</pre></div><dl class="warning"><dt><b>Atención:</b></dt><dd>No utilizar </dd></dl>
+
+<p>Definición en la línea <a class="el" href="tcpServer_8c_source.html#l00046">46</a> del archivo <a class="el" href="tcpServer_8c_source.html">tcpServer.c</a>.</p>
+
+<p>Referenciado por <a class="el" href="tcpServer_8c_source.html#l00113">newTCPClientSocket4()</a> y <a class="el" href="tcpServer_8c_source.html#l00058">newTCPServerSocket4()</a>.</p>
+<div class="fragment"><pre class="fragment">                               {
+        <span class="keywordtype">int</span> socketNum;
+        
+        socketNum = socket(addrType,SOCK_STREAM,0);
+        <span class="keywordflow">if</span> (socketNum == -1) {
+                fprintf(stderr,<span class="stringliteral">&quot;ERROR: No se puede crear un socket nuevo\n&quot;</span>);
+                <span class="keywordflow">return</span> -1;
+        }
+        
+        <span class="keywordflow">return</span> socketNum;
+}
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="ga2d8f76b55a8d6bdefb097ff1554efa54"></a><!-- doxytag: member="tcpServer.h::newTCPClientSocket4" ref="ga2d8f76b55a8d6bdefb097ff1554efa54" args="(const char *ip, const u_short port)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int newTCPClientSocket4 </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>ip</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const u_short&#160;</td>
+          <td class="paramname"><em>port</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Crea un Socket Cliente TCP IPv4. </p>
+<p>Crea un nuevo Socket en IPv4 que se conecta a un servicio TCP.</p>
+<dl><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ip</td><td>Dirección IP del Servidor. </td></tr>
+    <tr><td class="paramname">port</td><td>Numero de puerto al que se debe conectar.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Identificador del Socket </dd></dl>
+<dl><dt><b>Valores devueltos:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">-1</td><td>Ocurrio un Error y no se pudo crear el Socket</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Ejemplo de Uso: </p>
+<div class="fragment"><pre class="fragment">                <a class="code" href="group__sockets.html#ga2d8f76b55a8d6bdefb097ff1554efa54" title="Crea un Socket Cliente TCP IPv4.">newTCPClientSocket4</a>(<span class="stringliteral">&quot;127.0.0.1&quot;</span>,1024) <span class="comment">// Se conecta a localhost puerto 1024</span>
+</pre></div> 
+<p>Definición en la línea <a class="el" href="tcpServer_8c_source.html#l00113">113</a> del archivo <a class="el" href="tcpServer_8c_source.html">tcpServer.c</a>.</p>
+
+<p>Hace referencia a <a class="el" href="ipFunc_8c_source.html#l00022">buildIP4addr()</a> y <a class="el" href="tcpServer_8c_source.html#l00046">getTCPSocket()</a>.</p>
+
+<p>Referenciado por <a class="el" href="TCPClient_8c_source.html#l00041">startTCPClient()</a>.</p>
+<div class="fragment"><pre class="fragment">                                                           {
+        <span class="keywordtype">int</span> socket;
+        <span class="keywordtype">int</span> status;
+        <span class="keyword">struct </span>sockaddr_in addr;
+        
+        status = <a class="code" href="group__sockets.html#gadd88367e2f2c1ed8f81e910250a06180" title="Completa una estructura addr con una dirección IPv4.">buildIP4addr</a>(ip,&amp;addr);
+        
+        <span class="keywordflow">if</span> (status==-1){
+                fprintf(stderr,<span class="stringliteral">&quot;ERROR: La direccion IP %s es invalida\n&quot;</span>,ip);
+                <span class="keywordflow">return</span> -1;
+        }
+        
+        addr.sin_port=htons(port);
+        
+        socket = <a class="code" href="group__sockets.html#ga88bd320eafca5b9f4c54c4b5f3a17925" title="Crea un nuevo servidor TCP Generico.">getTCPSocket</a>(PF_INET);
+        
+        status = connect(socket, (<span class="keyword">struct</span> sockaddr*)&amp;addr, <span class="keyword">sizeof</span>(addr));
+        
+        <span class="keywordflow">if</span>(status==-1) {
+                fprintf(stderr,<span class="stringliteral">&quot;No se puede conectar a %s:%i\n&quot;</span>,ip,port);
+                <span class="keywordflow">return</span> -1;
+        }
+        
+        <span class="keywordflow">return</span> socket;
+}
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="ga944d699e112e8607aaa4a070d86d6e65"></a><!-- doxytag: member="tcpServer.h::newTCPServerSocket4" ref="ga944d699e112e8607aaa4a070d86d6e65" args="(const char *ip, const u_short port, int q_size)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int newTCPServerSocket4 </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>ip</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const u_short&#160;</td>
+          <td class="paramname"><em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>q_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Crea un nuevo servidor TCP en IPv4. </p>
+<p>Crea un nuevo Servidor TCP utilizando IPv4, inicializando el socket y dejandolo en el estado de listeing.</p>
+<dl><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ip</td><td>IP de la interfaz en la que se escuchara. </td></tr>
+    <tr><td class="paramname">port</td><td>Puerto en el cual se escuchara </td></tr>
+    <tr><td class="paramname">q_size</td><td>Tamaño de la cola de conexiones. (Default: 5)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Identificador del Socket </dd></dl>
+<dl><dt><b>Valores devueltos:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">-1</td><td>Ocurrio un Error y no se pudo crear el Socket</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Ejemplo de Uso: </p>
+<div class="fragment"><pre class="fragment">                <a class="code" href="group__sockets.html#ga944d699e112e8607aaa4a070d86d6e65" title="Crea un nuevo servidor TCP en IPv4.">newTCPServerSocket4</a>(<span class="stringliteral">&quot;0.0.0.0&quot;</span>, 1024) <span class="comment">// Crea un nuevo servidor en el puerto 1024 </span>
+</pre></div> 
+<p>Definición en la línea <a class="el" href="tcpServer_8c_source.html#l00058">58</a> del archivo <a class="el" href="tcpServer_8c_source.html">tcpServer.c</a>.</p>
+
+<p>Hace referencia a <a class="el" href="ipFunc_8c_source.html#l00022">buildIP4addr()</a> y <a class="el" href="tcpServer_8c_source.html#l00046">getTCPSocket()</a>.</p>
+
+<p>Referenciado por <a class="el" href="TCPServer_8c_source.html#l00038">startTCPServer()</a>.</p>
+<div class="fragment"><pre class="fragment">                                                                        {
+        <span class="keywordtype">int</span> socket;
+        <span class="keywordtype">int</span> status;
+        <span class="keyword">struct </span>sockaddr_in addr;
+        
+        status = <a class="code" href="group__sockets.html#gadd88367e2f2c1ed8f81e910250a06180" title="Completa una estructura addr con una dirección IPv4.">buildIP4addr</a>(ip,&amp;addr);
+        <span class="keywordflow">if</span> (status == -1) {
+                fprintf(stderr,<span class="stringliteral">&quot;ERROR: La direccion IP %s es invalida\n&quot;</span>,ip);
+                <span class="keywordflow">return</span> -1;
+        }
+        
+        addr.sin_port = htons(port);
+        socket=(<a class="code" href="group__sockets.html#ga88bd320eafca5b9f4c54c4b5f3a17925" title="Crea un nuevo servidor TCP Generico.">getTCPSocket</a>(PF_INET));
+        
+        status = bind(socket,(<span class="keyword">struct</span> sockaddr*)&amp;addr, <span class="keyword">sizeof</span>(addr));
+        
+        <span class="keywordflow">if</span> (status==-1) {
+                fprintf(stderr,<span class="stringliteral">&quot;Can&#39;t bind on port %i\n&quot;</span>,port);
+                <span class="keywordflow">return</span> -1;
+        }
+        
+        status = listen(socket,q_size);
+        <span class="keywordflow">if</span>(status == -1) {
+                fprintf(stderr,<span class="stringliteral">&quot;ERROR: No se puede escuchar en %s:%i\n&quot;</span>,ip,port);
+                <span class="keywordflow">return</span> -1;
+        }
+        
+        <span class="keywordflow">return</span> socket;
+}
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="gac7d9d9b68342787f3d6ef71e91459e35"></a><!-- doxytag: member="tcpServer.h::waitConnection" ref="gac7d9d9b68342787f3d6ef71e91459e35" args="(int socket, char *clientIP=NULL, u_short *clientPort=NULL)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int waitConnection </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>socket</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>clientIP</em> = <code>NULL</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u_short *&#160;</td>
+          <td class="paramname"><em>clientPort</em> = <code>NULL</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Espera la conexión de un nuevo cliente. </p>
+<p>Espera un nuevo cliente, y nos regresa el numero de Socket del Cliente</p>
+<dl><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">socket</td><td>Identificador del Server Socket </td></tr>
+    <tr><td class="paramname">*clientIP</td><td>En caso de nos ser NULL en dicha ubicación de memoria se regresa la dirección IP del cliente. </td></tr>
+    <tr><td class="paramname">*clientPort</td><td>En caso de nos ser NULL en dicha ubicación de memoria se regresa el puerto del cliente</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Identificador del Client Socket </dd></dl>
+<dl><dt><b>Valores devueltos:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">-1</td><td>Ocurrio un Error y no se pudo crear el Socket</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Ejemplo de Uso: </p>
+<div class="fragment"><pre class="fragment">                <a class="code" href="group__sockets.html#gac7d9d9b68342787f3d6ef71e91459e35" title="Espera la conexión de un nuevo cliente.">waitConnection</a>(socket,clientIP,&amp;clientPort) <span class="comment">// Espera una conexión y regresa la IP y </span>
+                <span class="comment">//el puerto del cliente en las ubicaciones de memoria de clientIP y clientPort </span>
+</pre></div> 
+<p>Definición en la línea <a class="el" href="tcpServer_8c_source.html#l00088">88</a> del archivo <a class="el" href="tcpServer_8c_source.html">tcpServer.c</a>.</p>
+
+<p>Hace referencia a <a class="el" href="TCPServer_8c_source.html#l00028">client</a>.</p>
+
+<p>Referenciado por <a class="el" href="TCPServer_8c_source.html#l00038">startTCPServer()</a>.</p>
+<div class="fragment"><pre class="fragment">                                                                    {
+        
+        <span class="keywordtype">int</span> <a class="code" href="TCPServer_8c.html#a4bf947cca001e8ca0cd9def2b8d058c7">client</a>;
+        <span class="keyword">struct </span>sockaddr_in addrClient;
+        socklen_t addrLen = <span class="keyword">sizeof</span>(addrClient);
+        <span class="keywordtype">char</span> ip[18]=<span class="stringliteral">&quot;0.0.0.0&quot;</span>;
+        
+        client = accept(socket,(<span class="keyword">struct</span> sockaddr *)&amp;addrClient, &amp;addrLen);
+        
+        <span class="keywordflow">if</span> (client == -1) {
+                fprintf(stderr,<span class="stringliteral">&quot;Can&#39;t retrive client socket for connection\n&quot;</span>);
+                <span class="keywordflow">return</span> -1;
+        }
+        
+        <span class="keywordflow">if</span>(clientIP !=NULL) {
+                inet_ntop(AF_INET,&amp;(addrClient.sin_addr),ip,INET_ADDRSTRLEN);
+                strcpy(clientIP,ip);
+        }
+        
+        <span class="keywordflow">if</span> (clientPort!=NULL) {
+                *clientPort=ntohs(addrClient.sin_port);
+        }
+        <span class="keywordflow">return</span> <a class="code" href="TCPServer_8c.html#a4bf947cca001e8ca0cd9def2b8d058c7">client</a>;
+}
+</pre></div>
+</div>
+</div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Valores de enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Generado el Lunes, 7 de Mayo de 2012 22:58:00 para PROYECTO por&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
+</body>
+</html>

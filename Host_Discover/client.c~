@@ -1,6 +1,6 @@
 //Sahara MOntes de Oca
 //Fatima de Niz
-//Host discover prueba 1 - Client
+//Host discover prueba 4 - Client
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,31 +10,35 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
-
-#define PORT 5000 //Puerto
+#define PORT 5002 //Puerto
 #define MAXLINE 1024
 
 void BrCast (FILE *, int, const struct sockaddr *, socklen_t);  //Prototipo de funcion
 
 int main (void) //Main
 {
-	int sockfd;
-	struct sockaddr_in servaddr;
-
-	bzero (&servaddr, sizeof (servaddr));
-	servaddr.sin_family = AF_INET;
-	servaddr.sin_port = htons (PORT);
-	inet_pton (AF_INET, "192.168.1.255", &servaddr.sin_addr);
-
-	sockfd = socket (AF_INET, SOCK_DGRAM, 0);
-
-	BrCast (stdin, sockfd, (struct sockaddr *) &servaddr, sizeof (servaddr));
-
+	int sockfd; //soceket del cliente
+	struct sockaddr_in servaddr; //SOy esta ip y quiero conectarme a este server
+ 	static struct sockaddr_in cliaddr; //structura del client
+	bzero (&servaddr, sizeof (servaddr));//sets the first n bytes of the byte area starting at s to zero (bytes containing '\0').
+        servaddr.sin_family = AF_INET; //ipv4
+	servaddr.sin_port = htons (PORT); //puerto	
+	
+			
+	inet_pton (AF_INET, "192.168.1.255", &servaddr.sin_addr); //antes
+	sockfd = socket (AF_INET, SOCK_DGRAM, 0);	// antes
+	BrCast (stdin, sockfd, (struct sockaddr *) &servaddr, sizeof (servaddr)); //antes
+	
+	bind (sockfd, (struct sockaddr *) &cliaddr, sizeof (cliaddr));// AHORA
+	sendto (sockfd,"Hello", strlen("Hello"), 0, (struct sockaddr*) &servaddr, sizeof (servaddr));// ANTES
+	
+	
 	close (sockfd);
-
 	sleep (1);
 	exit (0);
 }
+
+
 
 void BrCast (FILE *fp, int sockfd, const struct sockaddr *pservaddr, socklen_t servlen)  //Funcion Broadcast
 {
@@ -43,11 +47,8 @@ void BrCast (FILE *fp, int sockfd, const struct sockaddr *pservaddr, socklen_t s
 	char sendline[MAXLINE], recvline[MAXLINE + 1];
 	socklen_t len;
 	struct sockaddr	*preply_addr;
- 
 	preply_addr = (struct sockaddr *) malloc (servlen);
-
 	setsockopt (sockfd, SOL_SOCKET, SO_BROADCAST, &on, sizeof (on));
-
 	fgets (sendline, MAXLINE, fp);
 	sendto (sockfd, sendline, strlen (sendline), 0, pservaddr, servlen);
 	len = servlen;
@@ -57,4 +58,5 @@ void BrCast (FILE *fp, int sockfd, const struct sockaddr *pservaddr, socklen_t s
 		printf ("%s\n", recvline);
 	}
 }
+
 

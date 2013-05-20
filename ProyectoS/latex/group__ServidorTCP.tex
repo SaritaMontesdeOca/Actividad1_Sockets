@@ -1,0 +1,627 @@
+\hypertarget{group__ServidorTCP}{
+\section{ServidorTCP}
+\label{group__ServidorTCP}\index{ServidorTCP@{ServidorTCP}}
+}
+\subsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{group__ServidorTCP_gaf7a41b28b4112b5ba274364a03bb05e8}{DialogosTCP} (int clientSocket, int \hyperlink{TCPServer_8c_a4bf947cca001e8ca0cd9def2b8d058c7}{client})
+\begin{DoxyCompactList}\small\item\em Analiza la solicitud del cliente. \end{DoxyCompactList}\item 
+int \hyperlink{group__ServidorTCP_ga4c824f1f3f4b874a325f4d333402f114}{FileList} (int clientSocket, char $\ast$msg)
+\begin{DoxyCompactList}\small\item\em Envia lista de archivos al cliente. \end{DoxyCompactList}\item 
+int \hyperlink{group__ServidorTCP_ga4b0291c26c5216ef5f6417abfb76f59b}{selecc\_\-arch} (const struct dirent $\ast$entry)
+\begin{DoxyCompactList}\small\item\em Descarta archivos que no cumplan con el filtro solicitado. \end{DoxyCompactList}\item 
+int \hyperlink{group__ServidorTCP_gafd8c9cb8cbdf6c5017849bdf4aec3c5c}{FileTransfer} (int clientSocket, char $\ast$msg)
+\begin{DoxyCompactList}\small\item\em Envia el archivo al cliente. \end{DoxyCompactList}\item 
+int \hyperlink{group__ServidorTCP_gabe2cfb9e0f85f447660b1d1e74137e91}{FileInfo} (int clientSocket, char $\ast$msg)
+\begin{DoxyCompactList}\small\item\em Envia la informacion del archivo seleccionado. \end{DoxyCompactList}\item 
+int \hyperlink{group__ServidorTCP_ga6a66838c58b5b5a617bb111891be1f40}{startTCPServer} (const char $\ast$ip, const u\_\-short port)
+\begin{DoxyCompactList}\small\item\em Inicializa al servidor TCP. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Documentación de las funciones}
+\hypertarget{group__ServidorTCP_gaf7a41b28b4112b5ba274364a03bb05e8}{
+\index{ServidorTCP@{ServidorTCP}!DialogosTCP@{DialogosTCP}}
+\index{DialogosTCP@{DialogosTCP}!ServidorTCP@{ServidorTCP}}
+\subsubsection[{DialogosTCP}]{\setlength{\rightskip}{0pt plus 5cm}int DialogosTCP (
+\begin{DoxyParamCaption}
+\item[{int}]{clientSocket, }
+\item[{int}]{client}
+\end{DoxyParamCaption}
+)}}
+\label{group__ServidorTCP_gaf7a41b28b4112b5ba274364a03bb05e8}
+
+
+Analiza la solicitud del cliente. 
+
+Empieza el intercambio de mensajes con el cliente.
+
+Funcion que analiza y decide que accion tomar al recibir la solicitud del cliente
+
+
+\begin{DoxyParams}{Parámetros}
+{\em clientSocket} & Socket del cliente. \\
+\hline
+{\em client} & Numero de cliente conectado\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Estado del envio. 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Valores devueltos}
+{\em true} & termino sin errores \\
+\hline
+{\em -\/1} & termino con errores.\\
+\hline
+\end{DoxyRetVals}
+Ejemplo de Uso: 
+\begin{DoxyCode}
+                
+                DialogosTCP(clientSocket,client);  
+\end{DoxyCode}
+ 
+
+Definición en la línea 42 del archivo process.c.
+
+
+
+Hace referencia a BUFFERSIZE, FileInfo(), FileList(), FileTransfer() y k.
+
+
+
+Referenciado por startTCPServer().
+
+
+\begin{DoxyCode}
+                                              {
+        
+        char msg[BUFFERSIZE]="";
+        int bytes;
+        char *ptr;
+        int k=0;
+        char *request;  
+        char *lh = (char *)malloc(strlen(msg));
+        char resp[BUFFERSIZE];
+
+        while(1){
+                bzero(msg,BUFFERSIZE);
+                bzero(resp,BUFFERSIZE);
+                bytes = read(clientSocket,msg,BUFFERSIZE);
+                strcpy(resp,msg);
+                lh = msg;
+                request = strtok(lh,"\n\r");
+        
+                if (strcmp(request,"GetFileList") == 0) {
+                        FileList(clientSocket,resp);
+                }
+                else if(strcmp(request,"GetFile")==0) {
+
+                        FileTransfer(clientSocket,resp);
+                }
+                else if(strcmp(request,"GetFileInfo")==0) {
+                        FileInfo(clientSocket,resp);
+                }
+        
+        }
+
+        return 0;
+}
+\end{DoxyCode}
+\hypertarget{group__ServidorTCP_gabe2cfb9e0f85f447660b1d1e74137e91}{
+\index{ServidorTCP@{ServidorTCP}!FileInfo@{FileInfo}}
+\index{FileInfo@{FileInfo}!ServidorTCP@{ServidorTCP}}
+\subsubsection[{FileInfo}]{\setlength{\rightskip}{0pt plus 5cm}int FileInfo (
+\begin{DoxyParamCaption}
+\item[{int}]{clientSocket, }
+\item[{char $\ast$}]{msg}
+\end{DoxyParamCaption}
+)}}
+\label{group__ServidorTCP_gabe2cfb9e0f85f447660b1d1e74137e91}
+
+
+Envia la informacion del archivo seleccionado. 
+
+Envia la informacion de un archivo al cliente Envia la informacion de un archivo al cliente, como el tamanio del archivo y la cadena MD5.
+
+Funcion que le envia al cliente el tamanio del archivo y la cadena MD5 del cliente
+
+
+\begin{DoxyParams}{Parámetros}
+{\em clientSocket} & Socket del cliente. \\
+\hline
+{\em msg} & mensaje enviado por el cliente\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Estado del envio. 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Valores devueltos}
+{\em true} & termino sin errores \\
+\hline
+{\em -\/1} & termino con errores.\\
+\hline
+\end{DoxyRetVals}
+Ejemplo de Uso: 
+\begin{DoxyCode}
+                
+                FileInfo(clientSocket,msg);  
+\end{DoxyCode}
+ 
+
+Definición en la línea 271 del archivo process.c.
+
+
+
+Hace referencia a BUFFERSIZE, i y k.
+
+
+
+Referenciado por DialogosTCP().
+
+
+\begin{DoxyCode}
+                                          {
+        
+        int bytes;
+        char buffer[BUFFERSIZE]="";
+        char *lh;
+        char *ptr;
+        char *request;
+        FILE *file;
+        char *s2;
+        s2 = (char *)calloc(1,9000);
+        unsigned char md5_result[16];
+        int i,bytes_read;
+        ptr = msg;
+        lh = ptr;
+
+        request = strtok(lh," \n\r");
+        for (int k=0;k<2;k++){
+                request = strtok(NULL," \n\r"); 
+        }
+
+        file = fopen(request,"r");
+        if(file == NULL){
+                printf("El archivo solicitado no existe\n");
+                return 0;
+        }
+        
+        MD5_CTX ctx; // Estructura especial para el MD5
+
+
+
+
+        MD5_Init(&ctx);
+        
+        while ((bytes_read = fread(buffer,1,sizeof(buffer),file)) > 0) {
+                MD5_Update(&ctx, buffer, bytes_read); } // Esta linea la puede ll
+      amar N veces
+
+        
+
+        MD5_Final(md5_result, &ctx);
+        
+        char tmp[2]="";
+        char *md5str;
+        printf("MD5: ");
+        for(i = 0; i < 16; i++) {
+                sprintf(tmp,"%02hhx",md5_result[i]);
+                strcat(md5str,tmp);
+        }               
+        
+        strcpy(s2,"FileInfo\n\rName: ");
+        strcat(s2,request);
+        strcat(s2,"\n\r");
+        strcat(s2,"FullSize: 16\n\r");
+        strcat(s2,"MD5: ");
+        strcat(s2,md5str);
+        strcat(s2,"\n\r\n\r");
+        printf("%s\n",s2);
+        int bytes_c = write(clientSocket,s2,strlen(s2));
+        return 0;
+        
+}
+\end{DoxyCode}
+\hypertarget{group__ServidorTCP_ga4c824f1f3f4b874a325f4d333402f114}{
+\index{ServidorTCP@{ServidorTCP}!FileList@{FileList}}
+\index{FileList@{FileList}!ServidorTCP@{ServidorTCP}}
+\subsubsection[{FileList}]{\setlength{\rightskip}{0pt plus 5cm}int FileList (
+\begin{DoxyParamCaption}
+\item[{int}]{clientSocket, }
+\item[{char $\ast$}]{msg}
+\end{DoxyParamCaption}
+)}}
+\label{group__ServidorTCP_ga4c824f1f3f4b874a325f4d333402f114}
+
+
+Envia lista de archivos al cliente. 
+
+Envia la lista de archivos al cliente.
+
+Funcion que envia la lista de archivos con los filtros de extension pedidos por el cliente
+
+
+\begin{DoxyParams}{Parámetros}
+{\em clientSocket} & Socket del cliente. \\
+\hline
+{\em msg} & mensaje enviado por el cliente\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Estado del envio. 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Valores devueltos}
+{\em true} & termino sin errores \\
+\hline
+{\em -\/1} & termino con errores.\\
+\hline
+\end{DoxyRetVals}
+Ejemplo de Uso: 
+\begin{DoxyCode}
+                
+                FileList(clientSocket,msg);  
+\end{DoxyCode}
+ 
+
+Definición en la línea 83 del archivo process.c.
+
+
+
+Hace referencia a filtro, i, k, lista, mydir y selecc\_\-arch().
+
+
+
+Referenciado por DialogosTCP().
+
+
+\begin{DoxyCode}
+                                          {
+        
+        DIR *dirh;
+        struct dirent *dirp;
+        struct dirent **list;
+        int files;
+        int s=0;
+        char size[20]="";
+        char *lista;
+        char *s2;
+        char s1[20]="";
+        char *request,*lh;
+        int bytes;
+        int i=1;
+        int selecc_arch(const struct dirent *entry);
+        
+        lh = msg;
+        request = strtok(lh," \n\r");
+        for(int k=0;k<3;k++){
+                request = strtok(NULL," \n\r");
+
+        }
+        filtro = request;
+        lista = (char *)malloc(9000);
+        s2 = (char *)malloc(9000);
+        strcpy(s2,"FileList\n\r");
+        files = scandir(mydir,&list,selecc_arch,alphasort);
+        
+        
+        for (i=0;i<files;i++) {
+                strcat(lista,list[i]->d_name);
+                strcat(lista,"\n\r");   
+                
+        }
+        
+        s=strlen(lista);
+        sprintf(size,"SizeDatos: %i \n\r",s);
+        sprintf(s1,"FileCount: %i \n\r",files);
+        strcat(s2,s1);
+        strcat(s2,size);
+        strcat(s2,"\n\r");
+        strcat(s2,lista);
+        bytes = write(clientSocket,s2,strlen(s2));
+        return 0;
+        
+}
+\end{DoxyCode}
+\hypertarget{group__ServidorTCP_gafd8c9cb8cbdf6c5017849bdf4aec3c5c}{
+\index{ServidorTCP@{ServidorTCP}!FileTransfer@{FileTransfer}}
+\index{FileTransfer@{FileTransfer}!ServidorTCP@{ServidorTCP}}
+\subsubsection[{FileTransfer}]{\setlength{\rightskip}{0pt plus 5cm}int FileTransfer (
+\begin{DoxyParamCaption}
+\item[{int}]{clientSocket, }
+\item[{char $\ast$}]{msg}
+\end{DoxyParamCaption}
+)}}
+\label{group__ServidorTCP_gafd8c9cb8cbdf6c5017849bdf4aec3c5c}
+
+
+Envia el archivo al cliente. 
+
+Envia el archivo solicitado por el cliente= Envia el archivo solicitado al cliente, antes de transmitir cada parte del archivo se envia la cabecera con los datos correspondientes.
+
+Funcion que envia el archivo solicitado al cliente
+
+
+\begin{DoxyParams}{Parámetros}
+{\em clientSocket} & Socket del cliente. \\
+\hline
+{\em msg} & mensaje enviado por el cliente\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Estado del envio. 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Valores devueltos}
+{\em true} & termino sin errores \\
+\hline
+{\em -\/1} & termino con errores.\\
+\hline
+\end{DoxyRetVals}
+Ejemplo de Uso: 
+\begin{DoxyCode}
+                
+                FileTransfer(clientSocket,msg);  
+\end{DoxyCode}
+ 
+
+Definición en la línea 158 del archivo process.c.
+
+
+
+Hace referencia a BUFFERSIZE, k y mydir.
+
+
+
+Referenciado por DialogosTCP().
+
+
+\begin{DoxyCode}
+                                              {
+        
+        char dir[40]="";
+        int bytes;
+        char *clientFile;
+        char Filename[100]="";
+        FILE *file;
+        char buffer[BUFFERSIZE]="";
+        int bytes_read;
+        int bytes_written;
+        long Size;
+        int Partes;
+        int acpart=0;
+        char *lh;
+        char *ptr;
+        char *request;
+        char *start;
+        char *end;
+        char *s2;
+        ptr = msg;
+        lh = ptr;
+        s2 = (char *)calloc(1,9000);
+        request = strtok(lh," \n\r");
+        for(int k=0;k<8;k++){
+                if (k==1){
+                        clientFile = strtok(NULL," \n\r");
+                } else if(k == 3){
+                         start = strtok(NULL," \n\r");
+                } else if(k == 5){
+                        end = strtok(NULL," \n\r");
+                }
+                else{
+                        request = strtok(NULL," \n\r");
+                }
+                lh++;
+        }
+        strcpy(dir,mydir);
+        strcat(dir,"/");
+        strcat(dir,clientFile);
+        
+        file = fopen(dir,"r");
+        if (file == NULL) {
+                perror("fopen");
+                }
+        else {
+                fseek(file,0,SEEK_END);
+                Size = ftell(file);
+                rewind(file);
+                float x;
+                char startend[40]="";
+                bzero(startend,40);
+                x = (Size+0.0)/BUFFERSIZE;
+                Partes = ceil(x);
+                int cont = 0;
+                while (1){
+                        cont++;
+                        if(cont > Partes){
+                                break;
+                        }
+                        bzero(buffer,BUFFERSIZE);
+                        bzero(s2,9000);
+                        acpart++;
+                        strcpy(s2,"File\n\rName: ");
+                        strcat(s2,clientFile);
+                        strcat(s2,"\n\r");
+                        sprintf(startend,"StartBytes: %s\n\rEndBytes: %s\n\r",sta
+      rt,end);
+                        strcat(s2,startend);
+                        sprintf(startend,"FullSize: %i\n\r",Size);
+                        strcat(s2,startend);
+                        sprintf(startend,"Part: %i\n\r",acpart);
+                        strcat(s2,startend);
+                        strcat(s2,"TotalParts: ");
+                        sprintf(startend,"%i\n\r",Partes);
+                        strcat(s2,startend);
+                        bytes_read = fread(buffer,1,sizeof(buffer),file);
+                        sprintf(startend,"SizeDatos: %i\n\r\n\r",bytes_read);
+                        strcat(s2,startend);
+                        int bytes_c = write(clientSocket,s2,strlen(s2));
+                        printf("\n%s\n",s2); 
+                        sleep(3);
+                        if (bytes_read == 0) {
+                                break;
+                        }
+                        if (bytes_read < 0) {
+                                //ERRORES DE LECTURA
+                                printf("\t\n** ERROR AL LEER EL ARCHIVO **\n");
+                                break;
+                        }                       
+                        
+                        void *p=buffer;
+                        while(bytes_read > 0) {
+                                bytes_written = write(clientSocket,p,bytes_read);
+      
+                                printf("\n%s\n",p);
+                                if (bytes_written <= 0) {
+                                }
+                                bytes_read -= bytes_written;
+                                p += bytes_written;
+                        }
+                }
+        
+                }
+
+        return 0;
+        
+}
+\end{DoxyCode}
+\hypertarget{group__ServidorTCP_ga4b0291c26c5216ef5f6417abfb76f59b}{
+\index{ServidorTCP@{ServidorTCP}!selecc\_\-arch@{selecc\_\-arch}}
+\index{selecc\_\-arch@{selecc\_\-arch}!ServidorTCP@{ServidorTCP}}
+\subsubsection[{selecc\_\-arch}]{\setlength{\rightskip}{0pt plus 5cm}int selecc\_\-arch (
+\begin{DoxyParamCaption}
+\item[{const struct dirent $\ast$}]{entry}
+\end{DoxyParamCaption}
+)}}
+\label{group__ServidorTCP_ga4b0291c26c5216ef5f6417abfb76f59b}
+
+
+Descarta archivos que no cumplan con el filtro solicitado. 
+
+Funcion que filtra los archivos con las extensiones solicitadas por el cliente 
+
+Definición en la línea 137 del archivo process.c.
+
+
+
+Hace referencia a FALSO, filtro y VERDADERO.
+
+
+
+Referenciado por FileList().
+
+
+\begin{DoxyCode}
+{
+        if ((strcmp(entry->d_name, ".") == 0) || (strcmp(entry->d_name, "..") == 
+      0))
+                return (FALSO);
+        else if(filtro =="0")
+                return (VERDADERO);
+        else {
+                if(strstr(entry->d_name,filtro) != NULL)
+                        return(VERDADERO);
+                else
+                        return(FALSO);
+        }
+}
+\end{DoxyCode}
+\hypertarget{group__ServidorTCP_ga6a66838c58b5b5a617bb111891be1f40}{
+\index{ServidorTCP@{ServidorTCP}!startTCPServer@{startTCPServer}}
+\index{startTCPServer@{startTCPServer}!ServidorTCP@{ServidorTCP}}
+\subsubsection[{startTCPServer}]{\setlength{\rightskip}{0pt plus 5cm}int startTCPServer (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ip, }
+\item[{const u\_\-short}]{port}
+\end{DoxyParamCaption}
+)}}
+\label{group__ServidorTCP_ga6a66838c58b5b5a617bb111891be1f40}
+
+
+Inicializa al servidor TCP. 
+
+Inicia la operacion del servidor TCP.
+
+Función que inicia al servidor TCP en espera de una conexion
+
+Funcion que inicializa el servidor TCP
+
+
+\begin{DoxyParams}{Parámetros}
+{\em port} & Puerto sobre el cual se inicia el servidor.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Estado con el que finaliza el servidor. 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Valores devueltos}
+{\em 1} & termino sin errores \\
+\hline
+{\em -\/1} & termino con errores.\\
+\hline
+\end{DoxyRetVals}
+Ejemplo de Uso: 
+\begin{DoxyCode}
+                int status;
+                status = startTCPServer(ip,port) // Inicia el servidor en todas l
+      as interfaces en el puerto 5001 
+\end{DoxyCode}
+ 
+
+Definición en la línea 38 del archivo TCPServer.c.
+
+
+
+Hace referencia a client, DialogosTCP(), newTCPServerSocket4() y waitConnection().
+
+
+
+Referenciado por main().
+
+
+\begin{DoxyCode}
+                                                      {
+        
+        int serverSocket;
+        int clientSocket;       
+        
+        
+        char clientIP[20];
+        u_short clientPort;
+
+        pid_t forkID;
+
+        serverSocket = newTCPServerSocket4(ip,port,5);
+        system("clear");
+        printf(".:: Starting FTP  Server - TCP ::.\n\n");
+        while(1){
+                printf("Esperando Conexion ...\n");
+                fflush(stdout);
+                clientSocket=waitConnection(serverSocket,clientIP,&clientPort);
+                client++;
+                printf("Tenemos una conexion de %s: %i\t\n",clientIP,clientPort);
+      
+                fflush(stdout);
+                
+                forkID = fork();
+                
+                if (forkID == -1){
+                        perror("fork");
+                } else if(forkID == 0) {
+                        close(serverSocket);
+                        DialogosTCP(clientSocket,client);
+                        client--;
+                        fflush(stdout);
+                        close(clientSocket);
+                                
+                } else {
+                        
+                }
+                                
+        }
+        return 0;
+}
+\end{DoxyCode}

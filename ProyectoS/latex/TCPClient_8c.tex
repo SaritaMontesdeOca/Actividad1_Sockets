@@ -1,0 +1,94 @@
+\hypertarget{TCPClient_8c}{
+\section{Referencia del Archivo TCPClient.c}
+\label{TCPClient_8c}\index{TCPClient.c@{TCPClient.c}}
+}
+
+
+Funciones referentes al Cliente Funcion que inicia el cliente en protocolo TCP.  
+
+
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$unistd.h$>$}\par
+{\ttfamily \#include $<$sys/types.h$>$}\par
+{\ttfamily \#include $<$stdarg.h$>$}\par
+{\ttfamily \#include $<$sys/uio.h$>$}\par
+{\ttfamily \#include $<$sys/time.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include \char`\"{}netlib/tcpServer.h\char`\"{}}\par
+\subsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{group__ClienteTCP_ga764ea48dd644e5e7ecd382abf3f775dd}{GetFileInfo} (int socket)
+\begin{DoxyCompactList}\small\item\em Obtener informacion del archivo. \end{DoxyCompactList}\item 
+int \hyperlink{group__ClienteTCP_gadce04814cdf2461a26ac337caa99121f}{GetFileList} (int socket)
+\begin{DoxyCompactList}\small\item\em Obteniendo lista de archivos. \end{DoxyCompactList}\item 
+int \hyperlink{group__ClienteTCP_ga255bbe1b9da33d9400f7dd6d6a808576}{GetFile} (int socket)
+\begin{DoxyCompactList}\small\item\em Solicita un archivo al servidor. \end{DoxyCompactList}\item 
+int \hyperlink{group__ClienteTCP_gafec9ff7dc95839aec9ba00120a1bf0c0}{cabecera} (char $\ast$cab)
+\begin{DoxyCompactList}\small\item\em Procesar las cabeceras recibidas con el archivo. \end{DoxyCompactList}\item 
+int \hyperlink{group__ClienteTCP_ga12ebdfb9e35bbb700a78ce3b959a7830}{startTCPClient} (const char $\ast$ip, const u\_\-short port)
+\begin{DoxyCompactList}\small\item\em Inicia el cliente TCP. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{TCPClient_8c_afebdff54803773ef82da27104ee30b8a}{flag1} = 1
+\item 
+int \hyperlink{TCPClient_8c_ac7af894858cf396a219d632f40afdc8d}{total} = 1
+\item 
+int \hyperlink{TCPClient_8c_a8852a945ad0b8536ee161f7ddb1e4be0}{npart} = -\/2
+\end{DoxyCompactItemize}
+
+
+\subsection{Descripción detallada}
+Funciones referentes al Cliente Funcion que inicia el cliente en protocolo TCP. \begin{DoxyAuthor}{Autor}
+Alfredo Huerta (\href{mailto:rt676272@iteso.mx}{\tt rt676272@iteso.mx}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Fecha}
+Febrero 2012 
+\end{DoxyDate}
+\begin{DoxyVersion}{Versión}
+0.0.1 
+\end{DoxyVersion}
+
+
+Definición en el archivo \hyperlink{TCPClient_8c_source}{TCPClient.c}.
+
+
+
+\subsection{Documentación de las variables}
+\hypertarget{TCPClient_8c_afebdff54803773ef82da27104ee30b8a}{
+\index{TCPClient.c@{TCPClient.c}!flag1@{flag1}}
+\index{flag1@{flag1}!TCPClient.c@{TCPClient.c}}
+\subsubsection[{flag1}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf flag1} = 1}}
+\label{TCPClient_8c_afebdff54803773ef82da27104ee30b8a}
+
+
+Definición en la línea 29 del archivo TCPClient.c.
+
+\hypertarget{TCPClient_8c_a8852a945ad0b8536ee161f7ddb1e4be0}{
+\index{TCPClient.c@{TCPClient.c}!npart@{npart}}
+\index{npart@{npart}!TCPClient.c@{TCPClient.c}}
+\subsubsection[{npart}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf npart} = -\/2}}
+\label{TCPClient_8c_a8852a945ad0b8536ee161f7ddb1e4be0}
+
+
+Definición en la línea 31 del archivo TCPClient.c.
+
+
+
+Referenciado por cabecera() y GetFile().
+
+\hypertarget{TCPClient_8c_ac7af894858cf396a219d632f40afdc8d}{
+\index{TCPClient.c@{TCPClient.c}!total@{total}}
+\index{total@{total}!TCPClient.c@{TCPClient.c}}
+\subsubsection[{total}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf total} = 1}}
+\label{TCPClient_8c_ac7af894858cf396a219d632f40afdc8d}
+
+
+Definición en la línea 30 del archivo TCPClient.c.
+
+
+
+Referenciado por cabecera() y GetFile().
+

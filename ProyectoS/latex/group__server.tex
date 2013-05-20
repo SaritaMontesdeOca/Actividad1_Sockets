@@ -1,0 +1,122 @@
+\hypertarget{group__server}{
+\section{Funciones relativos al servidor}
+\label{group__server}\index{Funciones relativos al servidor@{Funciones relativos al servidor}}
+}
+\subsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{group__server_ga290cdebb84104f7e5262bffb6ed87bd2}{startUDPServer} (const u\_\-short port)
+\begin{DoxyCompactList}\small\item\em Inicia la Operaciones del Servidor UDP Proyecto. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Documentación de las funciones}
+\hypertarget{group__server_ga290cdebb84104f7e5262bffb6ed87bd2}{
+\index{Funciones relativos al servidor@{Funciones relativos al servidor}!startUDPServer@{startUDPServer}}
+\index{startUDPServer@{startUDPServer}!Funciones relativos al servidor@{Funciones relativos al servidor}}
+\subsubsection[{startUDPServer}]{\setlength{\rightskip}{0pt plus 5cm}int startUDPServer (
+\begin{DoxyParamCaption}
+\item[{const u\_\-short}]{port}
+\end{DoxyParamCaption}
+)}}
+\label{group__server_ga290cdebb84104f7e5262bffb6ed87bd2}
+
+
+Inicia la Operaciones del Servidor UDP Proyecto. 
+
+Función que inicia la escucha en broadcast del servidor
+
+
+\begin{DoxyParams}{Parámetros}
+{\em port} & Puerto sobre el cual se inicia el servidor.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Estado con el que finaliza el servidor. 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Valores devueltos}
+{\em 1} & termino sin errores \\
+\hline
+{\em -\/1} & termino con errores.\\
+\hline
+\end{DoxyRetVals}
+Ejemplo de Uso: 
+\begin{DoxyCode}
+                int status;
+                status = startServer(5001) // Inicia el servidor en todas las int
+      erfaces en el puerto 5001 
+\end{DoxyCode}
+ 
+
+Definición en la línea 29 del archivo UDPServer.c.
+
+
+
+Hace referencia a clientes y sendList().
+
+
+
+Referenciado por main().
+
+
+\begin{DoxyCode}
+                                       {
+        int udpSocket;
+        struct sockaddr_in udpServer, udpClient;
+        int status;
+        socklen_t addrlen = sizeof(udpClient);
+        char buffer[255];
+        char msg[255];
+        pid_t forkID;
+        u_short clientPort;
+        char ip[18]="0.0.0.0";  
+        udpSocket = socket(AF_INET, SOCK_DGRAM, 0);
+        if (udpSocket == -1) {
+                fprintf(stderr,"Can't create UDP Socket");
+                return -1;
+        }
+
+
+        udpServer.sin_family = AF_INET;
+        inet_pton(AF_INET,"192.168.1.255",&udpServer.sin_addr.s_addr);
+        udpServer.sin_port = htons(port);
+        
+        status = bind(udpSocket, (struct sockaddr*)&udpServer, sizeof(udpServer))
+      ;
+        
+        if(status != 0) { 
+                fprintf(stderr,"Can't bind");
+                return -1;
+        }
+        system("clear");
+        printf(".:: Starting FTP  Server - UDP ::.\n\n");
+        while (1){      
+                printf("Esperando Conexion ... \n");
+                status = recvfrom(udpSocket,buffer,255,0,(struct sockaddr*)&udpCl
+      ient, &addrlen);
+                strcpy(msg,buffer);
+                bzero(buffer,255);              
+                inet_ntop(AF_INET,&(udpClient.sin_addr),ip, INET_ADDRSTRLEN);
+                clientPort = ntohs(udpClient.sin_port);
+                clientes++;
+                fflush(stdout);
+                printf("%i - [%s:%i] %s\n",clientes,ip,clientPort,msg);
+                forkID = fork();
+                
+                if (forkID == -1) {
+                        fprintf(stderr,"Cant Fork\n");
+                } else if (forkID == 0) {
+                        sendList(udpSocket,ip,clientes,udpClient,addrlen);
+                        clientes--;
+                        fflush(stdout);
+                        close(udpSocket);
+                        break;
+                } else {
+                        //close(udpSocket);
+                } 
+
+                //sleep(10);
+        }
+        return 0;
+}
+\end{DoxyCode}

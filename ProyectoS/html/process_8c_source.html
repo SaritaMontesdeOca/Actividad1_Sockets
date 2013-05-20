@@ -1,0 +1,367 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>PROYECTO: Fichero Fuente tcp/process.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Generado por Doxygen 1.7.4 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">PROYECTO</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="modules.html"><span>Módulos</span></a></li>
+      <li class="current"><a href="files.html"><span>Archivos</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;archivos</span></a></li>
+      <li><a href="globals.html"><span>Globales</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">tcp/process.c</div>  </div>
+</div>
+<div class="contents">
+<a href="process_8c.html">Ir a la documentación de este archivo.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00012"></a>00012 <span class="preprocessor"> #include &lt;inttypes.h&gt;</span>
+<a name="l00013"></a>00013 <span class="preprocessor"> #include &lt;sys/types.h&gt;</span>
+<a name="l00014"></a>00014 <span class="preprocessor"> #include &lt;stdio.h&gt;</span>
+<a name="l00015"></a>00015 <span class="preprocessor"> #include &lt;unistd.h&gt;</span>
+<a name="l00016"></a>00016 <span class="preprocessor"> #include &lt;string.h&gt;</span>
+<a name="l00017"></a>00017 <span class="preprocessor"> #include &lt;fcntl.h&gt;</span>
+<a name="l00018"></a>00018 <span class="preprocessor"> #include &lt;sys/uio.h&gt;</span>
+<a name="l00019"></a>00019 <span class="preprocessor"> #include &lt;stdlib.h&gt;</span>
+<a name="l00020"></a>00020 <span class="preprocessor"> #include &lt;dirent.h&gt;</span> 
+<a name="l00021"></a>00021 <span class="preprocessor"> #include &lt;math.h&gt;</span>
+<a name="l00022"></a>00022 <span class="preprocessor"> #include &lt;stdarg.h&gt;</span>
+<a name="l00023"></a>00023 <span class="preprocessor"> #include &lt;openssl/md5.h&gt;</span>
+<a name="l00024"></a>00024 
+<a name="l00025"></a><a class="code" href="process_8c.html#ac3146f1e9227301bb4aa518f4d336cee">00025</a> <span class="preprocessor"> #define BUFFERSIZE 1024</span>
+<a name="l00026"></a><a class="code" href="process_8c.html#ad0bbc5b6c9ba17a49dbbc4c1d466a5c0">00026</a> <span class="preprocessor"></span><span class="preprocessor"> #define FALSO 0 </span>
+<a name="l00027"></a><a class="code" href="process_8c.html#abb6175c2a8988559cd7e8521a9f1f355">00027</a> <span class="preprocessor"></span><span class="preprocessor"> #define VERDADERO !FALSO </span>
+<a name="l00028"></a>00028 <span class="preprocessor"></span>
+<a name="l00029"></a>00029 <span class="keywordtype">int</span> <a class="code" href="group__ServidorTCP.html#ga4c824f1f3f4b874a325f4d333402f114" title="Envia lista de archivos al cliente.">FileList</a>(<span class="keywordtype">int</span> clientSocket, <span class="keywordtype">char</span> *msg);
+<a name="l00030"></a>00030 <span class="keywordtype">int</span> <a class="code" href="group__ServidorTCP.html#gafd8c9cb8cbdf6c5017849bdf4aec3c5c" title="Envia el archivo al cliente.">FileTransfer</a>(<span class="keywordtype">int</span> clientSocket, <span class="keywordtype">char</span> *msg);
+<a name="l00031"></a>00031 <span class="keywordtype">int</span> <a class="code" href="group__ServidorTCP.html#gabe2cfb9e0f85f447660b1d1e74137e91" title="Envia la informacion del archivo seleccionado.">FileInfo</a>(<span class="keywordtype">int</span> clientSocket, <span class="keywordtype">char</span> *msg);
+<a name="l00032"></a><a class="code" href="process_8c.html#a2dba43ee23e1f9539c5cb227390eb0a7">00032</a> <span class="keyword">static</span> <span class="keywordtype">char</span> <a class="code" href="process_8c.html#a2dba43ee23e1f9539c5cb227390eb0a7">mydir</a>[40] = <span class="stringliteral">&quot;/media/share/Codigos/UDP_Ft&quot;</span>;
+<a name="l00033"></a><a class="code" href="process_8c.html#a7e2befc271f5bf8422f9f3f3e5f3d1f1">00033</a> <span class="keywordtype">char</span> *<a class="code" href="process_8c.html#a7e2befc271f5bf8422f9f3f3e5f3d1f1">filtro</a>;
+<a name="l00034"></a>00034 
+<a name="l00042"></a><a class="code" href="group__ServidorTCP.html#gaf7a41b28b4112b5ba274364a03bb05e8">00042</a> <span class="keywordtype">int</span> <a class="code" href="group__ServidorTCP.html#gaf7a41b28b4112b5ba274364a03bb05e8" title="Analiza la solicitud del cliente.">DialogosTCP</a>(<span class="keywordtype">int</span> clientSocket, <span class="keywordtype">int</span> <a class="code" href="TCPServer_8c.html#a4bf947cca001e8ca0cd9def2b8d058c7">client</a>) {
+<a name="l00043"></a>00043         
+<a name="l00044"></a>00044         <span class="keywordtype">char</span> msg[<a class="code" href="process_8c.html#ac3146f1e9227301bb4aa518f4d336cee">BUFFERSIZE</a>]=<span class="stringliteral">&quot;&quot;</span>;
+<a name="l00045"></a>00045         <span class="keywordtype">int</span> bytes;
+<a name="l00046"></a>00046         <span class="keywordtype">char</span> *ptr;
+<a name="l00047"></a>00047         <span class="keywordtype">int</span> <a class="code" href="UDPClient_8c.html#ab66ed8e0098c0a86b458672a55a9cca9">k</a>=0;
+<a name="l00048"></a>00048         <span class="keywordtype">char</span> *request;  
+<a name="l00049"></a>00049         <span class="keywordtype">char</span> *lh = (<span class="keywordtype">char</span> *)malloc(strlen(msg));
+<a name="l00050"></a>00050         <span class="keywordtype">char</span> resp[<a class="code" href="process_8c.html#ac3146f1e9227301bb4aa518f4d336cee">BUFFERSIZE</a>];
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052         <span class="keywordflow">while</span>(1){
+<a name="l00053"></a>00053                 bzero(msg,<a class="code" href="process_8c.html#ac3146f1e9227301bb4aa518f4d336cee">BUFFERSIZE</a>);
+<a name="l00054"></a>00054                 bzero(resp,<a class="code" href="process_8c.html#ac3146f1e9227301bb4aa518f4d336cee">BUFFERSIZE</a>);
+<a name="l00055"></a>00055                 bytes = read(clientSocket,msg,<a class="code" href="process_8c.html#ac3146f1e9227301bb4aa518f4d336cee">BUFFERSIZE</a>);
+<a name="l00056"></a>00056                 strcpy(resp,msg);
+<a name="l00057"></a>00057                 lh = msg;
+<a name="l00058"></a>00058                 request = strtok(lh,<span class="stringliteral">&quot;\n\r&quot;</span>);
+<a name="l00059"></a>00059         
+<a name="l00060"></a>00060                 <span class="keywordflow">if</span> (strcmp(request,<span class="stringliteral">&quot;GetFileList&quot;</span>) == 0) {
+<a name="l00061"></a>00061                         <a class="code" href="group__ServidorTCP.html#ga4c824f1f3f4b874a325f4d333402f114" title="Envia lista de archivos al cliente.">FileList</a>(clientSocket,resp);
+<a name="l00062"></a>00062                 }
+<a name="l00063"></a>00063                 <span class="keywordflow">else</span> <span class="keywordflow">if</span>(strcmp(request,<span class="stringliteral">&quot;GetFile&quot;</span>)==0) {
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065                         <a class="code" href="group__ServidorTCP.html#gafd8c9cb8cbdf6c5017849bdf4aec3c5c" title="Envia el archivo al cliente.">FileTransfer</a>(clientSocket,resp);
+<a name="l00066"></a>00066                 }
+<a name="l00067"></a>00067                 <span class="keywordflow">else</span> <span class="keywordflow">if</span>(strcmp(request,<span class="stringliteral">&quot;GetFileInfo&quot;</span>)==0) {
+<a name="l00068"></a>00068                         <a class="code" href="group__ServidorTCP.html#gabe2cfb9e0f85f447660b1d1e74137e91" title="Envia la informacion del archivo seleccionado.">FileInfo</a>(clientSocket,resp);
+<a name="l00069"></a>00069                 }
+<a name="l00070"></a>00070         
+<a name="l00071"></a>00071         }
+<a name="l00072"></a>00072 
+<a name="l00073"></a>00073         <span class="keywordflow">return</span> 0;
+<a name="l00074"></a>00074 }
+<a name="l00083"></a><a class="code" href="group__ServidorTCP.html#ga4c824f1f3f4b874a325f4d333402f114">00083</a> <span class="keywordtype">int</span> <a class="code" href="group__ServidorTCP.html#ga4c824f1f3f4b874a325f4d333402f114" title="Envia lista de archivos al cliente.">FileList</a>(<span class="keywordtype">int</span> clientSocket, <span class="keywordtype">char</span> *msg) {
+<a name="l00084"></a>00084         
+<a name="l00085"></a>00085         DIR *dirh;
+<a name="l00086"></a>00086         <span class="keyword">struct </span>dirent *dirp;
+<a name="l00087"></a>00087         <span class="keyword">struct </span>dirent **list;
+<a name="l00088"></a>00088         <span class="keywordtype">int</span> files;
+<a name="l00089"></a>00089         <span class="keywordtype">int</span> s=0;
+<a name="l00090"></a>00090         <span class="keywordtype">char</span> size[20]=<span class="stringliteral">&quot;&quot;</span>;
+<a name="l00091"></a>00091         <span class="keywordtype">char</span> *<a class="code" href="UDPClient_8c.html#a1aa15651e462efeaf67dede9b2e436af">lista</a>;
+<a name="l00092"></a>00092         <span class="keywordtype">char</span> *s2;
+<a name="l00093"></a>00093         <span class="keywordtype">char</span> s1[20]=<span class="stringliteral">&quot;&quot;</span>;
+<a name="l00094"></a>00094         <span class="keywordtype">char</span> *request,*lh;
+<a name="l00095"></a>00095         <span class="keywordtype">int</span> bytes;
+<a name="l00096"></a>00096         <span class="keywordtype">int</span> <a class="code" href="UDPClient_8c.html#acb559820d9ca11295b4500f179ef6392">i</a>=1;
+<a name="l00097"></a>00097         <span class="keywordtype">int</span> <a class="code" href="group__ServidorTCP.html#ga4b0291c26c5216ef5f6417abfb76f59b" title="Descarta archivos que no cumplan con el filtro solicitado.">selecc_arch</a>(<span class="keyword">const</span> <span class="keyword">struct</span> dirent *entry);
+<a name="l00098"></a>00098         
+<a name="l00099"></a>00099         lh = msg;
+<a name="l00100"></a>00100         request = strtok(lh,<span class="stringliteral">&quot; \n\r&quot;</span>);
+<a name="l00101"></a>00101         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> <a class="code" href="UDPClient_8c.html#ab66ed8e0098c0a86b458672a55a9cca9">k</a>=0;<a class="code" href="UDPClient_8c.html#ab66ed8e0098c0a86b458672a55a9cca9">k</a>&lt;3;<a class="code" href="UDPClient_8c.html#ab66ed8e0098c0a86b458672a55a9cca9">k</a>++){
+<a name="l00102"></a>00102                 request = strtok(NULL,<span class="stringliteral">&quot; \n\r&quot;</span>);
+<a name="l00103"></a>00103 
+<a name="l00104"></a>00104         }
+<a name="l00105"></a>00105         <a class="code" href="process_8c.html#a7e2befc271f5bf8422f9f3f3e5f3d1f1">filtro</a> = request;
+<a name="l00106"></a>00106         lista = (<span class="keywordtype">char</span> *)malloc(9000);
+<a name="l00107"></a>00107         s2 = (<span class="keywordtype">char</span> *)malloc(9000);
+<a name="l00108"></a>00108         strcpy(s2,<span class="stringliteral">&quot;FileList\n\r&quot;</span>);
+<a name="l00109"></a>00109         files = scandir(<a class="code" href="process_8c.html#a2dba43ee23e1f9539c5cb227390eb0a7">mydir</a>,&amp;list,selecc_arch,alphasort);
+<a name="l00110"></a>00110         
+<a name="l00111"></a>00111         
+<a name="l00112"></a>00112         <span class="keywordflow">for</span> (i=0;i&lt;files;i++) {
+<a name="l00113"></a>00113                 strcat(lista,list[i]-&gt;d_name);
+<a name="l00114"></a>00114                 strcat(lista,<span class="stringliteral">&quot;\n\r&quot;</span>);   
+<a name="l00115"></a>00115                 
+<a name="l00116"></a>00116         }
+<a name="l00117"></a>00117         
+<a name="l00118"></a>00118         s=strlen(lista);
+<a name="l00119"></a>00119         sprintf(size,<span class="stringliteral">&quot;SizeDatos: %i \n\r&quot;</span>,s);
+<a name="l00120"></a>00120         sprintf(s1,<span class="stringliteral">&quot;FileCount: %i \n\r&quot;</span>,files);
+<a name="l00121"></a>00121         strcat(s2,s1);
+<a name="l00122"></a>00122         strcat(s2,size);
+<a name="l00123"></a>00123         strcat(s2,<span class="stringliteral">&quot;\n\r&quot;</span>);
+<a name="l00124"></a>00124         strcat(s2,lista);
+<a name="l00125"></a>00125         bytes = write(clientSocket,s2,strlen(s2));
+<a name="l00126"></a>00126         <span class="keywordflow">return</span> 0;
+<a name="l00127"></a>00127         
+<a name="l00128"></a>00128 }
+<a name="l00137"></a><a class="code" href="group__ServidorTCP.html#ga4b0291c26c5216ef5f6417abfb76f59b">00137</a> <span class="keywordtype">int</span> <a class="code" href="group__ServidorTCP.html#ga4b0291c26c5216ef5f6417abfb76f59b" title="Descarta archivos que no cumplan con el filtro solicitado.">selecc_arch</a>(<span class="keyword">const</span> <span class="keyword">struct</span> dirent *entry)
+<a name="l00138"></a>00138 {
+<a name="l00139"></a>00139         <span class="keywordflow">if</span> ((strcmp(entry-&gt;d_name, <span class="stringliteral">&quot;.&quot;</span>) == 0) || (strcmp(entry-&gt;d_name, <span class="stringliteral">&quot;..&quot;</span>) == 0))
+<a name="l00140"></a>00140                 <span class="keywordflow">return</span> (<a class="code" href="process_8c.html#ad0bbc5b6c9ba17a49dbbc4c1d466a5c0">FALSO</a>);
+<a name="l00141"></a>00141         <span class="keywordflow">else</span> <span class="keywordflow">if</span>(<a class="code" href="process_8c.html#a7e2befc271f5bf8422f9f3f3e5f3d1f1">filtro</a> ==<span class="stringliteral">&quot;0&quot;</span>)
+<a name="l00142"></a>00142                 <span class="keywordflow">return</span> (<a class="code" href="process_8c.html#abb6175c2a8988559cd7e8521a9f1f355">VERDADERO</a>);
+<a name="l00143"></a>00143         <span class="keywordflow">else</span> {
+<a name="l00144"></a>00144                 <span class="keywordflow">if</span>(strstr(entry-&gt;d_name,<a class="code" href="process_8c.html#a7e2befc271f5bf8422f9f3f3e5f3d1f1">filtro</a>) != NULL)
+<a name="l00145"></a>00145                         <span class="keywordflow">return</span>(<a class="code" href="process_8c.html#abb6175c2a8988559cd7e8521a9f1f355">VERDADERO</a>);
+<a name="l00146"></a>00146                 <span class="keywordflow">else</span>
+<a name="l00147"></a>00147                         <span class="keywordflow">return</span>(<a class="code" href="process_8c.html#ad0bbc5b6c9ba17a49dbbc4c1d466a5c0">FALSO</a>);
+<a name="l00148"></a>00148         }
+<a name="l00149"></a>00149 }
+<a name="l00158"></a><a class="code" href="group__ServidorTCP.html#gafd8c9cb8cbdf6c5017849bdf4aec3c5c">00158</a> <span class="keywordtype">int</span> <a class="code" href="group__ServidorTCP.html#gafd8c9cb8cbdf6c5017849bdf4aec3c5c" title="Envia el archivo al cliente.">FileTransfer</a>(<span class="keywordtype">int</span> clientSocket, <span class="keywordtype">char</span> *msg) {
+<a name="l00159"></a>00159         
+<a name="l00160"></a>00160         <span class="keywordtype">char</span> dir[40]=<span class="stringliteral">&quot;&quot;</span>;
+<a name="l00161"></a>00161         <span class="keywordtype">int</span> bytes;
+<a name="l00162"></a>00162         <span class="keywordtype">char</span> *clientFile;
+<a name="l00163"></a>00163         <span class="keywordtype">char</span> Filename[100]=<span class="stringliteral">&quot;&quot;</span>;
+<a name="l00164"></a>00164         FILE *file;
+<a name="l00165"></a>00165         <span class="keywordtype">char</span> buffer[<a class="code" href="process_8c.html#ac3146f1e9227301bb4aa518f4d336cee">BUFFERSIZE</a>]=<span class="stringliteral">&quot;&quot;</span>;
+<a name="l00166"></a>00166         <span class="keywordtype">int</span> bytes_read;
+<a name="l00167"></a>00167         <span class="keywordtype">int</span> bytes_written;
+<a name="l00168"></a>00168         <span class="keywordtype">long</span> Size;
+<a name="l00169"></a>00169         <span class="keywordtype">int</span> Partes;
+<a name="l00170"></a>00170         <span class="keywordtype">int</span> acpart=0;
+<a name="l00171"></a>00171         <span class="keywordtype">char</span> *lh;
+<a name="l00172"></a>00172         <span class="keywordtype">char</span> *ptr;
+<a name="l00173"></a>00173         <span class="keywordtype">char</span> *request;
+<a name="l00174"></a>00174         <span class="keywordtype">char</span> *start;
+<a name="l00175"></a>00175         <span class="keywordtype">char</span> *end;
+<a name="l00176"></a>00176         <span class="keywordtype">char</span> *s2;
+<a name="l00177"></a>00177         ptr = msg;
+<a name="l00178"></a>00178         lh = ptr;
+<a name="l00179"></a>00179         s2 = (<span class="keywordtype">char</span> *)calloc(1,9000);
+<a name="l00180"></a>00180         request = strtok(lh,<span class="stringliteral">&quot; \n\r&quot;</span>);
+<a name="l00181"></a>00181         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> <a class="code" href="UDPClient_8c.html#ab66ed8e0098c0a86b458672a55a9cca9">k</a>=0;<a class="code" href="UDPClient_8c.html#ab66ed8e0098c0a86b458672a55a9cca9">k</a>&lt;8;<a class="code" href="UDPClient_8c.html#ab66ed8e0098c0a86b458672a55a9cca9">k</a>++){
+<a name="l00182"></a>00182                 <span class="keywordflow">if</span> (<a class="code" href="UDPClient_8c.html#ab66ed8e0098c0a86b458672a55a9cca9">k</a>==1){
+<a name="l00183"></a>00183                         clientFile = strtok(NULL,<span class="stringliteral">&quot; \n\r&quot;</span>);
+<a name="l00184"></a>00184                 } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(<a class="code" href="UDPClient_8c.html#ab66ed8e0098c0a86b458672a55a9cca9">k</a> == 3){
+<a name="l00185"></a>00185                          start = strtok(NULL,<span class="stringliteral">&quot; \n\r&quot;</span>);
+<a name="l00186"></a>00186                 } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(<a class="code" href="UDPClient_8c.html#ab66ed8e0098c0a86b458672a55a9cca9">k</a> == 5){
+<a name="l00187"></a>00187                         end = strtok(NULL,<span class="stringliteral">&quot; \n\r&quot;</span>);
+<a name="l00188"></a>00188                 }
+<a name="l00189"></a>00189                 <span class="keywordflow">else</span>{
+<a name="l00190"></a>00190                         request = strtok(NULL,<span class="stringliteral">&quot; \n\r&quot;</span>);
+<a name="l00191"></a>00191                 }
+<a name="l00192"></a>00192                 lh++;
+<a name="l00193"></a>00193         }
+<a name="l00194"></a>00194         strcpy(dir,<a class="code" href="process_8c.html#a2dba43ee23e1f9539c5cb227390eb0a7">mydir</a>);
+<a name="l00195"></a>00195         strcat(dir,<span class="stringliteral">&quot;/&quot;</span>);
+<a name="l00196"></a>00196         strcat(dir,clientFile);
+<a name="l00197"></a>00197         
+<a name="l00198"></a>00198         file = fopen(dir,<span class="stringliteral">&quot;r&quot;</span>);
+<a name="l00199"></a>00199         <span class="keywordflow">if</span> (file == NULL) {
+<a name="l00200"></a>00200                 perror(<span class="stringliteral">&quot;fopen&quot;</span>);
+<a name="l00201"></a>00201                 }
+<a name="l00202"></a>00202         <span class="keywordflow">else</span> {
+<a name="l00203"></a>00203                 fseek(file,0,SEEK_END);
+<a name="l00204"></a>00204                 Size = ftell(file);
+<a name="l00205"></a>00205                 rewind(file);
+<a name="l00206"></a>00206                 <span class="keywordtype">float</span> x;
+<a name="l00207"></a>00207                 <span class="keywordtype">char</span> startend[40]=<span class="stringliteral">&quot;&quot;</span>;
+<a name="l00208"></a>00208                 bzero(startend,40);
+<a name="l00209"></a>00209                 x = (Size+0.0)/<a class="code" href="process_8c.html#ac3146f1e9227301bb4aa518f4d336cee">BUFFERSIZE</a>;
+<a name="l00210"></a>00210                 Partes = ceil(x);
+<a name="l00211"></a>00211                 <span class="keywordtype">int</span> cont = 0;
+<a name="l00212"></a>00212                 <span class="keywordflow">while</span> (1){
+<a name="l00213"></a>00213                         cont++;
+<a name="l00214"></a>00214                         <span class="keywordflow">if</span>(cont &gt; Partes){
+<a name="l00215"></a>00215                                 <span class="keywordflow">break</span>;
+<a name="l00216"></a>00216                         }
+<a name="l00217"></a>00217                         bzero(buffer,<a class="code" href="process_8c.html#ac3146f1e9227301bb4aa518f4d336cee">BUFFERSIZE</a>);
+<a name="l00218"></a>00218                         bzero(s2,9000);
+<a name="l00219"></a>00219                         acpart++;
+<a name="l00220"></a>00220                         strcpy(s2,<span class="stringliteral">&quot;File\n\rName: &quot;</span>);
+<a name="l00221"></a>00221                         strcat(s2,clientFile);
+<a name="l00222"></a>00222                         strcat(s2,<span class="stringliteral">&quot;\n\r&quot;</span>);
+<a name="l00223"></a>00223                         sprintf(startend,<span class="stringliteral">&quot;StartBytes: %s\n\rEndBytes: %s\n\r&quot;</span>,start,end);
+<a name="l00224"></a>00224                         strcat(s2,startend);
+<a name="l00225"></a>00225                         sprintf(startend,<span class="stringliteral">&quot;FullSize: %i\n\r&quot;</span>,Size);
+<a name="l00226"></a>00226                         strcat(s2,startend);
+<a name="l00227"></a>00227                         sprintf(startend,<span class="stringliteral">&quot;Part: %i\n\r&quot;</span>,acpart);
+<a name="l00228"></a>00228                         strcat(s2,startend);
+<a name="l00229"></a>00229                         strcat(s2,<span class="stringliteral">&quot;TotalParts: &quot;</span>);
+<a name="l00230"></a>00230                         sprintf(startend,<span class="stringliteral">&quot;%i\n\r&quot;</span>,Partes);
+<a name="l00231"></a>00231                         strcat(s2,startend);
+<a name="l00232"></a>00232                         bytes_read = fread(buffer,1,<span class="keyword">sizeof</span>(buffer),file);
+<a name="l00233"></a>00233                         sprintf(startend,<span class="stringliteral">&quot;SizeDatos: %i\n\r\n\r&quot;</span>,bytes_read);
+<a name="l00234"></a>00234                         strcat(s2,startend);
+<a name="l00235"></a>00235                         <span class="keywordtype">int</span> bytes_c = write(clientSocket,s2,strlen(s2));
+<a name="l00236"></a>00236                         printf(<span class="stringliteral">&quot;\n%s\n&quot;</span>,s2); 
+<a name="l00237"></a>00237                         sleep(3);
+<a name="l00238"></a>00238                         <span class="keywordflow">if</span> (bytes_read == 0) {
+<a name="l00239"></a>00239                                 <span class="keywordflow">break</span>;
+<a name="l00240"></a>00240                         }
+<a name="l00241"></a>00241                         <span class="keywordflow">if</span> (bytes_read &lt; 0) {
+<a name="l00242"></a>00242                                 <span class="comment">//ERRORES DE LECTURA</span>
+<a name="l00243"></a>00243                                 printf(<span class="stringliteral">&quot;\t\n** ERROR AL LEER EL ARCHIVO **\n&quot;</span>);
+<a name="l00244"></a>00244                                 <span class="keywordflow">break</span>;
+<a name="l00245"></a>00245                         }                       
+<a name="l00246"></a>00246                         
+<a name="l00247"></a>00247                         <span class="keywordtype">void</span> *p=buffer;
+<a name="l00248"></a>00248                         <span class="keywordflow">while</span>(bytes_read &gt; 0) {
+<a name="l00249"></a>00249                                 bytes_written = write(clientSocket,p,bytes_read);
+<a name="l00250"></a>00250                                 printf(<span class="stringliteral">&quot;\n%s\n&quot;</span>,p);
+<a name="l00251"></a>00251                                 <span class="keywordflow">if</span> (bytes_written &lt;= 0) {
+<a name="l00252"></a>00252                                 }
+<a name="l00253"></a>00253                                 bytes_read -= bytes_written;
+<a name="l00254"></a>00254                                 p += bytes_written;
+<a name="l00255"></a>00255                         }
+<a name="l00256"></a>00256                 }
+<a name="l00257"></a>00257         
+<a name="l00258"></a>00258                 }
+<a name="l00259"></a>00259 
+<a name="l00260"></a>00260         <span class="keywordflow">return</span> 0;
+<a name="l00261"></a>00261         
+<a name="l00262"></a>00262 }
+<a name="l00271"></a><a class="code" href="group__ServidorTCP.html#gabe2cfb9e0f85f447660b1d1e74137e91">00271</a> <span class="keywordtype">int</span> <a class="code" href="group__ServidorTCP.html#gabe2cfb9e0f85f447660b1d1e74137e91" title="Envia la informacion del archivo seleccionado.">FileInfo</a>(<span class="keywordtype">int</span> clientSocket, <span class="keywordtype">char</span> *msg) {
+<a name="l00272"></a>00272         
+<a name="l00273"></a>00273         <span class="keywordtype">int</span> bytes;
+<a name="l00274"></a>00274         <span class="keywordtype">char</span> buffer[<a class="code" href="process_8c.html#ac3146f1e9227301bb4aa518f4d336cee">BUFFERSIZE</a>]=<span class="stringliteral">&quot;&quot;</span>;
+<a name="l00275"></a>00275         <span class="keywordtype">char</span> *lh;
+<a name="l00276"></a>00276         <span class="keywordtype">char</span> *ptr;
+<a name="l00277"></a>00277         <span class="keywordtype">char</span> *request;
+<a name="l00278"></a>00278         FILE *file;
+<a name="l00279"></a>00279         <span class="keywordtype">char</span> *s2;
+<a name="l00280"></a>00280         s2 = (<span class="keywordtype">char</span> *)calloc(1,9000);
+<a name="l00281"></a>00281         <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> md5_result[16];
+<a name="l00282"></a>00282         <span class="keywordtype">int</span> <a class="code" href="UDPClient_8c.html#acb559820d9ca11295b4500f179ef6392">i</a>,bytes_read;
+<a name="l00283"></a>00283         ptr = msg;
+<a name="l00284"></a>00284         lh = ptr;
+<a name="l00285"></a>00285 
+<a name="l00286"></a>00286         request = strtok(lh,<span class="stringliteral">&quot; \n\r&quot;</span>);
+<a name="l00287"></a>00287         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="UDPClient_8c.html#ab66ed8e0098c0a86b458672a55a9cca9">k</a>=0;<a class="code" href="UDPClient_8c.html#ab66ed8e0098c0a86b458672a55a9cca9">k</a>&lt;2;<a class="code" href="UDPClient_8c.html#ab66ed8e0098c0a86b458672a55a9cca9">k</a>++){
+<a name="l00288"></a>00288                 request = strtok(NULL,<span class="stringliteral">&quot; \n\r&quot;</span>); 
+<a name="l00289"></a>00289         }
+<a name="l00290"></a>00290 
+<a name="l00291"></a>00291         file = fopen(request,<span class="stringliteral">&quot;r&quot;</span>);
+<a name="l00292"></a>00292         <span class="keywordflow">if</span>(file == NULL){
+<a name="l00293"></a>00293                 printf(<span class="stringliteral">&quot;El archivo solicitado no existe\n&quot;</span>);
+<a name="l00294"></a>00294                 <span class="keywordflow">return</span> 0;
+<a name="l00295"></a>00295         }
+<a name="l00296"></a>00296         
+<a name="l00297"></a>00297         MD5_CTX ctx; <span class="comment">// Estructura especial para el MD5</span>
+<a name="l00298"></a>00298 
+<a name="l00299"></a>00299 
+<a name="l00300"></a>00300 
+<a name="l00301"></a>00301 
+<a name="l00302"></a>00302         MD5_Init(&amp;ctx);
+<a name="l00303"></a>00303         
+<a name="l00304"></a>00304         <span class="keywordflow">while</span> ((bytes_read = fread(buffer,1,<span class="keyword">sizeof</span>(buffer),file)) &gt; 0) {
+<a name="l00305"></a>00305                 MD5_Update(&amp;ctx, buffer, bytes_read); } <span class="comment">// Esta linea la puede llamar N veces</span>
+<a name="l00306"></a>00306 
+<a name="l00307"></a>00307         
+<a name="l00308"></a>00308 
+<a name="l00309"></a>00309         MD5_Final(md5_result, &amp;ctx);
+<a name="l00310"></a>00310         
+<a name="l00311"></a>00311         <span class="keywordtype">char</span> tmp[2]=<span class="stringliteral">&quot;&quot;</span>;
+<a name="l00312"></a>00312         <span class="keywordtype">char</span> *md5str;
+<a name="l00313"></a>00313         printf(<span class="stringliteral">&quot;MD5: &quot;</span>);
+<a name="l00314"></a>00314         <span class="keywordflow">for</span>(i = 0; i &lt; 16; i++) {
+<a name="l00315"></a>00315                 sprintf(tmp,<span class="stringliteral">&quot;%02hhx&quot;</span>,md5_result[i]);
+<a name="l00316"></a>00316                 strcat(md5str,tmp);
+<a name="l00317"></a>00317         }               
+<a name="l00318"></a>00318         
+<a name="l00319"></a>00319         strcpy(s2,<span class="stringliteral">&quot;FileInfo\n\rName: &quot;</span>);
+<a name="l00320"></a>00320         strcat(s2,request);
+<a name="l00321"></a>00321         strcat(s2,<span class="stringliteral">&quot;\n\r&quot;</span>);
+<a name="l00322"></a>00322         strcat(s2,<span class="stringliteral">&quot;FullSize: 16\n\r&quot;</span>);
+<a name="l00323"></a>00323         strcat(s2,<span class="stringliteral">&quot;MD5: &quot;</span>);
+<a name="l00324"></a>00324         strcat(s2,md5str);
+<a name="l00325"></a>00325         strcat(s2,<span class="stringliteral">&quot;\n\r\n\r&quot;</span>);
+<a name="l00326"></a>00326         printf(<span class="stringliteral">&quot;%s\n&quot;</span>,s2);
+<a name="l00327"></a>00327         <span class="keywordtype">int</span> bytes_c = write(clientSocket,s2,strlen(s2));
+<a name="l00328"></a>00328         <span class="keywordflow">return</span> 0;
+<a name="l00329"></a>00329         
+<a name="l00330"></a>00330 }
+<a name="l00331"></a>00331 
+<a name="l00332"></a>00332 
+<a name="l00333"></a>00333 
+<a name="l00334"></a>00334 
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Valores de enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Generado el Lunes, 7 de Mayo de 2012 22:58:00 para PROYECTO por&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
+</body>
+</html>

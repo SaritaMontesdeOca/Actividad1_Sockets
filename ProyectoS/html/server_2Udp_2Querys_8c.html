@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>PROYECTO: Referencia del Archivo server/Udp/Querys.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Generado por Doxygen 1.7.4 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">PROYECTO</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="modules.html"><span>Módulos</span></a></li>
+      <li class="current"><a href="files.html"><span>Archivos</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;archivos</span></a></li>
+      <li><a href="globals.html"><span>Globales</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funciones</a>  </div>
+  <div class="headertitle">
+<div class="title">Referencia del Archivo server/Udp/Querys.c</div>  </div>
+</div>
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br/>
+<code>#include &lt;stdarg.h&gt;</code><br/>
+<code>#include &lt;arpa/inet.h&gt;</code><br/>
+<code>#include &lt;sys/socket.h&gt;</code><br/>
+<code>#include &lt;dirent.h&gt;</code><br/>
+<code>#include &lt;string.h&gt;</code><br/>
+<code>#include &lt;inttypes.h&gt;</code><br/>
+<code>#include &lt;unistd.h&gt;</code><br/>
+<code>#include &lt;sys/types.h&gt;</code><br/>
+<code>#include &lt;fcntl.h&gt;</code><br/>
+<code>#include &lt;sys/uio.h&gt;</code><br/>
+<code>#include &lt;stdlib.h&gt;</code><br/>
+<code>#include &quot;Querys.h&quot;</code><br/>
+</div>
+<p><a href="server_2Udp_2Querys_8c_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Funciones</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_2Udp_2Querys_8c.html#aab0a2cca8a98bd5be6a2cb4f00aad610">sendList</a> (int clientSocket, char *ip, int num, struct sockaddr_in udpClient, socklen_t addrlen)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Envia la lista de archivos por medio de un unicast al cliente.  <a href="#aab0a2cca8a98bd5be6a2cb4f00aad610"></a><br/></td></tr>
+</table>
+<hr/><h2>Documentación de las funciones</h2>
+<a class="anchor" id="aab0a2cca8a98bd5be6a2cb4f00aad610"></a><!-- doxytag: member="Querys.c::sendList" ref="aab0a2cca8a98bd5be6a2cb4f00aad610" args="(int clientSocket, char *ip, int num, struct sockaddr_in udpClient, socklen_t addrlen)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int sendList </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>clientSocket</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>ip</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct sockaddr_in&#160;</td>
+          <td class="paramname"><em>udpClient</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">socklen_t&#160;</td>
+          <td class="paramname"><em>addrlen</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Envia la lista de archivos por medio de un unicast al cliente. </p>
+<dl><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">clientSocket</td><td>Socket del cliente. </td></tr>
+    <tr><td class="paramname">ip</td><td>Ip del cliente. </td></tr>
+    <tr><td class="paramname">num</td><td>Numero del cliente. </td></tr>
+    <tr><td class="paramname">udpClient</td><td>Estructura del socket Cliente </td></tr>
+    <tr><td class="paramname">addrlen</td><td>Estructura de la direccion</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Estado del envio. </dd></dl>
+<dl><dt><b>Valores devueltos:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">true</td><td>termino sin errores </td></tr>
+    <tr><td class="paramname">-1</td><td>termino con errores.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Ejemplo de Uso: </p>
+<div class="fragment"><pre class="fragment">                
+                endList(udpSocket,ip,<a class="code" href="server_2Udp_2UDPServer_8c.html#a80061f65b424614e3abd24542f36f41d">clientes</a>,udpClient,addrlen);  
+</pre></div> 
+<p>Definición en la línea <a class="el" href="server_2Udp_2Querys_8c_source.html#l00027">27</a> del archivo <a class="el" href="server_2Udp_2Querys_8c_source.html">Querys.c</a>.</p>
+
+<p>Hace referencia a <a class="el" href="process_8c_source.html#l00032">mydir</a>.</p>
+<div class="fragment"><pre class="fragment">                                                                                                  {
+        <span class="keywordtype">int</span> status;
+        <span class="keywordtype">char</span> msg[255];
+        DIR *dirh;
+        <span class="keyword">struct </span>dirent *dirp;
+        <span class="keyword">static</span> <span class="keywordtype">char</span> <a class="code" href="process_8c.html#a2dba43ee23e1f9539c5cb227390eb0a7">mydir</a>[40] = <span class="stringliteral">&quot;/media/share/Codigos/UDP_HostD&quot;</span>;
+        <span class="keywordtype">int</span> archivos=0;
+        <span class="keywordtype">char</span> fileC[10]=<span class="stringliteral">&quot;&quot;</span>;
+        
+        sprintf(msg,<span class="stringliteral">&quot;Hello - %s&quot;</span>,ip);
+        <span class="comment">//printf(msg);</span>
+        <span class="comment">//status = sendto(clientSocket,msg,strlen(msg),0,(struct sockaddr*)&amp;udpClient, addrlen);</span>
+        
+        <span class="keywordflow">if</span> ((dirh = opendir(mydir)) == NULL) {
+                printf(<span class="stringliteral">&quot;\n\t ERROR AL ABRIR EL DIRECTORIO %s\n&quot;</span>,mydir);
+                perror(<span class="stringliteral">&quot;opendir&quot;</span>);
+                <span class="keywordflow">return</span> -1;
+        }
+        
+        <span class="keywordflow">for</span> (dirp = readdir(dirh); dirp != NULL; dirp = readdir(dirh)){
+                <span class="comment">//printf(&quot;Archivo: %s\n&quot;,dirp-&gt;d_name);</span>
+                <span class="keywordflow">if</span>(dirp == NULL){
+                        perror(<span class="stringliteral">&quot;readdir&quot;</span>); }
+                archivos++;     
+                <span class="comment">//sprintf(lista,&quot;%s\n&quot;,dirp-&gt;d_name);</span>
+        }
+        bzero(fileC,10);
+        sprintf(fileC,<span class="stringliteral">&quot;%s - %i\0&quot;</span>,msg,archivos);
+        <span class="comment">//printf(&quot;%s\n&quot;,fileC);</span>
+        status = sendto(clientSocket,fileC,strlen(fileC),0,(<span class="keyword">struct</span> sockaddr*)&amp;udpClient, addrlen);
+        closedir(dirh);
+        <span class="keywordflow">return</span> <span class="keyword">true</span>;
+}
+</pre></div>
+</div>
+</div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Valores de enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Generado el Lunes, 7 de Mayo de 2012 22:32:35 para PROYECTO por&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
+</body>
+</html>

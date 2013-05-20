@@ -1,0 +1,117 @@
+\hypertarget{Udp_2Querys_8c}{
+\section{Referencia del Archivo Udp/Querys.c}
+\label{Udp_2Querys_8c}\index{Udp/Querys.c@{Udp/Querys.c}}
+}
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdarg.h$>$}\par
+{\ttfamily \#include $<$arpa/inet.h$>$}\par
+{\ttfamily \#include $<$sys/socket.h$>$}\par
+{\ttfamily \#include $<$dirent.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$inttypes.h$>$}\par
+{\ttfamily \#include $<$unistd.h$>$}\par
+{\ttfamily \#include $<$sys/types.h$>$}\par
+{\ttfamily \#include $<$fcntl.h$>$}\par
+{\ttfamily \#include $<$sys/uio.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include \char`\"{}Querys.h\char`\"{}}\par
+\subsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{Udp_2Querys_8c_aab0a2cca8a98bd5be6a2cb4f00aad610}{sendList} (int clientSocket, char $\ast$ip, int num, struct sockaddr\_\-in udpClient, socklen\_\-t addrlen)
+\begin{DoxyCompactList}\small\item\em Envia la lista de archivos por medio de un unicast al cliente. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Documentación de las funciones}
+\hypertarget{Udp_2Querys_8c_aab0a2cca8a98bd5be6a2cb4f00aad610}{
+\index{Udp/Querys.c@{Udp/Querys.c}!sendList@{sendList}}
+\index{sendList@{sendList}!Udp/Querys.c@{Udp/Querys.c}}
+\subsubsection[{sendList}]{\setlength{\rightskip}{0pt plus 5cm}int sendList (
+\begin{DoxyParamCaption}
+\item[{int}]{clientSocket, }
+\item[{char $\ast$}]{ip, }
+\item[{int}]{num, }
+\item[{struct sockaddr\_\-in}]{udpClient, }
+\item[{socklen\_\-t}]{addrlen}
+\end{DoxyParamCaption}
+)}}
+\label{Udp_2Querys_8c_aab0a2cca8a98bd5be6a2cb4f00aad610}
+
+
+Envia la lista de archivos por medio de un unicast al cliente. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em clientSocket} & Socket del cliente. \\
+\hline
+{\em ip} & Ip del cliente. \\
+\hline
+{\em num} & Numero del cliente. \\
+\hline
+{\em udpClient} & Estructura del socket Cliente \\
+\hline
+{\em addrlen} & Estructura de la direccion\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Estado del envio. 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Valores devueltos}
+{\em true} & termino sin errores \\
+\hline
+{\em -\/1} & termino con errores.\\
+\hline
+\end{DoxyRetVals}
+Ejemplo de Uso: 
+\begin{DoxyCode}
+                
+                endList(udpSocket,ip,clientes,udpClient,addrlen);  
+\end{DoxyCode}
+ 
+
+Definición en la línea 27 del archivo Querys.c.
+
+
+
+Hace referencia a lista y mydir.
+
+
+\begin{DoxyCode}
+                                                                                 
+                       {
+        int status;
+        char msg[255];
+        DIR *dirh;
+        struct dirent *dirp;
+        static char mydir[40] = "/media/share/Codigos/UDP_HostD";
+        int archivos=0;
+        char fileC[10]="";
+        
+        sprintf(msg,"Hello - %s",ip);
+        //printf(msg);
+        //status = sendto(clientSocket,msg,strlen(msg),0,(struct sockaddr*)&udpCl
+      ient, addrlen);
+        
+        if ((dirh = opendir(mydir)) == NULL) {
+                printf("\n\t ERROR AL ABRIR EL DIRECTORIO %s\n",mydir);
+                perror("opendir");
+                return -1;
+        }
+        
+        for (dirp = readdir(dirh); dirp != NULL; dirp = readdir(dirh)){
+                //printf("Archivo: %s\n",dirp->d_name);
+                if(dirp == NULL){
+                        perror("readdir"); }
+                archivos++;     
+                //sprintf(lista,"%s\n",dirp->d_name);
+        }
+        bzero(fileC,10);
+        sprintf(fileC,"%s - %i\0",msg,archivos);
+        //printf("%s\n",fileC);
+        status = sendto(clientSocket,fileC,strlen(fileC),0,(struct sockaddr*)&udp
+      Client, addrlen);
+        closedir(dirh);
+        return true;
+}
+\end{DoxyCode}

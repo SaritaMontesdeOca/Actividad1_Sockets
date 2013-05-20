@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>PROYECTO: Funciones relativos al servidor</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Generado por Doxygen 1.7.4 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">PROYECTO</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="modules.html"><span>Módulos</span></a></li>
+      <li><a href="files.html"><span>Archivos</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funciones</a>  </div>
+  <div class="headertitle">
+<div class="title">Funciones relativos al servidor</div>  </div>
+</div>
+<div class="contents">
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Funciones</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__server.html#ga290cdebb84104f7e5262bffb6ed87bd2">startUDPServer</a> (const u_short port)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicia la Operaciones del Servidor UDP Proyecto.  <a href="#ga290cdebb84104f7e5262bffb6ed87bd2"></a><br/></td></tr>
+</table>
+<hr/><h2>Documentación de las funciones</h2>
+<a class="anchor" id="ga290cdebb84104f7e5262bffb6ed87bd2"></a><!-- doxytag: member="UDPServer.h::startUDPServer" ref="ga290cdebb84104f7e5262bffb6ed87bd2" args="(const u_short port)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int startUDPServer </td>
+          <td>(</td>
+          <td class="paramtype">const u_short&#160;</td>
+          <td class="paramname"><em>port</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Inicia la Operaciones del Servidor UDP Proyecto. </p>
+<p>Función que inicia la escucha en broadcast del servidor</p>
+<dl><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>Puerto sobre el cual se inicia el servidor.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Estado con el que finaliza el servidor. </dd></dl>
+<dl><dt><b>Valores devueltos:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">1</td><td>termino sin errores </td></tr>
+    <tr><td class="paramname">-1</td><td>termino con errores.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Ejemplo de Uso: </p>
+<div class="fragment"><pre class="fragment">                <span class="keywordtype">int</span> status;
+                status = startServer(5001) <span class="comment">// Inicia el servidor en todas las interfaces en el puerto 5001 </span>
+</pre></div> 
+<p>Definición en la línea <a class="el" href="UDPServer_8c_source.html#l00029">29</a> del archivo <a class="el" href="UDPServer_8c_source.html">UDPServer.c</a>.</p>
+
+<p>Hace referencia a <a class="el" href="UDPServer_8c_source.html#l00027">clientes</a> y <a class="el" href="Querys_8c_source.html#l00028">sendList()</a>.</p>
+
+<p>Referenciado por <a class="el" href="main1_8c_source.html#l00105">main()</a>.</p>
+<div class="fragment"><pre class="fragment">                                       {
+        <span class="keywordtype">int</span> udpSocket;
+        <span class="keyword">struct </span>sockaddr_in udpServer, udpClient;
+        <span class="keywordtype">int</span> status;
+        socklen_t addrlen = <span class="keyword">sizeof</span>(udpClient);
+        <span class="keywordtype">char</span> buffer[255];
+        <span class="keywordtype">char</span> msg[255];
+        pid_t forkID;
+        u_short clientPort;
+        <span class="keywordtype">char</span> ip[18]=<span class="stringliteral">&quot;0.0.0.0&quot;</span>;  
+        udpSocket = socket(AF_INET, SOCK_DGRAM, 0);
+        <span class="keywordflow">if</span> (udpSocket == -1) {
+                fprintf(stderr,<span class="stringliteral">&quot;Can&#39;t create UDP Socket&quot;</span>);
+                <span class="keywordflow">return</span> -1;
+        }
+
+
+        udpServer.sin_family = AF_INET;
+        inet_pton(AF_INET,<span class="stringliteral">&quot;192.168.1.255&quot;</span>,&amp;udpServer.sin_addr.s_addr);
+        udpServer.sin_port = htons(port);
+        
+        status = bind(udpSocket, (<span class="keyword">struct</span> sockaddr*)&amp;udpServer, <span class="keyword">sizeof</span>(udpServer));
+        
+        <span class="keywordflow">if</span>(status != 0) { 
+                fprintf(stderr,<span class="stringliteral">&quot;Can&#39;t bind&quot;</span>);
+                <span class="keywordflow">return</span> -1;
+        }
+        system(<span class="stringliteral">&quot;clear&quot;</span>);
+        printf(<span class="stringliteral">&quot;.:: Starting FTP  Server - UDP ::.\n\n&quot;</span>);
+        <span class="keywordflow">while</span> (1){      
+                printf(<span class="stringliteral">&quot;Esperando Conexion ... \n&quot;</span>);
+                status = recvfrom(udpSocket,buffer,255,0,(<span class="keyword">struct</span> sockaddr*)&amp;udpClient, &amp;addrlen);
+                strcpy(msg,buffer);
+                bzero(buffer,255);              
+                inet_ntop(AF_INET,&amp;(udpClient.sin_addr),ip, INET_ADDRSTRLEN);
+                clientPort = ntohs(udpClient.sin_port);
+                <a class="code" href="UDPServer_8c.html#a80061f65b424614e3abd24542f36f41d">clientes</a>++;
+                fflush(stdout);
+                printf(<span class="stringliteral">&quot;%i - [%s:%i] %s\n&quot;</span>,<a class="code" href="UDPServer_8c.html#a80061f65b424614e3abd24542f36f41d">clientes</a>,ip,clientPort,msg);
+                forkID = fork();
+                
+                <span class="keywordflow">if</span> (forkID == -1) {
+                        fprintf(stderr,<span class="stringliteral">&quot;Cant Fork\n&quot;</span>);
+                } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (forkID == 0) {
+                        <a class="code" href="Querys_8c.html#aab0a2cca8a98bd5be6a2cb4f00aad610" title="Envia la lista de archivos por medio de un unicast al cliente.">sendList</a>(udpSocket,ip,<a class="code" href="UDPServer_8c.html#a80061f65b424614e3abd24542f36f41d">clientes</a>,udpClient,addrlen);
+                        <a class="code" href="UDPServer_8c.html#a80061f65b424614e3abd24542f36f41d">clientes</a>--;
+                        fflush(stdout);
+                        close(udpSocket);
+                        <span class="keywordflow">break</span>;
+                } <span class="keywordflow">else</span> {
+                        <span class="comment">//close(udpSocket);</span>
+                } 
+
+                <span class="comment">//sleep(10);</span>
+        }
+        <span class="keywordflow">return</span> 0;
+}
+</pre></div>
+</div>
+</div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Valores de enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Generado el Lunes, 7 de Mayo de 2012 22:38:36 para PROYECTO por&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
+</body>
+</html>
