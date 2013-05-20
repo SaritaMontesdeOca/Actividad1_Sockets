@@ -1,0 +1,38 @@
+#Makefile
+
+#Definición de Variables
+CC = g++
+CFLAG = -Wall -g -lcrypto -fno-stack-protector
+LIBS = 
+
+#Definición de los archivos .o Requeridos
+OBJS = 	netlib/tcpServer.o netlib/ipFunc.o tcp/process.o 
+OBJS = 	main1.o UDPClient.o UDPServer.o TCPClient.o TCPServer.o
+OBJS = 	Querys.o 
+
+#Definición del nombre del programa
+NAME = proy
+
+#Creación de Regla por Default
+all: ${NAME}
+
+${NAME}: ${OBJS}
+	${CC} ${CFLAG} ${OBJS} -o $@
+
+%.o: %.c
+	${CC} ${CFLAG} -c $< -o $@
+
+clean:
+	rm *.o
+	rm netlib/*.o
+	rm tcp/*.o
+	rm ${NAME}
+
+doc:
+	doxygen Doxyfile
+
+#NOTA recordemos que el archivo se estrucutra
+#objetivo: LISTA_DE_DEPENDENCIAS
+#->TABULADOR->forma de generar el objetivo basado en las dependencias.
+
+

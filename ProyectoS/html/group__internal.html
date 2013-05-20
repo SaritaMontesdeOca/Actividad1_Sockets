@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>PROYECTO: Internal Functions</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Generado por Doxygen 1.7.4 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">PROYECTO</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="modules.html"><span>Módulos</span></a></li>
+      <li><a href="files.html"><span>Archivos</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funciones</a>  </div>
+  <div class="headertitle">
+<div class="title">Internal Functions</div>  </div>
+</div>
+<div class="contents">
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Funciones</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__internal.html#gab91b4cb65d5b6239c904d687c191459d">processArguments</a> (int args, char *argv[])</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Procesa los Argumentos del Servidor.  <a href="#gab91b4cb65d5b6239c904d687c191459d"></a><br/></td></tr>
+</table>
+<hr/><h2>Documentación de las funciones</h2>
+<a class="anchor" id="gab91b4cb65d5b6239c904d687c191459d"></a><!-- doxytag: member="main.c::processArguments" ref="gab91b4cb65d5b6239c904d687c191459d" args="(int args, char *argv[])" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int processArguments </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>args</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Procesa los Argumentos del Servidor. </p>
+<p>Función que procesa todo los argumentos y hace el setup de las variables globales </p>
+
+<p>Definición en la línea <a class="el" href="main_8c_source.html#l00048">48</a> del archivo <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p>Hace referencia a <a class="el" href="main_8c_source.html#l00027">CLIENT</a>, <a class="el" href="UDPClient_8c_source.html#l00031">i</a>, <a class="el" href="main_8c_source.html#l00038">listenIP</a>, <a class="el" href="main_8c_source.html#l00039">listenPort</a>, <a class="el" href="main_8c_source.html#l00036">mode</a>, <a class="el" href="main_8c_source.html#l00037">prot</a>, <a class="el" href="main_8c_source.html#l00026">SERVER</a>, <a class="el" href="main_8c_source.html#l00033">TCP</a> y <a class="el" href="main_8c_source.html#l00032">UDP</a>.</p>
+
+<p>Referenciado por <a class="el" href="main_8c_source.html#l00119">main()</a>.</p>
+<div class="fragment"><pre class="fragment">                                             {
+        <span class="keywordtype">int</span> <a class="code" href="UDPClient_8c.html#acb559820d9ca11295b4500f179ef6392">i</a>;
+        
+        <span class="keywordflow">for</span>(i=1; i &lt; args; i++) {
+                <span class="keywordflow">if</span>(strcmp(argv[i],<span class="stringliteral">&quot;-s&quot;</span>)==0) {
+                        <span class="comment">//modo de trabajo</span>
+                        <a class="code" href="main_8c.html#a4d2ebeec01c4bb95c1b0a904c279a504">mode</a> = <a class="code" href="main_8c.html#a27838407176d1fcd024debf3e63b780da67c96b24b23bcb408bae7626730a04b7">SERVER</a>;
+                } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(strcmp(argv[i],<span class="stringliteral">&quot;-c&quot;</span>)==0) {
+                        <a class="code" href="main_8c.html#a4d2ebeec01c4bb95c1b0a904c279a504">mode</a> = <a class="code" href="main_8c.html#a27838407176d1fcd024debf3e63b780da48e4cb37544c8e69715d45e5a83b2109">CLIENT</a>;
+                } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(strcmp(argv[i],<span class="stringliteral">&quot;-i&quot;</span>)==0) {
+                        strncpy(<a class="code" href="main_8c.html#adae0dca04d66a34843f902c36344d0d5">listenIP</a>,argv[i+1],18);
+                        i++;
+                } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(strcmp(argv[i],<span class="stringliteral">&quot;-p&quot;</span>)==0) {
+                        <a class="code" href="main_8c.html#ae0192edfda4f978efd0a99080c533b52">listenPort</a> = atoi(argv[i+1]);
+                        i++;
+                } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(strcmp(argv[i],<span class="stringliteral">&quot;-t&quot;</span>)==0) {
+                        <a class="code" href="main_8c.html#a88b8d9fda59bd92d49f1411948499cda">prot</a> = <a class="code" href="main_8c.html#acd1fff23221614c9728fea12f2bd6537aa040cd7feeb588104634cdadf35abf1c">TCP</a>;
+                        i++;
+                } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(strcmp(argv[i],<span class="stringliteral">&quot;-u&quot;</span>)==0) {
+                        <a class="code" href="main_8c.html#a88b8d9fda59bd92d49f1411948499cda">prot</a> = <a class="code" href="main_8c.html#acd1fff23221614c9728fea12f2bd6537adb542475cf9d0636e4225e216cee9ae6">UDP</a>;     
+                        i++;
+                }               
+                <span class="keywordflow">else</span> {
+                        <span class="keywordflow">return</span> <a class="code" href="UDPClient_8c.html#acb559820d9ca11295b4500f179ef6392">i</a>;
+                }
+        }
+        
+        <span class="keywordflow">return</span> 0;
+}
+</pre></div>
+</div>
+</div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Valores de enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Generado el Lunes, 7 de Mayo de 2012 22:32:36 para PROYECTO por&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
+</body>
+</html>

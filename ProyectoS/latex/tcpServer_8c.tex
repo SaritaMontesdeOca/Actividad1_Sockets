@@ -1,0 +1,64 @@
+\hypertarget{TCPServer_8c}{
+\section{Referencia del Archivo TCPServer.c}
+\label{TCPServer_8c}\index{TCPServer.c@{TCPServer.c}}
+}
+
+
+Funciones referentes al Servidor TCP Funciones que inician el trabajo del servidor en protocolo TCP.  
+
+
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdarg.h$>$}\par
+{\ttfamily \#include $<$arpa/inet.h$>$}\par
+{\ttfamily \#include $<$sys/socket.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$inttypes.h$>$}\par
+{\ttfamily \#include $<$unistd.h$>$}\par
+{\ttfamily \#include $<$sys/types.h$>$}\par
+{\ttfamily \#include $<$fcntl.h$>$}\par
+{\ttfamily \#include $<$sys/uio.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include \char`\"{}netlib/tcpServer.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}tcp/process.h\char`\"{}}\par
+\subsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{group__ServidorTCP_ga6a66838c58b5b5a617bb111891be1f40}{startTCPServer} (const char $\ast$ip, const u\_\-short port)
+\begin{DoxyCompactList}\small\item\em Inicializa al servidor TCP. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{TCPServer_8c_a4bf947cca001e8ca0cd9def2b8d058c7}{client} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Descripción detallada}
+Funciones referentes al Servidor TCP Funciones que inician el trabajo del servidor en protocolo TCP. \begin{DoxyAuthor}{Autor}
+Alfredo Huerta (\href{mailto:rt676272@iteso.mx}{\tt rt676272@iteso.mx}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Fecha}
+Abril 2012 
+\end{DoxyDate}
+\begin{DoxyVersion}{Versión}
+0.0.1 
+\end{DoxyVersion}
+
+
+Definición en el archivo \hyperlink{TCPServer_8c_source}{TCPServer.c}.
+
+
+
+\subsection{Documentación de las variables}
+\hypertarget{TCPServer_8c_a4bf947cca001e8ca0cd9def2b8d058c7}{
+\index{TCPServer.c@{TCPServer.c}!client@{client}}
+\index{client@{client}!TCPServer.c@{TCPServer.c}}
+\subsubsection[{client}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf client} = 0}}
+\label{TCPServer_8c_a4bf947cca001e8ca0cd9def2b8d058c7}
+
+
+Definición en la línea 28 del archivo TCPServer.c.
+
+
+
+Referenciado por startTCPServer() y waitConnection().
+

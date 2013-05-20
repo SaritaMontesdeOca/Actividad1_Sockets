@@ -1,0 +1,76 @@
+\hypertarget{client_2Udp_2Client_8h}{
+\section{Referencia del Archivo client/Udp/Client.h}
+\label{client_2Udp_2Client_8h}\index{client/Udp/Client.h@{client/Udp/Client.h}}
+}
+\subsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{client_2Udp_2Client_8h_a2243bd0c74de01bbf247a203fe3df74e}{serverAnswer} (int \hyperlink{UDPClient_8c_ad41e465b11575618bf82f1d45efced5a}{server}, char $\ast$buffer, char $\ast$ip)
+\begin{DoxyCompactList}\small\item\em Recibe la respuesta por parte del servidor, y obtiene la IP del servidor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Documentación de las funciones}
+\hypertarget{client_2Udp_2Client_8h_a2243bd0c74de01bbf247a203fe3df74e}{
+\index{client/Udp/Client.h@{client/Udp/Client.h}!serverAnswer@{serverAnswer}}
+\index{serverAnswer@{serverAnswer}!client/Udp/Client.h@{client/Udp/Client.h}}
+\subsubsection[{serverAnswer}]{\setlength{\rightskip}{0pt plus 5cm}int serverAnswer (
+\begin{DoxyParamCaption}
+\item[{int}]{server, }
+\item[{char $\ast$}]{buffer, }
+\item[{char $\ast$}]{ip}
+\end{DoxyParamCaption}
+)}}
+\label{client_2Udp_2Client_8h_a2243bd0c74de01bbf247a203fe3df74e}
+
+
+Recibe la respuesta por parte del servidor, y obtiene la IP del servidor. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em clientSocket} & Socket del cliente. \\
+\hline
+{\em ip} & Ip del cliente. \\
+\hline
+{\em num} & Numero del cliente. \\
+\hline
+{\em udpClient} & Estructura del socket Cliente \\
+\hline
+{\em addrlen} & Estructura de la direccion\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Estado del envio. 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Valores devueltos}
+{\em true} & termino sin errores \\
+\hline
+{\em -\/1} & termino con errores.\\
+\hline
+\end{DoxyRetVals}
+Ejemplo de Uso: 
+\begin{DoxyCode}
+                
+                endList(udpSocket,ip,clientes,udpClient,addrlen);  
+\end{DoxyCode}
+ 
+
+Definición en la línea 28 del archivo QueryClient.c.
+
+
+\begin{DoxyCode}
+                                                    {   
+
+
+        //int status;
+        //char ip[18]="0.0.0.0";        
+        //buffer = (char *)malloc(9000);
+
+        
+
+        //inet_ntop(AF_INET,&(udpClient.sin_addr),ip,INET_ADDRSTRLEN);
+        //printf("%i. [%s] : %s\n",server,ip,buffer);
+        //printf("%i %s\n",server,buffer);
+        return true;    
+}
+\end{DoxyCode}

@@ -1,0 +1,70 @@
+\hypertarget{group__internal}{
+\section{Internal Functions}
+\label{group__internal}\index{Internal Functions@{Internal Functions}}
+}
+\subsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{group__internal_gab91b4cb65d5b6239c904d687c191459d}{processArguments} (int args, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Procesa los Argumentos del Servidor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Documentación de las funciones}
+\hypertarget{group__internal_gab91b4cb65d5b6239c904d687c191459d}{
+\index{Internal Functions@{Internal Functions}!processArguments@{processArguments}}
+\index{processArguments@{processArguments}!Internal Functions@{Internal Functions}}
+\subsubsection[{processArguments}]{\setlength{\rightskip}{0pt plus 5cm}int processArguments (
+\begin{DoxyParamCaption}
+\item[{int}]{args, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}}
+\label{group__internal_gab91b4cb65d5b6239c904d687c191459d}
+
+
+Procesa los Argumentos del Servidor. 
+
+Función que procesa todo los argumentos y hace el setup de las variables globales 
+
+Definición en la línea 48 del archivo main.c.
+
+
+
+Hace referencia a CLIENT, i, listenIP, listenPort, mode, prot, SERVER, TCP y UDP.
+
+
+
+Referenciado por main().
+
+
+\begin{DoxyCode}
+                                             {
+        int i;
+        
+        for(i=1; i < args; i++) {
+                if(strcmp(argv[i],"-s")==0) {
+                        //modo de trabajo
+                        mode = SERVER;
+                } else if(strcmp(argv[i],"-c")==0) {
+                        mode = CLIENT;
+                } else if(strcmp(argv[i],"-i")==0) {
+                        strncpy(listenIP,argv[i+1],18);
+                        i++;
+                } else if(strcmp(argv[i],"-p")==0) {
+                        listenPort = atoi(argv[i+1]);
+                        i++;
+                } else if(strcmp(argv[i],"-t")==0) {
+                        prot = TCP;
+                        i++;
+                } else if(strcmp(argv[i],"-u")==0) {
+                        prot = UDP;     
+                        i++;
+                }               
+                else {
+                        return i;
+                }
+        }
+        
+        return 0;
+}
+\end{DoxyCode}

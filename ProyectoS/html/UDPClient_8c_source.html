@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>PROYECTO: Fichero Fuente UDPClient.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Generado por Doxygen 1.7.4 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">PROYECTO</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="modules.html"><span>Módulos</span></a></li>
+      <li class="current"><a href="files.html"><span>Archivos</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;archivos</span></a></li>
+      <li><a href="globals.html"><span>Globales</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">UDPClient.c</div>  </div>
+</div>
+<div class="contents">
+<a href="UDPClient_8c.html">Ir a la documentación de este archivo.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00011"></a>00011 <span class="preprocessor">#include &lt;stdio.h&gt;</span>
+<a name="l00012"></a>00012 <span class="preprocessor">#include &lt;stdarg.h&gt;</span>
+<a name="l00013"></a>00013 <span class="preprocessor">#include &lt;arpa/inet.h&gt;</span>
+<a name="l00014"></a>00014 <span class="preprocessor">#include &lt;sys/socket.h&gt;</span>
+<a name="l00015"></a>00015 
+<a name="l00016"></a>00016 <span class="preprocessor">#include &lt;string.h&gt;</span>
+<a name="l00017"></a>00017 <span class="preprocessor">#include &lt;inttypes.h&gt;</span>
+<a name="l00018"></a>00018 <span class="preprocessor">#include &lt;unistd.h&gt;</span>
+<a name="l00019"></a>00019 <span class="preprocessor">#include &lt;sys/types.h&gt;</span>
+<a name="l00020"></a>00020 <span class="preprocessor">#include &lt;fcntl.h&gt;</span>
+<a name="l00021"></a>00021 <span class="preprocessor">#include &lt;sys/uio.h&gt;</span>
+<a name="l00022"></a>00022 <span class="preprocessor">#include &lt;stdlib.h&gt;</span>
+<a name="l00023"></a>00023 
+<a name="l00024"></a>00024 <span class="preprocessor">#include &quot;<a class="code" href="UDPClient_8h.html" title="Funciones Referentes al Cliente UDP.">UDPClient.h</a>&quot;</span>
+<a name="l00025"></a>00025 <span class="preprocessor">#include &quot;Client.h&quot;</span>
+<a name="l00026"></a>00026 <span class="preprocessor">#include &quot;<a class="code" href="TCPClient_8h.html" title="Funciones Referentes al cliente TCP.">TCPClient.h</a>&quot;</span>
+<a name="l00027"></a>00027 
+<a name="l00028"></a><a class="code" href="UDPClient_8c.html#ad41e465b11575618bf82f1d45efced5a">00028</a> <span class="keywordtype">int</span> <a class="code" href="UDPClient_8c.html#ad41e465b11575618bf82f1d45efced5a">server</a> = 0;
+<a name="l00029"></a><a class="code" href="UDPClient_8c.html#a11764cc96bb263d1f257bcc01205a787">00029</a> <span class="keywordtype">char</span> <a class="code" href="UDPClient_8c.html#a11764cc96bb263d1f257bcc01205a787">flag</a> = 2;
+<a name="l00030"></a><a class="code" href="UDPClient_8c.html#a1aa15651e462efeaf67dede9b2e436af">00030</a> <span class="keywordtype">char</span> <a class="code" href="UDPClient_8c.html#a1aa15651e462efeaf67dede9b2e436af">lista</a>[254][23]; <span class="comment">//Matriz en la que se almacenan las IP&#39;s de los servidores</span>
+<a name="l00031"></a><a class="code" href="UDPClient_8c.html#acb559820d9ca11295b4500f179ef6392">00031</a> <span class="keywordtype">int</span> <a class="code" href="UDPClient_8c.html#acb559820d9ca11295b4500f179ef6392">i</a>=0;
+<a name="l00032"></a><a class="code" href="UDPClient_8c.html#a37d972ae0b47b9099e30983131d31916">00032</a> <span class="keywordtype">int</span> <a class="code" href="UDPClient_8c.html#a37d972ae0b47b9099e30983131d31916">j</a>;
+<a name="l00033"></a><a class="code" href="UDPClient_8c.html#a40cd45cbd69a8727a2c2600d89440506">00033</a> <span class="keywordtype">char</span> <a class="code" href="UDPClient_8c.html#a40cd45cbd69a8727a2c2600d89440506">ipServ</a>[18]=<span class="stringliteral">&quot;0.0.0.0&quot;</span>;
+<a name="l00034"></a><a class="code" href="UDPClient_8c.html#ab66ed8e0098c0a86b458672a55a9cca9">00034</a> <span class="keywordtype">int</span> <a class="code" href="UDPClient_8c.html#ab66ed8e0098c0a86b458672a55a9cca9">k</a>;
+<a name="l00043"></a><a class="code" href="group__ClienteUDP.html#gad3b8e412c17b609ee2b34814bba6db77">00043</a> <span class="keywordtype">int</span> <a class="code" href="group__ClienteUDP.html#gad3b8e412c17b609ee2b34814bba6db77" title="Inicia el cliente UDP Host Discover.">startUDPClient</a>(<span class="keyword">const</span> u_short port) {
+<a name="l00044"></a>00044         <span class="keywordtype">int</span> udpSocket;
+<a name="l00045"></a>00045         <span class="keyword">struct </span>sockaddr_in udpServer, udpClient;
+<a name="l00046"></a>00046         <span class="keywordtype">int</span> status;
+<a name="l00047"></a>00047         socklen_t addrlen = <span class="keyword">sizeof</span>(udpClient),len;
+<a name="l00048"></a>00048         <span class="keywordtype">char</span> *buffer;
+<a name="l00049"></a>00049         <span class="keywordtype">char</span> opcion[2]=<span class="stringliteral">&quot;&quot;</span>;
+<a name="l00050"></a>00050         u_short clientPort;
+<a name="l00051"></a>00051         <span class="keywordtype">int</span> option;     
+<a name="l00052"></a>00052         <span class="comment">//char conc[23]=&quot;&quot;;     </span>
+<a name="l00053"></a>00053         <span class="keywordtype">char</span> ip[18]=<span class="stringliteral">&quot;0.0.0.0&quot;</span>;  
+<a name="l00054"></a>00054         <span class="keywordtype">char</span> Sel[2]=<span class="stringliteral">&quot;&quot;</span>;         
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056         pid_t forkID;
+<a name="l00057"></a>00057         
+<a name="l00058"></a>00058 
+<a name="l00059"></a>00059         udpSocket = socket(AF_INET, SOCK_DGRAM,0);
+<a name="l00060"></a>00060         <span class="keywordflow">if</span> (udpSocket == -1) {
+<a name="l00061"></a>00061                 fprintf(stderr,<span class="stringliteral">&quot;Can&#39;t create UDP Socket&quot;</span>);
+<a name="l00062"></a>00062                 <span class="keywordflow">return</span> -1;
+<a name="l00063"></a>00063         }
+<a name="l00064"></a>00064         
+<a name="l00065"></a>00065         udpServer.sin_family = AF_INET;
+<a name="l00066"></a>00066         inet_pton(AF_INET,<span class="stringliteral">&quot;192.168.1.255&quot;</span>,&amp;udpServer.sin_addr.s_addr);
+<a name="l00067"></a>00067         udpServer.sin_port = htons(port);
+<a name="l00068"></a>00068         len = <span class="keyword">sizeof</span>(option);
+<a name="l00069"></a>00069         getsockopt(udpSocket, SOL_SOCKET, SO_SNDBUF, (<span class="keywordtype">void</span> *)&amp;option, &amp;len);
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071         option = 1;
+<a name="l00072"></a>00072         status = setsockopt(udpSocket, SOL_SOCKET, SO_BROADCAST, (<span class="keywordtype">void</span> *)&amp;option, len);
+<a name="l00073"></a>00073         <span class="keywordflow">if</span> (status == -1) {
+<a name="l00074"></a>00074                 printf(<span class="stringliteral">&quot;Error en poner la opcion\n&quot;</span>);   
+<a name="l00075"></a>00075                 <span class="keywordflow">return</span> -1;
+<a name="l00076"></a>00076         }
+<a name="l00077"></a>00077         buffer = (<span class="keywordtype">char</span> *)malloc(9000);
+<a name="l00078"></a>00078         status = sendto(udpSocket,<span class="stringliteral">&quot;Hello - Alfredo&quot;</span>,strlen(<span class="stringliteral">&quot;Hello - Alfredo&quot;</span>),0,(<span class="keyword">struct</span> sockaddr*)&amp;udpServer,<span class="keyword">sizeof</span>(udpServer));
+<a name="l00079"></a>00079         
+<a name="l00080"></a>00080         <span class="keywordflow">while</span> (1){
+<a name="l00081"></a>00081                 <a class="code" href="UDPClient_8c.html#ad41e465b11575618bf82f1d45efced5a">server</a> ++;
+<a name="l00082"></a>00082                 <span class="keywordflow">if</span> (<a class="code" href="UDPClient_8c.html#a11764cc96bb263d1f257bcc01205a787">flag</a> != 2){
+<a name="l00083"></a>00083                         printf(<span class="stringliteral">&quot;Deseas realizar una conexion?\n&quot;</span>);
+<a name="l00084"></a>00084                         printf(<span class="stringliteral">&quot;1. Si\n2. No\n&quot;</span>);
+<a name="l00085"></a>00085                         gets(opcion);
+<a name="l00086"></a>00086                         <span class="keywordflow">if</span> (strcmp(opcion,<span class="stringliteral">&quot;1&quot;</span>)==0){
+<a name="l00087"></a>00087                                 <span class="comment">//system(&quot;cls&quot;);</span>
+<a name="l00088"></a>00088                                 printf(<span class="stringliteral">&quot;Lista de Servidores\n\n&quot;</span>);
+<a name="l00089"></a>00089                                 <span class="keywordflow">for</span> (<a class="code" href="UDPClient_8c.html#a37d972ae0b47b9099e30983131d31916">j</a>=0;<a class="code" href="UDPClient_8c.html#a37d972ae0b47b9099e30983131d31916">j</a>&lt;<a class="code" href="UDPClient_8c.html#acb559820d9ca11295b4500f179ef6392">i</a>;<a class="code" href="UDPClient_8c.html#a37d972ae0b47b9099e30983131d31916">j</a>++){
+<a name="l00090"></a>00090                                         printf(<span class="stringliteral">&quot;\n%i. [%s]\n&quot;</span>,<a class="code" href="UDPClient_8c.html#a37d972ae0b47b9099e30983131d31916">j</a>+1,<a class="code" href="UDPClient_8c.html#a1aa15651e462efeaf67dede9b2e436af">lista</a>[<a class="code" href="UDPClient_8c.html#a37d972ae0b47b9099e30983131d31916">j</a>]);                    
+<a name="l00091"></a>00091                                 }
+<a name="l00092"></a>00092                                 printf(<span class="stringliteral">&quot;Introduce el numero de servidor al que te deseas conectar:\n&quot;</span>);
+<a name="l00093"></a>00093                                 gets(Sel);
+<a name="l00094"></a>00094                                 <a class="code" href="UDPClient_8c.html#ab66ed8e0098c0a86b458672a55a9cca9">k</a> = atoi(Sel);
+<a name="l00095"></a>00095                                 strcpy(<a class="code" href="UDPClient_8c.html#a40cd45cbd69a8727a2c2600d89440506">ipServ</a>,<a class="code" href="UDPClient_8c.html#a1aa15651e462efeaf67dede9b2e436af">lista</a>[<a class="code" href="UDPClient_8c.html#ab66ed8e0098c0a86b458672a55a9cca9">k</a>-1]);
+<a name="l00096"></a>00096                                 <a class="code" href="group__ClienteTCP.html#ga12ebdfb9e35bbb700a78ce3b959a7830" title="Inicia el cliente TCP.">startTCPClient</a>(<a class="code" href="UDPClient_8c.html#a40cd45cbd69a8727a2c2600d89440506">ipServ</a>,port);
+<a name="l00097"></a>00097                 }
+<a name="l00098"></a>00098                 <span class="keywordflow">else</span> {
+<a name="l00099"></a>00099                         system(<span class="stringliteral">&quot;clear&quot;</span>);        
+<a name="l00100"></a>00100                 }
+<a name="l00101"></a>00101                 }
+<a name="l00102"></a>00102                 status = recvfrom(udpSocket,buffer,9000,0,(<span class="keyword">struct</span> sockaddr*)&amp;udpClient, &amp;addrlen);
+<a name="l00103"></a>00103                 inet_ntop(AF_INET,&amp;(udpClient.sin_addr),ip,INET_ADDRSTRLEN);
+<a name="l00104"></a>00104                 strcpy(<a class="code" href="UDPClient_8c.html#a1aa15651e462efeaf67dede9b2e436af">lista</a>[<a class="code" href="UDPClient_8c.html#acb559820d9ca11295b4500f179ef6392">i</a>],ip);
+<a name="l00105"></a>00105                 <span class="keywordflow">for</span> (<a class="code" href="UDPClient_8c.html#a37d972ae0b47b9099e30983131d31916">j</a>=0;<a class="code" href="UDPClient_8c.html#a37d972ae0b47b9099e30983131d31916">j</a>&lt;=<a class="code" href="UDPClient_8c.html#acb559820d9ca11295b4500f179ef6392">i</a>;<a class="code" href="UDPClient_8c.html#a37d972ae0b47b9099e30983131d31916">j</a>++){
+<a name="l00106"></a>00106                         printf(<span class="stringliteral">&quot;\n%i. [%s] : %s\n&quot;</span>,<a class="code" href="UDPClient_8c.html#a37d972ae0b47b9099e30983131d31916">j</a>+1,<a class="code" href="UDPClient_8c.html#a1aa15651e462efeaf67dede9b2e436af">lista</a>[<a class="code" href="UDPClient_8c.html#a37d972ae0b47b9099e30983131d31916">j</a>],buffer);                        
+<a name="l00107"></a>00107                 }
+<a name="l00108"></a>00108         
+<a name="l00109"></a>00109                 i++;
+<a name="l00110"></a>00110                 <a class="code" href="UDPClient_8c.html#a11764cc96bb263d1f257bcc01205a787">flag</a> = 0;
+<a name="l00111"></a>00111                 forkID = fork();
+<a name="l00112"></a>00112                 <span class="keywordflow">if</span> (forkID == -1){
+<a name="l00113"></a>00113                         perror(<span class="stringliteral">&quot;fork&quot;</span>); }
+<a name="l00114"></a>00114                 <span class="keywordflow">else</span> <span class="keywordflow">if</span> (forkID == 0) {
+<a name="l00115"></a>00115                         fflush(stdout);
+<a name="l00116"></a>00116                         close(udpSocket);
+<a name="l00117"></a>00117                         <span class="keywordflow">break</span>;
+<a name="l00118"></a>00118                 } <span class="keywordflow">else</span> {
+<a name="l00119"></a>00119                 
+<a name="l00120"></a>00120                 }
+<a name="l00121"></a>00121         
+<a name="l00122"></a>00122 
+<a name="l00123"></a>00123         }
+<a name="l00124"></a>00124         <span class="keywordflow">return</span> 0;
+<a name="l00125"></a>00125 
+<a name="l00126"></a>00126 
+<a name="l00127"></a>00127 }
+<a name="l00128"></a>00128 
+<a name="l00129"></a>00129 
+<a name="l00130"></a>00130         
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Valores de enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Generado el Lunes, 7 de Mayo de 2012 22:58:00 para PROYECTO por&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
+</body>
+</html>

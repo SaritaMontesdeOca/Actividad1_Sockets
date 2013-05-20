@@ -1,0 +1,348 @@
+\hypertarget{main_8c}{
+\section{Referencia del Archivo main.c}
+\label{main_8c}\index{main.c@{main.c}}
+}
+
+
+Descripción Corta del Archivo.  
+
+
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include \char`\"{}UDPServer.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}UDPClient.h\char`\"{}}\par
+\subsection*{Enumeraciones}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{main_8c_a27838407176d1fcd024debf3e63b780d}{workMode\_\-t} \{ \par
+\hyperlink{main_8c_acd1fff23221614c9728fea12f2bd6537a3398c2f9c6098451b48275905cca88b4}{NOT\_\-DEFINE}, 
+\hyperlink{main_8c_a27838407176d1fcd024debf3e63b780da67c96b24b23bcb408bae7626730a04b7}{SERVER}, 
+\hyperlink{main_8c_a27838407176d1fcd024debf3e63b780da48e4cb37544c8e69715d45e5a83b2109}{CLIENT}, 
+\hyperlink{main1_8c_a27838407176d1fcd024debf3e63b780da10b1df3a8971562555b5d0d1888ae197}{NOT\_\-DEFINE}, 
+\par
+\hyperlink{main1_8c_a27838407176d1fcd024debf3e63b780da67c96b24b23bcb408bae7626730a04b7}{SERVER}, 
+\hyperlink{main1_8c_a27838407176d1fcd024debf3e63b780da48e4cb37544c8e69715d45e5a83b2109}{CLIENT}
+ \}
+\item 
+enum \hyperlink{main_8c_acd1fff23221614c9728fea12f2bd6537}{Protocol\_\-t} \{ \hyperlink{main_8c_acd1fff23221614c9728fea12f2bd6537a3398c2f9c6098451b48275905cca88b4}{NOT\_\-DEFINE}, 
+\hyperlink{main_8c_acd1fff23221614c9728fea12f2bd6537adb542475cf9d0636e4225e216cee9ae6}{UDP}, 
+\hyperlink{main_8c_acd1fff23221614c9728fea12f2bd6537aa040cd7feeb588104634cdadf35abf1c}{TCP}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{group__internal_gab91b4cb65d5b6239c904d687c191459d}{processArguments} (int args, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Procesa los Argumentos del Servidor. \end{DoxyCompactList}\item 
+void \hyperlink{main_8c_a92dbbe915faf444f03f2074d2076b6dc}{printHelp} (const char $\ast$cmd, const short error, const char $\ast$msg)
+\begin{DoxyCompactList}\small\item\em Imprime la Ayuda y Errores de Parametros. \end{DoxyCompactList}\item 
+int \hyperlink{main_8c_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{main_8c_a27838407176d1fcd024debf3e63b780d}{workMode\_\-t} \hyperlink{main_8c_a4d2ebeec01c4bb95c1b0a904c279a504}{mode} = NOT\_\-DEFINE
+\item 
+\hyperlink{main_8c_acd1fff23221614c9728fea12f2bd6537}{Protocol\_\-t} \hyperlink{main_8c_a88b8d9fda59bd92d49f1411948499cda}{prot} = NOT\_\-DEFINE
+\item 
+char \hyperlink{main_8c_adae0dca04d66a34843f902c36344d0d5}{listenIP} \mbox{[}18\mbox{]} = \char`\"{}0.0.0.0\char`\"{}
+\item 
+u\_\-short \hyperlink{main_8c_ae0192edfda4f978efd0a99080c533b52}{listenPort} = 5001
+\end{DoxyCompactItemize}
+
+
+\subsection{Descripción detallada}
+Descripción Corta del Archivo. DESCRIPCIÓN LARGA DEL ARCHIVO CONTINUA LA DESCRIPCIÓN
+
+\begin{DoxyAuthor}{Autor}
+Alfredo Huerta Larios (\href{mailto:rt676272@iteso.mx}{\tt rt676272@iteso.mx}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Fecha}
+Marzo 2012 
+\end{DoxyDate}
+\begin{DoxyVersion}{Versión}
+0.0.1 
+\end{DoxyVersion}
+
+
+Definición en el archivo \hyperlink{main_8c_source}{main.c}.
+
+
+
+\subsection{Documentación de las enumeraciones}
+\hypertarget{main_8c_acd1fff23221614c9728fea12f2bd6537}{
+\index{main.c@{main.c}!Protocol\_\-t@{Protocol\_\-t}}
+\index{Protocol\_\-t@{Protocol\_\-t}!main.c@{main.c}}
+\subsubsection[{Protocol\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Protocol\_\-t}}}
+\label{main_8c_acd1fff23221614c9728fea12f2bd6537}
+\begin{Desc}
+\item[Valores de enumeraciones: ]\par
+\begin{description}
+\index{NOT\_\-DEFINE@{NOT\_\-DEFINE}!main.c@{main.c}}\index{main.c@{main.c}!NOT\_\-DEFINE@{NOT\_\-DEFINE}}\item[{\em 
+\hypertarget{main_8c_acd1fff23221614c9728fea12f2bd6537a3398c2f9c6098451b48275905cca88b4}{
+NOT\_\-DEFINE}
+\label{main_8c_acd1fff23221614c9728fea12f2bd6537a3398c2f9c6098451b48275905cca88b4}
+}]\index{UDP@{UDP}!main.c@{main.c}}\index{main.c@{main.c}!UDP@{UDP}}\item[{\em 
+\hypertarget{main_8c_acd1fff23221614c9728fea12f2bd6537adb542475cf9d0636e4225e216cee9ae6}{
+UDP}
+\label{main_8c_acd1fff23221614c9728fea12f2bd6537adb542475cf9d0636e4225e216cee9ae6}
+}]\index{TCP@{TCP}!main.c@{main.c}}\index{main.c@{main.c}!TCP@{TCP}}\item[{\em 
+\hypertarget{main_8c_acd1fff23221614c9728fea12f2bd6537aa040cd7feeb588104634cdadf35abf1c}{
+TCP}
+\label{main_8c_acd1fff23221614c9728fea12f2bd6537aa040cd7feeb588104634cdadf35abf1c}
+}]\end{description}
+\end{Desc}
+
+
+
+Definición en la línea 30 del archivo main.c.
+
+
+\begin{DoxyCode}
+                {
+        NOT_DEFINE, 
+        UDP, 
+        TCP
+};
+\end{DoxyCode}
+\hypertarget{main_8c_a27838407176d1fcd024debf3e63b780d}{
+\index{main.c@{main.c}!workMode\_\-t@{workMode\_\-t}}
+\index{workMode\_\-t@{workMode\_\-t}!main.c@{main.c}}
+\subsubsection[{workMode\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf workMode\_\-t}}}
+\label{main_8c_a27838407176d1fcd024debf3e63b780d}
+\begin{Desc}
+\item[Valores de enumeraciones: ]\par
+\begin{description}
+\index{NOT\_\-DEFINE@{NOT\_\-DEFINE}!main.c@{main.c}}\index{main.c@{main.c}!NOT\_\-DEFINE@{NOT\_\-DEFINE}}\item[{\em 
+\hypertarget{main_8c_acd1fff23221614c9728fea12f2bd6537a3398c2f9c6098451b48275905cca88b4}{
+NOT\_\-DEFINE}
+\label{main_8c_acd1fff23221614c9728fea12f2bd6537a3398c2f9c6098451b48275905cca88b4}
+}]\index{SERVER@{SERVER}!main.c@{main.c}}\index{main.c@{main.c}!SERVER@{SERVER}}\item[{\em 
+\hypertarget{main_8c_a27838407176d1fcd024debf3e63b780da67c96b24b23bcb408bae7626730a04b7}{
+SERVER}
+\label{main_8c_a27838407176d1fcd024debf3e63b780da67c96b24b23bcb408bae7626730a04b7}
+}]\index{CLIENT@{CLIENT}!main.c@{main.c}}\index{main.c@{main.c}!CLIENT@{CLIENT}}\item[{\em 
+\hypertarget{main_8c_a27838407176d1fcd024debf3e63b780da48e4cb37544c8e69715d45e5a83b2109}{
+CLIENT}
+\label{main_8c_a27838407176d1fcd024debf3e63b780da48e4cb37544c8e69715d45e5a83b2109}
+}]\index{NOT\_\-DEFINE@{NOT\_\-DEFINE}!main.c@{main.c}}\index{main.c@{main.c}!NOT\_\-DEFINE@{NOT\_\-DEFINE}}\item[{\em 
+\hypertarget{main_8c_a27838407176d1fcd024debf3e63b780da10b1df3a8971562555b5d0d1888ae197}{
+NOT\_\-DEFINE}
+\label{main_8c_a27838407176d1fcd024debf3e63b780da10b1df3a8971562555b5d0d1888ae197}
+}]\index{SERVER@{SERVER}!main.c@{main.c}}\index{main.c@{main.c}!SERVER@{SERVER}}\item[{\em 
+\hypertarget{main_8c_a27838407176d1fcd024debf3e63b780da67c96b24b23bcb408bae7626730a04b7}{
+SERVER}
+\label{main_8c_a27838407176d1fcd024debf3e63b780da67c96b24b23bcb408bae7626730a04b7}
+}]\index{CLIENT@{CLIENT}!main.c@{main.c}}\index{main.c@{main.c}!CLIENT@{CLIENT}}\item[{\em 
+\hypertarget{main_8c_a27838407176d1fcd024debf3e63b780da48e4cb37544c8e69715d45e5a83b2109}{
+CLIENT}
+\label{main_8c_a27838407176d1fcd024debf3e63b780da48e4cb37544c8e69715d45e5a83b2109}
+}]\end{description}
+\end{Desc}
+
+
+
+Definición en la línea 24 del archivo main.c.
+
+
+\begin{DoxyCode}
+                {
+        NOT_DEFINE, 
+        SERVER, 
+        CLIENT
+};
+\end{DoxyCode}
+
+
+\subsection{Documentación de las funciones}
+\hypertarget{main_8c_a0ddf1224851353fc92bfbff6f499fa97}{
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}}
+\label{main_8c_a0ddf1224851353fc92bfbff6f499fa97}
+
+
+Definición en la línea 119 del archivo main.c.
+
+
+
+Hace referencia a CLIENT, listenIP, listenPort, mode, NOT\_\-DEFINE, printHelp(), processArguments(), prot, SERVER, startTCPClient(), startTCPServer(), startUDPClient(), startUDPServer() y UDP.
+
+
+\begin{DoxyCode}
+                                  {
+        
+        int status;
+        printf(".:: Starting Simple UDP Host Discover Server - Cliente ::.\n\n");
+      
+        
+        status = processArguments(argc, argv);
+        
+        if(status != 0) {
+                fprintf(stderr,"Error al procesar el argumento %i\n",status);
+                return -1;
+        }
+        
+        if (prot != NOT_DEFINE){
+        
+        switch(mode) {
+                case SERVER:
+                        if (prot == UDP){
+                                startUDPServer(listenPort);
+                        }
+                        else 
+                                startTCPServer(listenIP, listenPort);   
+                        break;
+                case CLIENT:
+                        if(strcmp(listenIP,"0.0.0.0")==0) {
+                                printHelp(argv[0],true,"En modo cliente es necesa
+      rio especificar la IP con -i");
+                        }
+                        if (prot == UDP){
+                                startUDPClient(listenPort);
+                        }
+                        else 
+                                startTCPClient(listenIP, listenPort);   
+                        break;
+                case NOT_DEFINE:
+                        printHelp(argv[0],true,"Es necesario indicar el modo de o
+      peración\n");
+                        break;
+        }
+        }
+        
+        else {
+                printf("Es necesario indicar el protocolo a utilizar\n");
+        }
+        
+        return 0;
+}
+\end{DoxyCode}
+\hypertarget{main_8c_a92dbbe915faf444f03f2074d2076b6dc}{
+\index{main.c@{main.c}!printHelp@{printHelp}}
+\index{printHelp@{printHelp}!main.c@{main.c}}
+\subsubsection[{printHelp}]{\setlength{\rightskip}{0pt plus 5cm}void printHelp (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{cmd, }
+\item[{const short}]{error, }
+\item[{const char $\ast$}]{msg}
+\end{DoxyParamCaption}
+)}}
+\label{main_8c_a92dbbe915faf444f03f2074d2076b6dc}
+
+
+Imprime la Ayuda y Errores de Parametros. 
+
+Imprime la ayuda del sistema, asi como los errores de los parametros
+
+
+\begin{DoxyParams}{Parámetros}
+{\em \mbox{[}cmd\mbox{]}} & Nombre del binario utilizado por el usuario \\
+\hline
+{\em \mbox{[}error\mbox{]}} & Imprimir mensaje de Error \\
+\hline
+{\em \mbox{[}msg\mbox{]}} & Mensaje de Error a Imprimir\\
+\hline
+\end{DoxyParams}
+Ejemplo de Uso 
+\begin{DoxyCode}
+                printHelp(argv[0]); // Imprime solo la ayuda 
+                printHelp(argb[0],true,"Faltan argumentos") // Imprime la ayuda d
+      esplegando el mensaje de error.
+\end{DoxyCode}
+ 
+
+Definición en la línea 95 del archivo main.c.
+
+
+
+Referenciado por main().
+
+
+\begin{DoxyCode}
+                                                                    {
+
+        if(error) {
+                fprintf(stderr,"Error: %s\n\n",msg);
+        }
+        
+        printf(".:: Simple Host Discover Server - Cliente help ::.\n\n");
+        printf("Use:\t%s (-s|-c) [options]\n",cmd);
+        printf("Modes:\n");
+        printf("\t -s Server Mode\n");
+        printf("\t -c Client Mode\n");
+        printf("Protocolos:\n");
+        printf("\t -t TCP\n");
+        printf("\t -u UDP\n");
+        printf("Server Options:\n");
+        printf("\t -i IP_ADDRESS Listen Interface IP Address (Default: 0.0.0.0) \
+      n");
+        printf("GLobal Options:\n");
+        printf("\t -p PORT Define Port Number (Default: 5001)\n");
+
+        printf("\n");
+        
+        return;
+}
+\end{DoxyCode}
+
+
+\subsection{Documentación de las variables}
+\hypertarget{main_8c_adae0dca04d66a34843f902c36344d0d5}{
+\index{main.c@{main.c}!listenIP@{listenIP}}
+\index{listenIP@{listenIP}!main.c@{main.c}}
+\subsubsection[{listenIP}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf listenIP}\mbox{[}18\mbox{]} = \char`\"{}0.0.0.0\char`\"{}}}
+\label{main_8c_adae0dca04d66a34843f902c36344d0d5}
+
+
+Definición en la línea 38 del archivo main.c.
+
+
+
+Referenciado por main() y processArguments().
+
+\hypertarget{main_8c_ae0192edfda4f978efd0a99080c533b52}{
+\index{main.c@{main.c}!listenPort@{listenPort}}
+\index{listenPort@{listenPort}!main.c@{main.c}}
+\subsubsection[{listenPort}]{\setlength{\rightskip}{0pt plus 5cm}u\_\-short {\bf listenPort} = 5001}}
+\label{main_8c_ae0192edfda4f978efd0a99080c533b52}
+
+
+Definición en la línea 39 del archivo main.c.
+
+
+
+Referenciado por main() y processArguments().
+
+\hypertarget{main_8c_a4d2ebeec01c4bb95c1b0a904c279a504}{
+\index{main.c@{main.c}!mode@{mode}}
+\index{mode@{mode}!main.c@{main.c}}
+\subsubsection[{mode}]{\setlength{\rightskip}{0pt plus 5cm}{\bf workMode\_\-t} {\bf mode} = NOT\_\-DEFINE}}
+\label{main_8c_a4d2ebeec01c4bb95c1b0a904c279a504}
+
+
+Definición en la línea 36 del archivo main.c.
+
+
+
+Referenciado por main() y processArguments().
+
+\hypertarget{main_8c_a88b8d9fda59bd92d49f1411948499cda}{
+\index{main.c@{main.c}!prot@{prot}}
+\index{prot@{prot}!main.c@{main.c}}
+\subsubsection[{prot}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Protocol\_\-t} {\bf prot} = NOT\_\-DEFINE}}
+\label{main_8c_a88b8d9fda59bd92d49f1411948499cda}
+
+
+Definición en la línea 37 del archivo main.c.
+
+
+
+Referenciado por main() y processArguments().
+

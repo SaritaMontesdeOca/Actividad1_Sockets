@@ -1,0 +1,32 @@
+Readme Proyecto final PdS: File Transfer:
+
+1- El proyecto consta de 4 archivos que se tendran que ejecutar compilar, y 
+deberan de correr al mismo tiempo,los cuales son "HostD_cli.c", "HostD_serv",
+"final_cliente.c" y "Final_Server.c"
+
+2- En los programas "HostD_cli" y "HostD_serv" podremos ver una lista de las
+IP de los integrantes de la red con los que entablaremos comunicacion y ademas
+estaremos enviando un mensaje para mandar la informacion de nuestra computadora
+
+3- El servidor siempre estara escuchando las peticiones de los demas integrantes
+y respondiendo con la lista de archivos, un archivo o la informacion de algun 
+archivo
+
+4- El cliente es el programa que cuenta con el "comand prompt" para interactuar 
+con el servidor de los demas. En la linea de comando podremos escribir  3 
+peticiones (no importa si se utilizan letras mayusculas o minusculas) las cuales
+son "getfilelist EXT XXX.XXX.XXX.XXX" el cual mostrara una lista de los archivos
+que tiene el servidor XXX.XXX.XXX.XXX, "GetFile NOMBRE_ARCHIVO XXX.XXX.XXX.XXX" 
+con el que solicitaremos un archivo a la direccion XXX.XXX.XXX.XXX, y finalmente 
+"GetFileInfo NOMBRE_ARCHIVO" que nos mostrara informacion de dicho archivo.
+
+Notas: El servidor envia de forma dura la lista de archivos, los cuales tienen 
+por nombre A,B y C con su respectiva extencion mostrada, para poder pedir uno
+de estos archivos, tienen que existir en la carpeta donde se encuantran los 
+archivos fuentes del proyecto. Puede ser un archivo de cualquier tamaño o tipo
+siemrpe y cuando tenga el nombre antes mencionado.
+
+Para salir del cilente, basta con poner "ctrl+d" en el prompt y se muestra el 
+mensaje de despedida.
+
+   

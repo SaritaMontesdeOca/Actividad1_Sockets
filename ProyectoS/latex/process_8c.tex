@@ -1,0 +1,137 @@
+\hypertarget{process_8c}{
+\section{Referencia del Archivo tcp/process.c}
+\label{process_8c}\index{tcp/process.c@{tcp/process.c}}
+}
+
+
+Funciones Referentes al Servidor El servidor compara la solicitud del cliente y la procesa con el codigo para realizar la operacion necesaria.  
+
+
+{\ttfamily \#include $<$inttypes.h$>$}\par
+{\ttfamily \#include $<$sys/types.h$>$}\par
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$unistd.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$fcntl.h$>$}\par
+{\ttfamily \#include $<$sys/uio.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$dirent.h$>$}\par
+{\ttfamily \#include $<$math.h$>$}\par
+{\ttfamily \#include $<$stdarg.h$>$}\par
+{\ttfamily \#include $<$openssl/md5.h$>$}\par
+\subsection*{'defines'}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{process_8c_ac3146f1e9227301bb4aa518f4d336cee}{BUFFERSIZE}~1024
+\item 
+\#define \hyperlink{process_8c_ad0bbc5b6c9ba17a49dbbc4c1d466a5c0}{FALSO}~0
+\item 
+\#define \hyperlink{process_8c_abb6175c2a8988559cd7e8521a9f1f355}{VERDADERO}~!FALSO
+\end{DoxyCompactItemize}
+\subsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{group__ServidorTCP_ga4c824f1f3f4b874a325f4d333402f114}{FileList} (int clientSocket, char $\ast$msg)
+\begin{DoxyCompactList}\small\item\em Envia lista de archivos al cliente. \end{DoxyCompactList}\item 
+int \hyperlink{group__ServidorTCP_gafd8c9cb8cbdf6c5017849bdf4aec3c5c}{FileTransfer} (int clientSocket, char $\ast$msg)
+\begin{DoxyCompactList}\small\item\em Envia el archivo al cliente. \end{DoxyCompactList}\item 
+int \hyperlink{group__ServidorTCP_gabe2cfb9e0f85f447660b1d1e74137e91}{FileInfo} (int clientSocket, char $\ast$msg)
+\begin{DoxyCompactList}\small\item\em Envia la informacion del archivo seleccionado. \end{DoxyCompactList}\item 
+int \hyperlink{group__ServidorTCP_gaf7a41b28b4112b5ba274364a03bb05e8}{DialogosTCP} (int clientSocket, int \hyperlink{TCPServer_8c_a4bf947cca001e8ca0cd9def2b8d058c7}{client})
+\begin{DoxyCompactList}\small\item\em Analiza la solicitud del cliente. \end{DoxyCompactList}\item 
+int \hyperlink{group__ServidorTCP_ga4b0291c26c5216ef5f6417abfb76f59b}{selecc\_\-arch} (const struct dirent $\ast$entry)
+\begin{DoxyCompactList}\small\item\em Descarta archivos que no cumplan con el filtro solicitado. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static char \hyperlink{process_8c_a2dba43ee23e1f9539c5cb227390eb0a7}{mydir} \mbox{[}40\mbox{]} = \char`\"{}/media/share/Codigos/UDP\_\-Ft\char`\"{}
+\item 
+char $\ast$ \hyperlink{process_8c_a7e2befc271f5bf8422f9f3f3e5f3d1f1}{filtro}
+\end{DoxyCompactItemize}
+
+
+\subsection{Descripción detallada}
+Funciones Referentes al Servidor El servidor compara la solicitud del cliente y la procesa con el codigo para realizar la operacion necesaria. \begin{DoxyAuthor}{Autor}
+Alfredo Huerta Larios (\href{mailto:rt676272@iteso.mx}{\tt rt676272@iteso.mx}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Fecha}
+Abril 2012 
+\end{DoxyDate}
+\begin{DoxyVersion}{Versión}
+0.0.1 
+\end{DoxyVersion}
+
+
+Definición en el archivo \hyperlink{process_8c_source}{process.c}.
+
+
+
+\subsection{Documentación de los 'defines'}
+\hypertarget{process_8c_ac3146f1e9227301bb4aa518f4d336cee}{
+\index{process.c@{process.c}!BUFFERSIZE@{BUFFERSIZE}}
+\index{BUFFERSIZE@{BUFFERSIZE}!process.c@{process.c}}
+\subsubsection[{BUFFERSIZE}]{\setlength{\rightskip}{0pt plus 5cm}\#define BUFFERSIZE~1024}}
+\label{process_8c_ac3146f1e9227301bb4aa518f4d336cee}
+
+
+Definición en la línea 25 del archivo process.c.
+
+
+
+Referenciado por DialogosTCP(), FileInfo() y FileTransfer().
+
+\hypertarget{process_8c_ad0bbc5b6c9ba17a49dbbc4c1d466a5c0}{
+\index{process.c@{process.c}!FALSO@{FALSO}}
+\index{FALSO@{FALSO}!process.c@{process.c}}
+\subsubsection[{FALSO}]{\setlength{\rightskip}{0pt plus 5cm}\#define FALSO~0}}
+\label{process_8c_ad0bbc5b6c9ba17a49dbbc4c1d466a5c0}
+
+
+Definición en la línea 26 del archivo process.c.
+
+
+
+Referenciado por selecc\_\-arch().
+
+\hypertarget{process_8c_abb6175c2a8988559cd7e8521a9f1f355}{
+\index{process.c@{process.c}!VERDADERO@{VERDADERO}}
+\index{VERDADERO@{VERDADERO}!process.c@{process.c}}
+\subsubsection[{VERDADERO}]{\setlength{\rightskip}{0pt plus 5cm}\#define VERDADERO~!FALSO}}
+\label{process_8c_abb6175c2a8988559cd7e8521a9f1f355}
+
+
+Definición en la línea 27 del archivo process.c.
+
+
+
+Referenciado por selecc\_\-arch().
+
+
+
+\subsection{Documentación de las variables}
+\hypertarget{process_8c_a7e2befc271f5bf8422f9f3f3e5f3d1f1}{
+\index{process.c@{process.c}!filtro@{filtro}}
+\index{filtro@{filtro}!process.c@{process.c}}
+\subsubsection[{filtro}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf filtro}}}
+\label{process_8c_a7e2befc271f5bf8422f9f3f3e5f3d1f1}
+
+
+Definición en la línea 33 del archivo process.c.
+
+
+
+Referenciado por FileList() y selecc\_\-arch().
+
+\hypertarget{process_8c_a2dba43ee23e1f9539c5cb227390eb0a7}{
+\index{process.c@{process.c}!mydir@{mydir}}
+\index{mydir@{mydir}!process.c@{process.c}}
+\subsubsection[{mydir}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf mydir}\mbox{[}40\mbox{]} = \char`\"{}/media/share/Codigos/UDP\_\-Ft\char`\"{}\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{process_8c_a2dba43ee23e1f9539c5cb227390eb0a7}
+
+
+Definición en la línea 32 del archivo process.c.
+
+
+
+Referenciado por FileList(), FileTransfer() y sendList().
+

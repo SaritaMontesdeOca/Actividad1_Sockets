@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>PROYECTO: Fichero Fuente main.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Generado por Doxygen 1.7.4 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">PROYECTO</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="modules.html"><span>Módulos</span></a></li>
+      <li class="current"><a href="files.html"><span>Archivos</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;archivos</span></a></li>
+      <li><a href="globals.html"><span>Globales</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">main.c</div>  </div>
+</div>
+<div class="contents">
+<a href="main_8c.html">Ir a la documentación de este archivo.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00016"></a>00016 <span class="preprocessor">#include &lt;string.h&gt;</span>
+<a name="l00017"></a>00017 <span class="preprocessor">#include &lt;stdio.h&gt;</span>
+<a name="l00018"></a>00018 <span class="preprocessor">#include &lt;stdlib.h&gt;</span>
+<a name="l00019"></a>00019 
+<a name="l00020"></a>00020 <span class="preprocessor">#include &quot;UDPServer.h&quot;</span>
+<a name="l00021"></a>00021 <span class="preprocessor">#include &quot;UDPClient.h&quot;</span>
+<a name="l00022"></a>00022 
+<a name="l00023"></a>00023 <span class="comment">//Variables Globales</span>
+<a name="l00024"></a><a class="code" href="main_8c.html#a27838407176d1fcd024debf3e63b780d">00024</a> <span class="keyword">enum</span> <a class="code" href="main_8c.html#a27838407176d1fcd024debf3e63b780d">workMode_t</a> {
+<a name="l00025"></a><a class="code" href="main_8c.html#acd1fff23221614c9728fea12f2bd6537a3398c2f9c6098451b48275905cca88b4">00025</a>         <a class="code" href="main_8c.html#acd1fff23221614c9728fea12f2bd6537a3398c2f9c6098451b48275905cca88b4">NOT_DEFINE</a>, 
+<a name="l00026"></a><a class="code" href="main_8c.html#a27838407176d1fcd024debf3e63b780da67c96b24b23bcb408bae7626730a04b7">00026</a>         <a class="code" href="main_8c.html#a27838407176d1fcd024debf3e63b780da67c96b24b23bcb408bae7626730a04b7">SERVER</a>, 
+<a name="l00027"></a><a class="code" href="main_8c.html#a27838407176d1fcd024debf3e63b780da48e4cb37544c8e69715d45e5a83b2109">00027</a>         <a class="code" href="main_8c.html#a27838407176d1fcd024debf3e63b780da48e4cb37544c8e69715d45e5a83b2109">CLIENT</a>
+<a name="l00028"></a>00028 };
+<a name="l00029"></a>00029 
+<a name="l00030"></a><a class="code" href="main_8c.html#acd1fff23221614c9728fea12f2bd6537">00030</a> <span class="keyword">enum</span> <a class="code" href="main_8c.html#acd1fff23221614c9728fea12f2bd6537">Protocol_t</a> {
+<a name="l00031"></a>00031         <a class="code" href="main_8c.html#acd1fff23221614c9728fea12f2bd6537a3398c2f9c6098451b48275905cca88b4">NOT_DEFINE</a>, 
+<a name="l00032"></a><a class="code" href="main_8c.html#acd1fff23221614c9728fea12f2bd6537adb542475cf9d0636e4225e216cee9ae6">00032</a>         <a class="code" href="main_8c.html#acd1fff23221614c9728fea12f2bd6537adb542475cf9d0636e4225e216cee9ae6">UDP</a>, 
+<a name="l00033"></a><a class="code" href="main_8c.html#acd1fff23221614c9728fea12f2bd6537aa040cd7feeb588104634cdadf35abf1c">00033</a>         <a class="code" href="main_8c.html#acd1fff23221614c9728fea12f2bd6537aa040cd7feeb588104634cdadf35abf1c">TCP</a>
+<a name="l00034"></a>00034 };
+<a name="l00035"></a>00035 
+<a name="l00036"></a><a class="code" href="main_8c.html#a4d2ebeec01c4bb95c1b0a904c279a504">00036</a> <a class="code" href="main_8c.html#a27838407176d1fcd024debf3e63b780d">workMode_t</a> <a class="code" href="main_8c.html#a4d2ebeec01c4bb95c1b0a904c279a504">mode</a> = <a class="code" href="main_8c.html#acd1fff23221614c9728fea12f2bd6537a3398c2f9c6098451b48275905cca88b4">NOT_DEFINE</a>;
+<a name="l00037"></a><a class="code" href="main_8c.html#a88b8d9fda59bd92d49f1411948499cda">00037</a> <a class="code" href="main_8c.html#acd1fff23221614c9728fea12f2bd6537">Protocol_t</a> <a class="code" href="main_8c.html#a88b8d9fda59bd92d49f1411948499cda">prot</a> = <a class="code" href="main_8c.html#acd1fff23221614c9728fea12f2bd6537a3398c2f9c6098451b48275905cca88b4">NOT_DEFINE</a>;
+<a name="l00038"></a><a class="code" href="main_8c.html#adae0dca04d66a34843f902c36344d0d5">00038</a> <span class="keywordtype">char</span> <a class="code" href="main_8c.html#adae0dca04d66a34843f902c36344d0d5">listenIP</a>[18] = <span class="stringliteral">&quot;0.0.0.0&quot;</span>;
+<a name="l00039"></a><a class="code" href="main_8c.html#ae0192edfda4f978efd0a99080c533b52">00039</a> u_short <a class="code" href="main_8c.html#ae0192edfda4f978efd0a99080c533b52">listenPort</a> = 5001;
+<a name="l00040"></a>00040 
+<a name="l00048"></a><a class="code" href="group__internal.html#gab91b4cb65d5b6239c904d687c191459d">00048</a> <span class="keywordtype">int</span> <a class="code" href="group__internal.html#gab91b4cb65d5b6239c904d687c191459d" title="Procesa los Argumentos del Servidor.">processArguments</a>(<span class="keywordtype">int</span> args, <span class="keywordtype">char</span> *argv[]) {
+<a name="l00049"></a>00049         <span class="keywordtype">int</span> <a class="code" href="UDPClient_8c.html#acb559820d9ca11295b4500f179ef6392">i</a>;
+<a name="l00050"></a>00050         
+<a name="l00051"></a>00051         <span class="keywordflow">for</span>(i=1; i &lt; args; i++) {
+<a name="l00052"></a>00052                 <span class="keywordflow">if</span>(strcmp(argv[i],<span class="stringliteral">&quot;-s&quot;</span>)==0) {
+<a name="l00053"></a>00053                         <span class="comment">//modo de trabajo</span>
+<a name="l00054"></a>00054                         <a class="code" href="main_8c.html#a4d2ebeec01c4bb95c1b0a904c279a504">mode</a> = <a class="code" href="main_8c.html#a27838407176d1fcd024debf3e63b780da67c96b24b23bcb408bae7626730a04b7">SERVER</a>;
+<a name="l00055"></a>00055                 } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(strcmp(argv[i],<span class="stringliteral">&quot;-c&quot;</span>)==0) {
+<a name="l00056"></a>00056                         <a class="code" href="main_8c.html#a4d2ebeec01c4bb95c1b0a904c279a504">mode</a> = <a class="code" href="main_8c.html#a27838407176d1fcd024debf3e63b780da48e4cb37544c8e69715d45e5a83b2109">CLIENT</a>;
+<a name="l00057"></a>00057                 } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(strcmp(argv[i],<span class="stringliteral">&quot;-i&quot;</span>)==0) {
+<a name="l00058"></a>00058                         strncpy(<a class="code" href="main_8c.html#adae0dca04d66a34843f902c36344d0d5">listenIP</a>,argv[i+1],18);
+<a name="l00059"></a>00059                         i++;
+<a name="l00060"></a>00060                 } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(strcmp(argv[i],<span class="stringliteral">&quot;-p&quot;</span>)==0) {
+<a name="l00061"></a>00061                         <a class="code" href="main_8c.html#ae0192edfda4f978efd0a99080c533b52">listenPort</a> = atoi(argv[i+1]);
+<a name="l00062"></a>00062                         i++;
+<a name="l00063"></a>00063                 } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(strcmp(argv[i],<span class="stringliteral">&quot;-t&quot;</span>)==0) {
+<a name="l00064"></a>00064                         <a class="code" href="main_8c.html#a88b8d9fda59bd92d49f1411948499cda">prot</a> = <a class="code" href="main_8c.html#acd1fff23221614c9728fea12f2bd6537aa040cd7feeb588104634cdadf35abf1c">TCP</a>;
+<a name="l00065"></a>00065                         i++;
+<a name="l00066"></a>00066                 } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(strcmp(argv[i],<span class="stringliteral">&quot;-u&quot;</span>)==0) {
+<a name="l00067"></a>00067                         <a class="code" href="main_8c.html#a88b8d9fda59bd92d49f1411948499cda">prot</a> = <a class="code" href="main_8c.html#acd1fff23221614c9728fea12f2bd6537adb542475cf9d0636e4225e216cee9ae6">UDP</a>;     
+<a name="l00068"></a>00068                         i++;
+<a name="l00069"></a>00069                 }               
+<a name="l00070"></a>00070                 <span class="keywordflow">else</span> {
+<a name="l00071"></a>00071                         <span class="keywordflow">return</span> <a class="code" href="UDPClient_8c.html#acb559820d9ca11295b4500f179ef6392">i</a>;
+<a name="l00072"></a>00072                 }
+<a name="l00073"></a>00073         }
+<a name="l00074"></a>00074         
+<a name="l00075"></a>00075         <span class="keywordflow">return</span> 0;
+<a name="l00076"></a>00076 }
+<a name="l00077"></a>00077 
+<a name="l00095"></a><a class="code" href="main_8c.html#a92dbbe915faf444f03f2074d2076b6dc">00095</a> <span class="keywordtype">void</span> <a class="code" href="main_8c.html#a92dbbe915faf444f03f2074d2076b6dc" title="Imprime la Ayuda y Errores de Parametros.">printHelp</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *cmd, <span class="keyword">const</span> <span class="keywordtype">short</span> error, <span class="keyword">const</span> <span class="keywordtype">char</span>* msg) {
+<a name="l00096"></a>00096 
+<a name="l00097"></a>00097         <span class="keywordflow">if</span>(error) {
+<a name="l00098"></a>00098                 fprintf(stderr,<span class="stringliteral">&quot;Error: %s\n\n&quot;</span>,msg);
+<a name="l00099"></a>00099         }
+<a name="l00100"></a>00100         
+<a name="l00101"></a>00101         printf(<span class="stringliteral">&quot;.:: Simple Host Discover Server - Cliente help ::.\n\n&quot;</span>);
+<a name="l00102"></a>00102         printf(<span class="stringliteral">&quot;Use:\t%s (-s|-c) [options]\n&quot;</span>,cmd);
+<a name="l00103"></a>00103         printf(<span class="stringliteral">&quot;Modes:\n&quot;</span>);
+<a name="l00104"></a>00104         printf(<span class="stringliteral">&quot;\t -s Server Mode\n&quot;</span>);
+<a name="l00105"></a>00105         printf(<span class="stringliteral">&quot;\t -c Client Mode\n&quot;</span>);
+<a name="l00106"></a>00106         printf(<span class="stringliteral">&quot;Protocolos:\n&quot;</span>);
+<a name="l00107"></a>00107         printf(<span class="stringliteral">&quot;\t -t TCP\n&quot;</span>);
+<a name="l00108"></a>00108         printf(<span class="stringliteral">&quot;\t -u UDP\n&quot;</span>);
+<a name="l00109"></a>00109         printf(<span class="stringliteral">&quot;Server Options:\n&quot;</span>);
+<a name="l00110"></a>00110         printf(<span class="stringliteral">&quot;\t -i IP_ADDRESS Listen Interface IP Address (Default: 0.0.0.0) \n&quot;</span>);
+<a name="l00111"></a>00111         printf(<span class="stringliteral">&quot;GLobal Options:\n&quot;</span>);
+<a name="l00112"></a>00112         printf(<span class="stringliteral">&quot;\t -p PORT Define Port Number (Default: 5001)\n&quot;</span>);
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114         printf(<span class="stringliteral">&quot;\n&quot;</span>);
+<a name="l00115"></a>00115         
+<a name="l00116"></a>00116         <span class="keywordflow">return</span>;
+<a name="l00117"></a>00117 }
+<a name="l00118"></a>00118 
+<a name="l00119"></a><a class="code" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97">00119</a> <span class="keywordtype">int</span> <a class="code" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>  *argv[]) {
+<a name="l00120"></a>00120         
+<a name="l00121"></a>00121         <span class="keywordtype">int</span> status;
+<a name="l00122"></a>00122         printf(<span class="stringliteral">&quot;.:: Starting Simple UDP Host Discover Server - Cliente ::.\n\n&quot;</span>);
+<a name="l00123"></a>00123         
+<a name="l00124"></a>00124         status = <a class="code" href="group__internal.html#gab91b4cb65d5b6239c904d687c191459d" title="Procesa los Argumentos del Servidor.">processArguments</a>(argc, argv);
+<a name="l00125"></a>00125         
+<a name="l00126"></a>00126         <span class="keywordflow">if</span>(status != 0) {
+<a name="l00127"></a>00127                 fprintf(stderr,<span class="stringliteral">&quot;Error al procesar el argumento %i\n&quot;</span>,status);
+<a name="l00128"></a>00128                 <span class="keywordflow">return</span> -1;
+<a name="l00129"></a>00129         }
+<a name="l00130"></a>00130         
+<a name="l00131"></a>00131         <span class="keywordflow">if</span> (<a class="code" href="main_8c.html#a88b8d9fda59bd92d49f1411948499cda">prot</a> != <a class="code" href="main_8c.html#acd1fff23221614c9728fea12f2bd6537a3398c2f9c6098451b48275905cca88b4">NOT_DEFINE</a>){
+<a name="l00132"></a>00132         
+<a name="l00133"></a>00133         <span class="keywordflow">switch</span>(<a class="code" href="main_8c.html#a4d2ebeec01c4bb95c1b0a904c279a504">mode</a>) {
+<a name="l00134"></a>00134                 <span class="keywordflow">case</span> <a class="code" href="main_8c.html#a27838407176d1fcd024debf3e63b780da67c96b24b23bcb408bae7626730a04b7">SERVER</a>:
+<a name="l00135"></a>00135                         <span class="keywordflow">if</span> (<a class="code" href="main_8c.html#a88b8d9fda59bd92d49f1411948499cda">prot</a> == <a class="code" href="main_8c.html#acd1fff23221614c9728fea12f2bd6537adb542475cf9d0636e4225e216cee9ae6">UDP</a>){
+<a name="l00136"></a>00136                                 <a class="code" href="group__server.html#ga290cdebb84104f7e5262bffb6ed87bd2" title="Inicia la Operaciones del Servidor UDP Proyecto.">startUDPServer</a>(<a class="code" href="main_8c.html#ae0192edfda4f978efd0a99080c533b52">listenPort</a>);
+<a name="l00137"></a>00137                         }
+<a name="l00138"></a>00138                         <span class="keywordflow">else</span> 
+<a name="l00139"></a>00139                                 <a class="code" href="TCPServer_8c.html#a6a66838c58b5b5a617bb111891be1f40" title="Inicia la operacion del servidor TCP.">startTCPServer</a>(<a class="code" href="main_8c.html#adae0dca04d66a34843f902c36344d0d5">listenIP</a>, <a class="code" href="main_8c.html#ae0192edfda4f978efd0a99080c533b52">listenPort</a>);   
+<a name="l00140"></a>00140                         <span class="keywordflow">break</span>;
+<a name="l00141"></a>00141                 <span class="keywordflow">case</span> <a class="code" href="main_8c.html#a27838407176d1fcd024debf3e63b780da48e4cb37544c8e69715d45e5a83b2109">CLIENT</a>:
+<a name="l00142"></a>00142                         <span class="keywordflow">if</span>(strcmp(<a class="code" href="main_8c.html#adae0dca04d66a34843f902c36344d0d5">listenIP</a>,<span class="stringliteral">&quot;0.0.0.0&quot;</span>)==0) {
+<a name="l00143"></a>00143                                 <a class="code" href="main_8c.html#a92dbbe915faf444f03f2074d2076b6dc" title="Imprime la Ayuda y Errores de Parametros.">printHelp</a>(argv[0],<span class="keyword">true</span>,<span class="stringliteral">&quot;En modo cliente es necesario especificar la IP con -i&quot;</span>);
+<a name="l00144"></a>00144                         }
+<a name="l00145"></a>00145                         <span class="keywordflow">if</span> (<a class="code" href="main_8c.html#a88b8d9fda59bd92d49f1411948499cda">prot</a> == <a class="code" href="main_8c.html#acd1fff23221614c9728fea12f2bd6537adb542475cf9d0636e4225e216cee9ae6">UDP</a>){
+<a name="l00146"></a>00146                                 <a class="code" href="group__client.html#gad3b8e412c17b609ee2b34814bba6db77" title="Inicia la Operaciones del Cliente UDP File transfer.">startUDPClient</a>(<a class="code" href="main_8c.html#ae0192edfda4f978efd0a99080c533b52">listenPort</a>);
+<a name="l00147"></a>00147                         }
+<a name="l00148"></a>00148                         <span class="keywordflow">else</span> 
+<a name="l00149"></a>00149                                 <a class="code" href="group__Cliente.html#ga12ebdfb9e35bbb700a78ce3b959a7830" title="Inicia el cliente TCP.">startTCPClient</a>(<a class="code" href="main_8c.html#adae0dca04d66a34843f902c36344d0d5">listenIP</a>, <a class="code" href="main_8c.html#ae0192edfda4f978efd0a99080c533b52">listenPort</a>);   
+<a name="l00150"></a>00150                         <span class="keywordflow">break</span>;
+<a name="l00151"></a>00151                 <span class="keywordflow">case</span> <a class="code" href="main_8c.html#acd1fff23221614c9728fea12f2bd6537a3398c2f9c6098451b48275905cca88b4">NOT_DEFINE</a>:
+<a name="l00152"></a>00152                         <a class="code" href="main_8c.html#a92dbbe915faf444f03f2074d2076b6dc" title="Imprime la Ayuda y Errores de Parametros.">printHelp</a>(argv[0],<span class="keyword">true</span>,<span class="stringliteral">&quot;Es necesario indicar el modo de operación\n&quot;</span>);
+<a name="l00153"></a>00153                         <span class="keywordflow">break</span>;
+<a name="l00154"></a>00154         }
+<a name="l00155"></a>00155         }
+<a name="l00156"></a>00156         
+<a name="l00157"></a>00157         <span class="keywordflow">else</span> {
+<a name="l00158"></a>00158                 printf(<span class="stringliteral">&quot;Es necesario indicar el protocolo a utilizar\n&quot;</span>);
+<a name="l00159"></a>00159         }
+<a name="l00160"></a>00160         
+<a name="l00161"></a>00161         <span class="keywordflow">return</span> 0;
+<a name="l00162"></a>00162 }
+<a name="l00163"></a>00163 
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Valores de enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Generado el Lunes, 7 de Mayo de 2012 22:32:35 para PROYECTO por&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
+</body>
+</html>

@@ -34,15 +34,23 @@ int main (void) //Main client
 
 	for (; ;) {
 		cliaddrlen = sizeof (cliaddr);
-		n = recvfrom (sockfd, recvline, MAXLINE, 0,
-				(struct sockaddr *) &cliaddr, &cliaddrlen);
+		n = recvfrom (sockfd, recvline, MAXLINE, 0,(struct sockaddr *) &cliaddr, &cliaddrlen);
+		
+		//Guardar los host conocidos
+		
+		
+		
 		if (n > 0) {
 			recvline[n] = '\0';
 			inet_ntop(AF_INET, &(cliaddr.sin_addr), ip, INET_ADDRSTRLEN);
 			cliport = ntohs (cliaddr.sin_port);
 			printf ("encontrado desde %s:%d %s", ip, cliport, recvline);
+<<<<<<< HEAD
 			sendto (sockfd,"Hello", strlen("Hello"), 0
 					, (struct sockaddr*) &cliaddr, sizeof (cliaddr));
+=======
+			sendto (sockfd,"Hello", strlen("Hello"), 0 , (struct sockaddr*) &cliaddr, sizeof (cliaddr));
+>>>>>>> e1c6c3bfb5861da25f0f605ea9af312f7cfe2c30
 		}
 	}
 }

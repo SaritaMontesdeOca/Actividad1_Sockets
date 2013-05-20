@@ -1,0 +1,395 @@
+\hypertarget{group__sockets}{
+\section{Funciones Referentes a Sockets}
+\label{group__sockets}\index{Funciones Referentes a Sockets@{Funciones Referentes a Sockets}}
+}
+\subsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{group__sockets_gadd88367e2f2c1ed8f81e910250a06180}{buildIP4addr} (const char $\ast$ip, struct sockaddr\_\-in $\ast$addr)
+\begin{DoxyCompactList}\small\item\em Completa una estructura addr con una dirección IPv4. \end{DoxyCompactList}\item 
+int \hyperlink{group__sockets_ga88bd320eafca5b9f4c54c4b5f3a17925}{getTCPSocket} (int addrType)
+\begin{DoxyCompactList}\small\item\em Crea un nuevo servidor TCP Generico. \end{DoxyCompactList}\item 
+int \hyperlink{group__sockets_ga944d699e112e8607aaa4a070d86d6e65}{newTCPServerSocket4} (const char $\ast$ip, const u\_\-short port, int q\_\-size)
+\begin{DoxyCompactList}\small\item\em Crea un nuevo servidor TCP en IPv4. \end{DoxyCompactList}\item 
+int \hyperlink{group__sockets_gac7d9d9b68342787f3d6ef71e91459e35}{waitConnection} (int socket, char $\ast$clientIP=NULL, u\_\-short $\ast$clientPort=NULL)
+\begin{DoxyCompactList}\small\item\em Espera la conexión de un nuevo cliente. \end{DoxyCompactList}\item 
+int \hyperlink{group__sockets_ga2d8f76b55a8d6bdefb097ff1554efa54}{newTCPClientSocket4} (const char $\ast$ip, const u\_\-short port)
+\begin{DoxyCompactList}\small\item\em Crea un Socket Cliente TCP IPv4. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Documentación de las funciones}
+\hypertarget{group__sockets_gadd88367e2f2c1ed8f81e910250a06180}{
+\index{Funciones Referentes a Sockets@{Funciones Referentes a Sockets}!buildIP4addr@{buildIP4addr}}
+\index{buildIP4addr@{buildIP4addr}!Funciones Referentes a Sockets@{Funciones Referentes a Sockets}}
+\subsubsection[{buildIP4addr}]{\setlength{\rightskip}{0pt plus 5cm}int buildIP4addr (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ip, }
+\item[{struct sockaddr\_\-in $\ast$}]{addr}
+\end{DoxyParamCaption}
+)}}
+\label{group__sockets_gadd88367e2f2c1ed8f81e910250a06180}
+
+
+Completa una estructura addr con una dirección IPv4. 
+
+Inicializa una estructura sockaddr\_\-in zero y completa los valores adecuados con la dirección IPv4 que se recive.
+
+
+\begin{DoxyParams}{Parámetros}
+{\em ip} & dirección IP en escritura natural (Ej: 148.201.1.1) \\
+\hline
+{\em addr} & Apuntador a la estrucutra que se completara.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+status. 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Valores devueltos}
+{\em 0} & Se completo correctamente la estrucutra. \\
+\hline
+{\em -\/1} & Ocurrio un Error y no se pudo completar la estrucutra\\
+\hline
+\end{DoxyRetVals}
+Ejemplo de Uso: 
+\begin{DoxyCode}
+                struct sockaddr_in addr;        
+                buildIP4addr("0.0.0.0", &addr): // Completa al estructura addr co
+      n la dirección IPv4 0.0.0.0
+\end{DoxyCode}
+ 
+
+Definición en la línea 22 del archivo ipFunc.c.
+
+
+
+Referenciado por newTCPClientSocket4() y newTCPServerSocket4().
+
+
+\begin{DoxyCode}
+                                                           {
+        
+        int status;
+        
+        if (ip==NULL) {
+                fprintf(stderr,"ERROR: La direccion IP es nula\n");
+                return -1;
+        }
+        
+        if(addr == NULL) {
+                fprintf(stderr,"ERROR: El espacio de memoria de la estructura de 
+      direcciones es nula\n");
+                return -1;
+        }
+        
+        bzero(addr, sizeof(addr));
+        
+        addr->sin_family=AF_INET;
+        status=inet_pton(AF_INET,ip,&(addr->sin_addr.s_addr));
+        
+        if(status==-1) {
+                fprintf(stderr,"ERROR: Direccion IP %s no valida\n",ip);
+                return -1;
+        }
+        return 0;
+}
+\end{DoxyCode}
+\hypertarget{group__sockets_ga88bd320eafca5b9f4c54c4b5f3a17925}{
+\index{Funciones Referentes a Sockets@{Funciones Referentes a Sockets}!getTCPSocket@{getTCPSocket}}
+\index{getTCPSocket@{getTCPSocket}!Funciones Referentes a Sockets@{Funciones Referentes a Sockets}}
+\subsubsection[{getTCPSocket}]{\setlength{\rightskip}{0pt plus 5cm}int getTCPSocket (
+\begin{DoxyParamCaption}
+\item[{int}]{addrType}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{group__sockets_ga88bd320eafca5b9f4c54c4b5f3a17925}
+
+
+Crea un nuevo servidor TCP Generico. 
+
+Crea un nuevo Servidor TCP utilizando el direccionamiento indicado.
+
+
+\begin{DoxyParams}{Parámetros}
+{\em addrType} & Tipo de Direccionamiento a utilizar.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Identificador del Socket 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Valores devueltos}
+{\em -\/1} & Ocurrio un Error y no se pudo crear el Socket\\
+\hline
+\end{DoxyRetVals}
+Ejemplo de Uso: 
+\begin{DoxyCode}
+                getTCPSocket(AF_INET) // Crea un nuevo socket que utiliza IPv4 
+\end{DoxyCode}
+
+
+\begin{DoxyWarning}{Atención}
+No utilizar 
+\end{DoxyWarning}
+
+
+Definición en la línea 46 del archivo tcpServer.c.
+
+
+
+Referenciado por newTCPClientSocket4() y newTCPServerSocket4().
+
+
+\begin{DoxyCode}
+                               {
+        int socketNum;
+        
+        socketNum = socket(addrType,SOCK_STREAM,0);
+        if (socketNum == -1) {
+                fprintf(stderr,"ERROR: No se puede crear un socket nuevo\n");
+                return -1;
+        }
+        
+        return socketNum;
+}
+\end{DoxyCode}
+\hypertarget{group__sockets_ga2d8f76b55a8d6bdefb097ff1554efa54}{
+\index{Funciones Referentes a Sockets@{Funciones Referentes a Sockets}!newTCPClientSocket4@{newTCPClientSocket4}}
+\index{newTCPClientSocket4@{newTCPClientSocket4}!Funciones Referentes a Sockets@{Funciones Referentes a Sockets}}
+\subsubsection[{newTCPClientSocket4}]{\setlength{\rightskip}{0pt plus 5cm}int newTCPClientSocket4 (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ip, }
+\item[{const u\_\-short}]{port}
+\end{DoxyParamCaption}
+)}}
+\label{group__sockets_ga2d8f76b55a8d6bdefb097ff1554efa54}
+
+
+Crea un Socket Cliente TCP IPv4. 
+
+Crea un nuevo Socket en IPv4 que se conecta a un servicio TCP.
+
+
+\begin{DoxyParams}{Parámetros}
+{\em ip} & Dirección IP del Servidor. \\
+\hline
+{\em port} & Numero de puerto al que se debe conectar.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Identificador del Socket 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Valores devueltos}
+{\em -\/1} & Ocurrio un Error y no se pudo crear el Socket\\
+\hline
+\end{DoxyRetVals}
+Ejemplo de Uso: 
+\begin{DoxyCode}
+                newTCPClientSocket4("127.0.0.1",1024) // Se conecta a localhost p
+      uerto 1024
+\end{DoxyCode}
+ 
+
+Definición en la línea 113 del archivo tcpServer.c.
+
+
+
+Hace referencia a buildIP4addr() y getTCPSocket().
+
+
+
+Referenciado por startTCPClient().
+
+
+\begin{DoxyCode}
+                                                           {
+        int socket;
+        int status;
+        struct sockaddr_in addr;
+        
+        status = buildIP4addr(ip,&addr);
+        
+        if (status==-1){
+                fprintf(stderr,"ERROR: La direccion IP %s es invalida\n",ip);
+                return -1;
+        }
+        
+        addr.sin_port=htons(port);
+        
+        socket = getTCPSocket(PF_INET);
+        
+        status = connect(socket, (struct sockaddr*)&addr, sizeof(addr));
+        
+        if(status==-1) {
+                fprintf(stderr,"No se puede conectar a %s:%i\n",ip,port);
+                return -1;
+        }
+        
+        return socket;
+}
+\end{DoxyCode}
+\hypertarget{group__sockets_ga944d699e112e8607aaa4a070d86d6e65}{
+\index{Funciones Referentes a Sockets@{Funciones Referentes a Sockets}!newTCPServerSocket4@{newTCPServerSocket4}}
+\index{newTCPServerSocket4@{newTCPServerSocket4}!Funciones Referentes a Sockets@{Funciones Referentes a Sockets}}
+\subsubsection[{newTCPServerSocket4}]{\setlength{\rightskip}{0pt plus 5cm}int newTCPServerSocket4 (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ip, }
+\item[{const u\_\-short}]{port, }
+\item[{int}]{q\_\-size}
+\end{DoxyParamCaption}
+)}}
+\label{group__sockets_ga944d699e112e8607aaa4a070d86d6e65}
+
+
+Crea un nuevo servidor TCP en IPv4. 
+
+Crea un nuevo Servidor TCP utilizando IPv4, inicializando el socket y dejandolo en el estado de listeing.
+
+
+\begin{DoxyParams}{Parámetros}
+{\em ip} & IP de la interfaz en la que se escuchara. \\
+\hline
+{\em port} & Puerto en el cual se escuchara \\
+\hline
+{\em q\_\-size} & Tamaño de la cola de conexiones. (Default: 5)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Identificador del Socket 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Valores devueltos}
+{\em -\/1} & Ocurrio un Error y no se pudo crear el Socket\\
+\hline
+\end{DoxyRetVals}
+Ejemplo de Uso: 
+\begin{DoxyCode}
+                newTCPServerSocket4("0.0.0.0", 1024) // Crea un nuevo servidor en
+       el puerto 1024 
+\end{DoxyCode}
+ 
+
+Definición en la línea 58 del archivo tcpServer.c.
+
+
+
+Hace referencia a buildIP4addr() y getTCPSocket().
+
+
+
+Referenciado por startTCPServer().
+
+
+\begin{DoxyCode}
+                                                                        {
+        int socket;
+        int status;
+        struct sockaddr_in addr;
+        
+        status = buildIP4addr(ip,&addr);
+        if (status == -1) {
+                fprintf(stderr,"ERROR: La direccion IP %s es invalida\n",ip);
+                return -1;
+        }
+        
+        addr.sin_port = htons(port);
+        socket=(getTCPSocket(PF_INET));
+        
+        status = bind(socket,(struct sockaddr*)&addr, sizeof(addr));
+        
+        if (status==-1) {
+                fprintf(stderr,"Can't bind on port %i\n",port);
+                return -1;
+        }
+        
+        status = listen(socket,q_size);
+        if(status == -1) {
+                fprintf(stderr,"ERROR: No se puede escuchar en %s:%i\n",ip,port);
+      
+                return -1;
+        }
+        
+        return socket;
+}
+\end{DoxyCode}
+\hypertarget{group__sockets_gac7d9d9b68342787f3d6ef71e91459e35}{
+\index{Funciones Referentes a Sockets@{Funciones Referentes a Sockets}!waitConnection@{waitConnection}}
+\index{waitConnection@{waitConnection}!Funciones Referentes a Sockets@{Funciones Referentes a Sockets}}
+\subsubsection[{waitConnection}]{\setlength{\rightskip}{0pt plus 5cm}int waitConnection (
+\begin{DoxyParamCaption}
+\item[{int}]{socket, }
+\item[{char $\ast$}]{clientIP = {\ttfamily NULL}, }
+\item[{u\_\-short $\ast$}]{clientPort = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)}}
+\label{group__sockets_gac7d9d9b68342787f3d6ef71e91459e35}
+
+
+Espera la conexión de un nuevo cliente. 
+
+Espera un nuevo cliente, y nos regresa el numero de Socket del Cliente
+
+
+\begin{DoxyParams}{Parámetros}
+{\em socket} & Identificador del Server Socket \\
+\hline
+{\em $\ast$clientIP} & En caso de nos ser NULL en dicha ubicación de memoria se regresa la dirección IP del cliente. \\
+\hline
+{\em $\ast$clientPort} & En caso de nos ser NULL en dicha ubicación de memoria se regresa el puerto del cliente\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Identificador del Client Socket 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Valores devueltos}
+{\em -\/1} & Ocurrio un Error y no se pudo crear el Socket\\
+\hline
+\end{DoxyRetVals}
+Ejemplo de Uso: 
+\begin{DoxyCode}
+                waitConnection(socket,clientIP,&clientPort) // Espera una conexió
+      n y regresa la IP y 
+                //el puerto del cliente en las ubicaciones de memoria de clientIP
+       y clientPort 
+\end{DoxyCode}
+ 
+
+Definición en la línea 88 del archivo tcpServer.c.
+
+
+
+Hace referencia a client.
+
+
+
+Referenciado por startTCPServer().
+
+
+\begin{DoxyCode}
+                                                                    {
+        
+        int client;
+        struct sockaddr_in addrClient;
+        socklen_t addrLen = sizeof(addrClient);
+        char ip[18]="0.0.0.0";
+        
+        client = accept(socket,(struct sockaddr *)&addrClient, &addrLen);
+        
+        if (client == -1) {
+                fprintf(stderr,"Can't retrive client socket for connection\n");
+                return -1;
+        }
+        
+        if(clientIP !=NULL) {
+                inet_ntop(AF_INET,&(addrClient.sin_addr),ip,INET_ADDRSTRLEN);
+                strcpy(clientIP,ip);
+        }
+        
+        if (clientPort!=NULL) {
+                *clientPort=ntohs(addrClient.sin_port);
+        }
+        return client;
+}
+\end{DoxyCode}

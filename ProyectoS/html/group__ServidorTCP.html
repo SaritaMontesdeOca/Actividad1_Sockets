@@ -1,0 +1,692 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>PROYECTO: ServidorTCP</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Generado por Doxygen 1.7.4 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">PROYECTO</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="modules.html"><span>Módulos</span></a></li>
+      <li><a href="files.html"><span>Archivos</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funciones</a>  </div>
+  <div class="headertitle">
+<div class="title">ServidorTCP</div>  </div>
+</div>
+<div class="contents">
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Funciones</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ServidorTCP.html#gaf7a41b28b4112b5ba274364a03bb05e8">DialogosTCP</a> (int clientSocket, int <a class="el" href="TCPServer_8c.html#a4bf947cca001e8ca0cd9def2b8d058c7">client</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Analiza la solicitud del cliente.  <a href="#gaf7a41b28b4112b5ba274364a03bb05e8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ServidorTCP.html#ga4c824f1f3f4b874a325f4d333402f114">FileList</a> (int clientSocket, char *msg)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Envia lista de archivos al cliente.  <a href="#ga4c824f1f3f4b874a325f4d333402f114"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ServidorTCP.html#ga4b0291c26c5216ef5f6417abfb76f59b">selecc_arch</a> (const struct dirent *entry)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Descarta archivos que no cumplan con el filtro solicitado.  <a href="#ga4b0291c26c5216ef5f6417abfb76f59b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ServidorTCP.html#gafd8c9cb8cbdf6c5017849bdf4aec3c5c">FileTransfer</a> (int clientSocket, char *msg)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Envia el archivo al cliente.  <a href="#gafd8c9cb8cbdf6c5017849bdf4aec3c5c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ServidorTCP.html#gabe2cfb9e0f85f447660b1d1e74137e91">FileInfo</a> (int clientSocket, char *msg)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Envia la informacion del archivo seleccionado.  <a href="#gabe2cfb9e0f85f447660b1d1e74137e91"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ServidorTCP.html#ga6a66838c58b5b5a617bb111891be1f40">startTCPServer</a> (const char *ip, const u_short port)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicializa al servidor TCP.  <a href="#ga6a66838c58b5b5a617bb111891be1f40"></a><br/></td></tr>
+</table>
+<hr/><h2>Documentación de las funciones</h2>
+<a class="anchor" id="gaf7a41b28b4112b5ba274364a03bb05e8"></a><!-- doxytag: member="process.c::DialogosTCP" ref="gaf7a41b28b4112b5ba274364a03bb05e8" args="(int clientSocket, int client)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DialogosTCP </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>clientSocket</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>client</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Analiza la solicitud del cliente. </p>
+<p>Empieza el intercambio de mensajes con el cliente.</p>
+<p>Funcion que analiza y decide que accion tomar al recibir la solicitud del cliente</p>
+<dl><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">clientSocket</td><td>Socket del cliente. </td></tr>
+    <tr><td class="paramname">client</td><td>Numero de cliente conectado</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Estado del envio. </dd></dl>
+<dl><dt><b>Valores devueltos:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">true</td><td>termino sin errores </td></tr>
+    <tr><td class="paramname">-1</td><td>termino con errores.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Ejemplo de Uso: </p>
+<div class="fragment"><pre class="fragment">                
+                <a class="code" href="group__ServidorTCP.html#gaf7a41b28b4112b5ba274364a03bb05e8" title="Analiza la solicitud del cliente.">DialogosTCP</a>(clientSocket,<a class="code" href="TCPServer_8c.html#a4bf947cca001e8ca0cd9def2b8d058c7">client</a>);  
+</pre></div> 
+<p>Definición en la línea <a class="el" href="process_8c_source.html#l00042">42</a> del archivo <a class="el" href="process_8c_source.html">process.c</a>.</p>
+
+<p>Hace referencia a <a class="el" href="process_8c_source.html#l00025">BUFFERSIZE</a>, <a class="el" href="process_8c_source.html#l00271">FileInfo()</a>, <a class="el" href="process_8c_source.html#l00083">FileList()</a>, <a class="el" href="process_8c_source.html#l00158">FileTransfer()</a> y <a class="el" href="UDPClient_8c_source.html#l00034">k</a>.</p>
+
+<p>Referenciado por <a class="el" href="TCPServer_8c_source.html#l00038">startTCPServer()</a>.</p>
+<div class="fragment"><pre class="fragment">                                              {
+        
+        <span class="keywordtype">char</span> msg[<a class="code" href="process_8c.html#ac3146f1e9227301bb4aa518f4d336cee">BUFFERSIZE</a>]=<span class="stringliteral">&quot;&quot;</span>;
+        <span class="keywordtype">int</span> bytes;
+        <span class="keywordtype">char</span> *ptr;
+        <span class="keywordtype">int</span> <a class="code" href="UDPClient_8c.html#ab66ed8e0098c0a86b458672a55a9cca9">k</a>=0;
+        <span class="keywordtype">char</span> *request;  
+        <span class="keywordtype">char</span> *lh = (<span class="keywordtype">char</span> *)malloc(strlen(msg));
+        <span class="keywordtype">char</span> resp[<a class="code" href="process_8c.html#ac3146f1e9227301bb4aa518f4d336cee">BUFFERSIZE</a>];
+
+        <span class="keywordflow">while</span>(1){
+                bzero(msg,<a class="code" href="process_8c.html#ac3146f1e9227301bb4aa518f4d336cee">BUFFERSIZE</a>);
+                bzero(resp,<a class="code" href="process_8c.html#ac3146f1e9227301bb4aa518f4d336cee">BUFFERSIZE</a>);
+                bytes = read(clientSocket,msg,<a class="code" href="process_8c.html#ac3146f1e9227301bb4aa518f4d336cee">BUFFERSIZE</a>);
+                strcpy(resp,msg);
+                lh = msg;
+                request = strtok(lh,<span class="stringliteral">&quot;\n\r&quot;</span>);
+        
+                <span class="keywordflow">if</span> (strcmp(request,<span class="stringliteral">&quot;GetFileList&quot;</span>) == 0) {
+                        <a class="code" href="group__ServidorTCP.html#ga4c824f1f3f4b874a325f4d333402f114" title="Envia lista de archivos al cliente.">FileList</a>(clientSocket,resp);
+                }
+                <span class="keywordflow">else</span> <span class="keywordflow">if</span>(strcmp(request,<span class="stringliteral">&quot;GetFile&quot;</span>)==0) {
+
+                        <a class="code" href="group__ServidorTCP.html#gafd8c9cb8cbdf6c5017849bdf4aec3c5c" title="Envia el archivo al cliente.">FileTransfer</a>(clientSocket,resp);
+                }
+                <span class="keywordflow">else</span> <span class="keywordflow">if</span>(strcmp(request,<span class="stringliteral">&quot;GetFileInfo&quot;</span>)==0) {
+                        <a class="code" href="group__ServidorTCP.html#gabe2cfb9e0f85f447660b1d1e74137e91" title="Envia la informacion del archivo seleccionado.">FileInfo</a>(clientSocket,resp);
+                }
+        
+        }
+
+        <span class="keywordflow">return</span> 0;
+}
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="gabe2cfb9e0f85f447660b1d1e74137e91"></a><!-- doxytag: member="process.c::FileInfo" ref="gabe2cfb9e0f85f447660b1d1e74137e91" args="(int clientSocket, char *msg)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int FileInfo </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>clientSocket</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>msg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Envia la informacion del archivo seleccionado. </p>
+<p>Envia la informacion de un archivo al cliente Envia la informacion de un archivo al cliente, como el tamanio del archivo y la cadena MD5.</p>
+<p>Funcion que le envia al cliente el tamanio del archivo y la cadena MD5 del cliente</p>
+<dl><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">clientSocket</td><td>Socket del cliente. </td></tr>
+    <tr><td class="paramname">msg</td><td>mensaje enviado por el cliente</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Estado del envio. </dd></dl>
+<dl><dt><b>Valores devueltos:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">true</td><td>termino sin errores </td></tr>
+    <tr><td class="paramname">-1</td><td>termino con errores.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Ejemplo de Uso: </p>
+<div class="fragment"><pre class="fragment">                
+                <a class="code" href="group__ServidorTCP.html#gabe2cfb9e0f85f447660b1d1e74137e91" title="Envia la informacion del archivo seleccionado.">FileInfo</a>(clientSocket,msg);  
+</pre></div> 
+<p>Definición en la línea <a class="el" href="process_8c_source.html#l00271">271</a> del archivo <a class="el" href="process_8c_source.html">process.c</a>.</p>
+
+<p>Hace referencia a <a class="el" href="process_8c_source.html#l00025">BUFFERSIZE</a>, <a class="el" href="UDPClient_8c_source.html#l00031">i</a> y <a class="el" href="UDPClient_8c_source.html#l00034">k</a>.</p>
+
+<p>Referenciado por <a class="el" href="process_8c_source.html#l00042">DialogosTCP()</a>.</p>
+<div class="fragment"><pre class="fragment">                                          {
+        
+        <span class="keywordtype">int</span> bytes;
+        <span class="keywordtype">char</span> buffer[<a class="code" href="process_8c.html#ac3146f1e9227301bb4aa518f4d336cee">BUFFERSIZE</a>]=<span class="stringliteral">&quot;&quot;</span>;
+        <span class="keywordtype">char</span> *lh;
+        <span class="keywordtype">char</span> *ptr;
+        <span class="keywordtype">char</span> *request;
+        FILE *file;
+        <span class="keywordtype">char</span> *s2;
+        s2 = (<span class="keywordtype">char</span> *)calloc(1,9000);
+        <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> md5_result[16];
+        <span class="keywordtype">int</span> <a class="code" href="UDPClient_8c.html#acb559820d9ca11295b4500f179ef6392">i</a>,bytes_read;
+        ptr = msg;
+        lh = ptr;
+
+        request = strtok(lh,<span class="stringliteral">&quot; \n\r&quot;</span>);
+        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code" href="UDPClient_8c.html#ab66ed8e0098c0a86b458672a55a9cca9">k</a>=0;<a class="code" href="UDPClient_8c.html#ab66ed8e0098c0a86b458672a55a9cca9">k</a>&lt;2;<a class="code" href="UDPClient_8c.html#ab66ed8e0098c0a86b458672a55a9cca9">k</a>++){
+                request = strtok(NULL,<span class="stringliteral">&quot; \n\r&quot;</span>); 
+        }
+
+        file = fopen(request,<span class="stringliteral">&quot;r&quot;</span>);
+        <span class="keywordflow">if</span>(file == NULL){
+                printf(<span class="stringliteral">&quot;El archivo solicitado no existe\n&quot;</span>);
+                <span class="keywordflow">return</span> 0;
+        }
+        
+        MD5_CTX ctx; <span class="comment">// Estructura especial para el MD5</span>
+
+
+
+
+        MD5_Init(&amp;ctx);
+        
+        <span class="keywordflow">while</span> ((bytes_read = fread(buffer,1,<span class="keyword">sizeof</span>(buffer),file)) &gt; 0) {
+                MD5_Update(&amp;ctx, buffer, bytes_read); } <span class="comment">// Esta linea la puede llamar N veces</span>
+
+        
+
+        MD5_Final(md5_result, &amp;ctx);
+        
+        <span class="keywordtype">char</span> tmp[2]=<span class="stringliteral">&quot;&quot;</span>;
+        <span class="keywordtype">char</span> *md5str;
+        printf(<span class="stringliteral">&quot;MD5: &quot;</span>);
+        <span class="keywordflow">for</span>(i = 0; i &lt; 16; i++) {
+                sprintf(tmp,<span class="stringliteral">&quot;%02hhx&quot;</span>,md5_result[i]);
+                strcat(md5str,tmp);
+        }               
+        
+        strcpy(s2,<span class="stringliteral">&quot;FileInfo\n\rName: &quot;</span>);
+        strcat(s2,request);
+        strcat(s2,<span class="stringliteral">&quot;\n\r&quot;</span>);
+        strcat(s2,<span class="stringliteral">&quot;FullSize: 16\n\r&quot;</span>);
+        strcat(s2,<span class="stringliteral">&quot;MD5: &quot;</span>);
+        strcat(s2,md5str);
+        strcat(s2,<span class="stringliteral">&quot;\n\r\n\r&quot;</span>);
+        printf(<span class="stringliteral">&quot;%s\n&quot;</span>,s2);
+        <span class="keywordtype">int</span> bytes_c = write(clientSocket,s2,strlen(s2));
+        <span class="keywordflow">return</span> 0;
+        
+}
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="ga4c824f1f3f4b874a325f4d333402f114"></a><!-- doxytag: member="process.c::FileList" ref="ga4c824f1f3f4b874a325f4d333402f114" args="(int clientSocket, char *msg)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int FileList </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>clientSocket</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>msg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Envia lista de archivos al cliente. </p>
+<p>Envia la lista de archivos al cliente.</p>
+<p>Funcion que envia la lista de archivos con los filtros de extension pedidos por el cliente</p>
+<dl><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">clientSocket</td><td>Socket del cliente. </td></tr>
+    <tr><td class="paramname">msg</td><td>mensaje enviado por el cliente</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Estado del envio. </dd></dl>
+<dl><dt><b>Valores devueltos:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">true</td><td>termino sin errores </td></tr>
+    <tr><td class="paramname">-1</td><td>termino con errores.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Ejemplo de Uso: </p>
+<div class="fragment"><pre class="fragment">                
+                <a class="code" href="group__ServidorTCP.html#ga4c824f1f3f4b874a325f4d333402f114" title="Envia lista de archivos al cliente.">FileList</a>(clientSocket,msg);  
+</pre></div> 
+<p>Definición en la línea <a class="el" href="process_8c_source.html#l00083">83</a> del archivo <a class="el" href="process_8c_source.html">process.c</a>.</p>
+
+<p>Hace referencia a <a class="el" href="process_8c_source.html#l00033">filtro</a>, <a class="el" href="UDPClient_8c_source.html#l00031">i</a>, <a class="el" href="UDPClient_8c_source.html#l00034">k</a>, <a class="el" href="UDPClient_8c_source.html#l00030">lista</a>, <a class="el" href="process_8c_source.html#l00032">mydir</a> y <a class="el" href="process_8c_source.html#l00137">selecc_arch()</a>.</p>
+
+<p>Referenciado por <a class="el" href="process_8c_source.html#l00042">DialogosTCP()</a>.</p>
+<div class="fragment"><pre class="fragment">                                          {
+        
+        DIR *dirh;
+        <span class="keyword">struct </span>dirent *dirp;
+        <span class="keyword">struct </span>dirent **list;
+        <span class="keywordtype">int</span> files;
+        <span class="keywordtype">int</span> s=0;
+        <span class="keywordtype">char</span> size[20]=<span class="stringliteral">&quot;&quot;</span>;
+        <span class="keywordtype">char</span> *<a class="code" href="UDPClient_8c.html#a1aa15651e462efeaf67dede9b2e436af">lista</a>;
+        <span class="keywordtype">char</span> *s2;
+        <span class="keywordtype">char</span> s1[20]=<span class="stringliteral">&quot;&quot;</span>;
+        <span class="keywordtype">char</span> *request,*lh;
+        <span class="keywordtype">int</span> bytes;
+        <span class="keywordtype">int</span> <a class="code" href="UDPClient_8c.html#acb559820d9ca11295b4500f179ef6392">i</a>=1;
+        <span class="keywordtype">int</span> <a class="code" href="group__ServidorTCP.html#ga4b0291c26c5216ef5f6417abfb76f59b" title="Descarta archivos que no cumplan con el filtro solicitado.">selecc_arch</a>(<span class="keyword">const</span> <span class="keyword">struct</span> dirent *entry);
+        
+        lh = msg;
+        request = strtok(lh,<span class="stringliteral">&quot; \n\r&quot;</span>);
+        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> <a class="code" href="UDPClient_8c.html#ab66ed8e0098c0a86b458672a55a9cca9">k</a>=0;<a class="code" href="UDPClient_8c.html#ab66ed8e0098c0a86b458672a55a9cca9">k</a>&lt;3;<a class="code" href="UDPClient_8c.html#ab66ed8e0098c0a86b458672a55a9cca9">k</a>++){
+                request = strtok(NULL,<span class="stringliteral">&quot; \n\r&quot;</span>);
+
+        }
+        <a class="code" href="process_8c.html#a7e2befc271f5bf8422f9f3f3e5f3d1f1">filtro</a> = request;
+        lista = (<span class="keywordtype">char</span> *)malloc(9000);
+        s2 = (<span class="keywordtype">char</span> *)malloc(9000);
+        strcpy(s2,<span class="stringliteral">&quot;FileList\n\r&quot;</span>);
+        files = scandir(<a class="code" href="process_8c.html#a2dba43ee23e1f9539c5cb227390eb0a7">mydir</a>,&amp;list,<a class="code" href="group__ServidorTCP.html#ga4b0291c26c5216ef5f6417abfb76f59b" title="Descarta archivos que no cumplan con el filtro solicitado.">selecc_arch</a>,alphasort);
+        
+        
+        <span class="keywordflow">for</span> (i=0;i&lt;files;i++) {
+                strcat(lista,list[i]-&gt;d_name);
+                strcat(lista,<span class="stringliteral">&quot;\n\r&quot;</span>);   
+                
+        }
+        
+        s=strlen(lista);
+        sprintf(size,<span class="stringliteral">&quot;SizeDatos: %i \n\r&quot;</span>,s);
+        sprintf(s1,<span class="stringliteral">&quot;FileCount: %i \n\r&quot;</span>,files);
+        strcat(s2,s1);
+        strcat(s2,size);
+        strcat(s2,<span class="stringliteral">&quot;\n\r&quot;</span>);
+        strcat(s2,lista);
+        bytes = write(clientSocket,s2,strlen(s2));
+        <span class="keywordflow">return</span> 0;
+        
+}
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="gafd8c9cb8cbdf6c5017849bdf4aec3c5c"></a><!-- doxytag: member="process.c::FileTransfer" ref="gafd8c9cb8cbdf6c5017849bdf4aec3c5c" args="(int clientSocket, char *msg)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int FileTransfer </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>clientSocket</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>msg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Envia el archivo al cliente. </p>
+<p>Envia el archivo solicitado por el cliente= Envia el archivo solicitado al cliente, antes de transmitir cada parte del archivo se envia la cabecera con los datos correspondientes.</p>
+<p>Funcion que envia el archivo solicitado al cliente</p>
+<dl><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">clientSocket</td><td>Socket del cliente. </td></tr>
+    <tr><td class="paramname">msg</td><td>mensaje enviado por el cliente</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Estado del envio. </dd></dl>
+<dl><dt><b>Valores devueltos:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">true</td><td>termino sin errores </td></tr>
+    <tr><td class="paramname">-1</td><td>termino con errores.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Ejemplo de Uso: </p>
+<div class="fragment"><pre class="fragment">                
+                <a class="code" href="group__ServidorTCP.html#gafd8c9cb8cbdf6c5017849bdf4aec3c5c" title="Envia el archivo al cliente.">FileTransfer</a>(clientSocket,msg);  
+</pre></div> 
+<p>Definición en la línea <a class="el" href="process_8c_source.html#l00158">158</a> del archivo <a class="el" href="process_8c_source.html">process.c</a>.</p>
+
+<p>Hace referencia a <a class="el" href="process_8c_source.html#l00025">BUFFERSIZE</a>, <a class="el" href="UDPClient_8c_source.html#l00034">k</a> y <a class="el" href="process_8c_source.html#l00032">mydir</a>.</p>
+
+<p>Referenciado por <a class="el" href="process_8c_source.html#l00042">DialogosTCP()</a>.</p>
+<div class="fragment"><pre class="fragment">                                              {
+        
+        <span class="keywordtype">char</span> dir[40]=<span class="stringliteral">&quot;&quot;</span>;
+        <span class="keywordtype">int</span> bytes;
+        <span class="keywordtype">char</span> *clientFile;
+        <span class="keywordtype">char</span> Filename[100]=<span class="stringliteral">&quot;&quot;</span>;
+        FILE *file;
+        <span class="keywordtype">char</span> buffer[<a class="code" href="process_8c.html#ac3146f1e9227301bb4aa518f4d336cee">BUFFERSIZE</a>]=<span class="stringliteral">&quot;&quot;</span>;
+        <span class="keywordtype">int</span> bytes_read;
+        <span class="keywordtype">int</span> bytes_written;
+        <span class="keywordtype">long</span> Size;
+        <span class="keywordtype">int</span> Partes;
+        <span class="keywordtype">int</span> acpart=0;
+        <span class="keywordtype">char</span> *lh;
+        <span class="keywordtype">char</span> *ptr;
+        <span class="keywordtype">char</span> *request;
+        <span class="keywordtype">char</span> *start;
+        <span class="keywordtype">char</span> *end;
+        <span class="keywordtype">char</span> *s2;
+        ptr = msg;
+        lh = ptr;
+        s2 = (<span class="keywordtype">char</span> *)calloc(1,9000);
+        request = strtok(lh,<span class="stringliteral">&quot; \n\r&quot;</span>);
+        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> <a class="code" href="UDPClient_8c.html#ab66ed8e0098c0a86b458672a55a9cca9">k</a>=0;<a class="code" href="UDPClient_8c.html#ab66ed8e0098c0a86b458672a55a9cca9">k</a>&lt;8;<a class="code" href="UDPClient_8c.html#ab66ed8e0098c0a86b458672a55a9cca9">k</a>++){
+                <span class="keywordflow">if</span> (<a class="code" href="UDPClient_8c.html#ab66ed8e0098c0a86b458672a55a9cca9">k</a>==1){
+                        clientFile = strtok(NULL,<span class="stringliteral">&quot; \n\r&quot;</span>);
+                } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(<a class="code" href="UDPClient_8c.html#ab66ed8e0098c0a86b458672a55a9cca9">k</a> == 3){
+                         start = strtok(NULL,<span class="stringliteral">&quot; \n\r&quot;</span>);
+                } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(<a class="code" href="UDPClient_8c.html#ab66ed8e0098c0a86b458672a55a9cca9">k</a> == 5){
+                        end = strtok(NULL,<span class="stringliteral">&quot; \n\r&quot;</span>);
+                }
+                <span class="keywordflow">else</span>{
+                        request = strtok(NULL,<span class="stringliteral">&quot; \n\r&quot;</span>);
+                }
+                lh++;
+        }
+        strcpy(dir,<a class="code" href="process_8c.html#a2dba43ee23e1f9539c5cb227390eb0a7">mydir</a>);
+        strcat(dir,<span class="stringliteral">&quot;/&quot;</span>);
+        strcat(dir,clientFile);
+        
+        file = fopen(dir,<span class="stringliteral">&quot;r&quot;</span>);
+        <span class="keywordflow">if</span> (file == NULL) {
+                perror(<span class="stringliteral">&quot;fopen&quot;</span>);
+                }
+        <span class="keywordflow">else</span> {
+                fseek(file,0,SEEK_END);
+                Size = ftell(file);
+                rewind(file);
+                <span class="keywordtype">float</span> x;
+                <span class="keywordtype">char</span> startend[40]=<span class="stringliteral">&quot;&quot;</span>;
+                bzero(startend,40);
+                x = (Size+0.0)/<a class="code" href="process_8c.html#ac3146f1e9227301bb4aa518f4d336cee">BUFFERSIZE</a>;
+                Partes = ceil(x);
+                <span class="keywordtype">int</span> cont = 0;
+                <span class="keywordflow">while</span> (1){
+                        cont++;
+                        <span class="keywordflow">if</span>(cont &gt; Partes){
+                                <span class="keywordflow">break</span>;
+                        }
+                        bzero(buffer,<a class="code" href="process_8c.html#ac3146f1e9227301bb4aa518f4d336cee">BUFFERSIZE</a>);
+                        bzero(s2,9000);
+                        acpart++;
+                        strcpy(s2,<span class="stringliteral">&quot;File\n\rName: &quot;</span>);
+                        strcat(s2,clientFile);
+                        strcat(s2,<span class="stringliteral">&quot;\n\r&quot;</span>);
+                        sprintf(startend,<span class="stringliteral">&quot;StartBytes: %s\n\rEndBytes: %s\n\r&quot;</span>,start,end);
+                        strcat(s2,startend);
+                        sprintf(startend,<span class="stringliteral">&quot;FullSize: %i\n\r&quot;</span>,Size);
+                        strcat(s2,startend);
+                        sprintf(startend,<span class="stringliteral">&quot;Part: %i\n\r&quot;</span>,acpart);
+                        strcat(s2,startend);
+                        strcat(s2,<span class="stringliteral">&quot;TotalParts: &quot;</span>);
+                        sprintf(startend,<span class="stringliteral">&quot;%i\n\r&quot;</span>,Partes);
+                        strcat(s2,startend);
+                        bytes_read = fread(buffer,1,<span class="keyword">sizeof</span>(buffer),file);
+                        sprintf(startend,<span class="stringliteral">&quot;SizeDatos: %i\n\r\n\r&quot;</span>,bytes_read);
+                        strcat(s2,startend);
+                        <span class="keywordtype">int</span> bytes_c = write(clientSocket,s2,strlen(s2));
+                        printf(<span class="stringliteral">&quot;\n%s\n&quot;</span>,s2); 
+                        sleep(3);
+                        <span class="keywordflow">if</span> (bytes_read == 0) {
+                                <span class="keywordflow">break</span>;
+                        }
+                        <span class="keywordflow">if</span> (bytes_read &lt; 0) {
+                                <span class="comment">//ERRORES DE LECTURA</span>
+                                printf(<span class="stringliteral">&quot;\t\n** ERROR AL LEER EL ARCHIVO **\n&quot;</span>);
+                                <span class="keywordflow">break</span>;
+                        }                       
+                        
+                        <span class="keywordtype">void</span> *p=buffer;
+                        <span class="keywordflow">while</span>(bytes_read &gt; 0) {
+                                bytes_written = write(clientSocket,p,bytes_read);
+                                printf(<span class="stringliteral">&quot;\n%s\n&quot;</span>,p);
+                                <span class="keywordflow">if</span> (bytes_written &lt;= 0) {
+                                }
+                                bytes_read -= bytes_written;
+                                p += bytes_written;
+                        }
+                }
+        
+                }
+
+        <span class="keywordflow">return</span> 0;
+        
+}
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="ga4b0291c26c5216ef5f6417abfb76f59b"></a><!-- doxytag: member="process.c::selecc_arch" ref="ga4b0291c26c5216ef5f6417abfb76f59b" args="(const struct dirent *entry)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int selecc_arch </td>
+          <td>(</td>
+          <td class="paramtype">const struct dirent *&#160;</td>
+          <td class="paramname"><em>entry</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Descarta archivos que no cumplan con el filtro solicitado. </p>
+<p>Funcion que filtra los archivos con las extensiones solicitadas por el cliente </p>
+
+<p>Definición en la línea <a class="el" href="process_8c_source.html#l00137">137</a> del archivo <a class="el" href="process_8c_source.html">process.c</a>.</p>
+
+<p>Hace referencia a <a class="el" href="process_8c_source.html#l00026">FALSO</a>, <a class="el" href="process_8c_source.html#l00033">filtro</a> y <a class="el" href="process_8c_source.html#l00027">VERDADERO</a>.</p>
+
+<p>Referenciado por <a class="el" href="process_8c_source.html#l00083">FileList()</a>.</p>
+<div class="fragment"><pre class="fragment">{
+        <span class="keywordflow">if</span> ((strcmp(entry-&gt;d_name, <span class="stringliteral">&quot;.&quot;</span>) == 0) || (strcmp(entry-&gt;d_name, <span class="stringliteral">&quot;..&quot;</span>) == 0))
+                <span class="keywordflow">return</span> (<a class="code" href="process_8c.html#ad0bbc5b6c9ba17a49dbbc4c1d466a5c0">FALSO</a>);
+        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(<a class="code" href="process_8c.html#a7e2befc271f5bf8422f9f3f3e5f3d1f1">filtro</a> ==<span class="stringliteral">&quot;0&quot;</span>)
+                <span class="keywordflow">return</span> (<a class="code" href="process_8c.html#abb6175c2a8988559cd7e8521a9f1f355">VERDADERO</a>);
+        <span class="keywordflow">else</span> {
+                <span class="keywordflow">if</span>(strstr(entry-&gt;d_name,<a class="code" href="process_8c.html#a7e2befc271f5bf8422f9f3f3e5f3d1f1">filtro</a>) != NULL)
+                        <span class="keywordflow">return</span>(<a class="code" href="process_8c.html#abb6175c2a8988559cd7e8521a9f1f355">VERDADERO</a>);
+                <span class="keywordflow">else</span>
+                        <span class="keywordflow">return</span>(<a class="code" href="process_8c.html#ad0bbc5b6c9ba17a49dbbc4c1d466a5c0">FALSO</a>);
+        }
+}
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="ga6a66838c58b5b5a617bb111891be1f40"></a><!-- doxytag: member="TCPServer.c::startTCPServer" ref="ga6a66838c58b5b5a617bb111891be1f40" args="(const char *ip, const u_short port)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int startTCPServer </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>ip</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const u_short&#160;</td>
+          <td class="paramname"><em>port</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Inicializa al servidor TCP. </p>
+<p>Inicia la operacion del servidor TCP.</p>
+<p>Función que inicia al servidor TCP en espera de una conexion</p>
+<p>Funcion que inicializa el servidor TCP</p>
+<dl><dt><b>Parámetros:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>Puerto sobre el cual se inicia el servidor.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Estado con el que finaliza el servidor. </dd></dl>
+<dl><dt><b>Valores devueltos:</b></dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">1</td><td>termino sin errores </td></tr>
+    <tr><td class="paramname">-1</td><td>termino con errores.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Ejemplo de Uso: </p>
+<div class="fragment"><pre class="fragment">                <span class="keywordtype">int</span> status;
+                status = <a class="code" href="group__ServidorTCP.html#ga6a66838c58b5b5a617bb111891be1f40" title="Inicializa al servidor TCP.">startTCPServer</a>(ip,port) <span class="comment">// Inicia el servidor en todas las interfaces en el puerto 5001 </span>
+</pre></div> 
+<p>Definición en la línea <a class="el" href="TCPServer_8c_source.html#l00038">38</a> del archivo <a class="el" href="TCPServer_8c_source.html">TCPServer.c</a>.</p>
+
+<p>Hace referencia a <a class="el" href="TCPServer_8c_source.html#l00028">client</a>, <a class="el" href="process_8c_source.html#l00042">DialogosTCP()</a>, <a class="el" href="tcpServer_8c_source.html#l00058">newTCPServerSocket4()</a> y <a class="el" href="tcpServer_8c_source.html#l00088">waitConnection()</a>.</p>
+
+<p>Referenciado por <a class="el" href="main1_8c_source.html#l00105">main()</a>.</p>
+<div class="fragment"><pre class="fragment">                                                      {
+        
+        <span class="keywordtype">int</span> serverSocket;
+        <span class="keywordtype">int</span> clientSocket;       
+        
+        
+        <span class="keywordtype">char</span> clientIP[20];
+        u_short clientPort;
+
+        pid_t forkID;
+
+        serverSocket = <a class="code" href="group__sockets.html#ga944d699e112e8607aaa4a070d86d6e65" title="Crea un nuevo servidor TCP en IPv4.">newTCPServerSocket4</a>(ip,port,5);
+        system(<span class="stringliteral">&quot;clear&quot;</span>);
+        printf(<span class="stringliteral">&quot;.:: Starting FTP  Server - TCP ::.\n\n&quot;</span>);
+        <span class="keywordflow">while</span>(1){
+                printf(<span class="stringliteral">&quot;Esperando Conexion ...\n&quot;</span>);
+                fflush(stdout);
+                clientSocket=<a class="code" href="group__sockets.html#gac7d9d9b68342787f3d6ef71e91459e35" title="Espera la conexión de un nuevo cliente.">waitConnection</a>(serverSocket,clientIP,&amp;clientPort);
+                <a class="code" href="TCPServer_8c.html#a4bf947cca001e8ca0cd9def2b8d058c7">client</a>++;
+                printf(<span class="stringliteral">&quot;Tenemos una conexion de %s: %i\t\n&quot;</span>,clientIP,clientPort);
+                fflush(stdout);
+                
+                forkID = fork();
+                
+                <span class="keywordflow">if</span> (forkID == -1){
+                        perror(<span class="stringliteral">&quot;fork&quot;</span>);
+                } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(forkID == 0) {
+                        close(serverSocket);
+                        <a class="code" href="group__ServidorTCP.html#gaf7a41b28b4112b5ba274364a03bb05e8" title="Analiza la solicitud del cliente.">DialogosTCP</a>(clientSocket,<a class="code" href="TCPServer_8c.html#a4bf947cca001e8ca0cd9def2b8d058c7">client</a>);
+                        <a class="code" href="TCPServer_8c.html#a4bf947cca001e8ca0cd9def2b8d058c7">client</a>--;
+                        fflush(stdout);
+                        close(clientSocket);
+                                
+                } <span class="keywordflow">else</span> {
+                        
+                }
+                                
+        }
+        <span class="keywordflow">return</span> 0;
+}
+</pre></div>
+</div>
+</div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Valores de enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Generado el Lunes, 7 de Mayo de 2012 22:58:00 para PROYECTO por&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
+</body>
+</html>

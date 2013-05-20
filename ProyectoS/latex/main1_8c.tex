@@ -1,0 +1,382 @@
+\hypertarget{main1_8c}{
+\section{Referencia del Archivo main1.c}
+\label{main1_8c}\index{main1.c@{main1.c}}
+}
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include \char`\"{}UDPServer.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}UDPClient.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}TCPClient.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}TCPServer.h\char`\"{}}\par
+\subsection*{Enumeraciones}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{main1_8c_a27838407176d1fcd024debf3e63b780d}{workMode\_\-t} \{ \hyperlink{main1_8c_a27838407176d1fcd024debf3e63b780da10b1df3a8971562555b5d0d1888ae197}{NOT\_\-DEFINE}, 
+\hyperlink{main1_8c_a27838407176d1fcd024debf3e63b780da67c96b24b23bcb408bae7626730a04b7}{SERVER}, 
+\hyperlink{main1_8c_a27838407176d1fcd024debf3e63b780da48e4cb37544c8e69715d45e5a83b2109}{CLIENT}
+ \}
+\item 
+enum \hyperlink{main1_8c_a366728e00d588373adbfc2d6cf895fb3}{proto\_\-t} \{ \hyperlink{main1_8c_a366728e00d588373adbfc2d6cf895fb3a92800e0d8ea9c16a582134311381b2b5}{NO\_\-PROT}, 
+\hyperlink{main1_8c_a366728e00d588373adbfc2d6cf895fb3aa040cd7feeb588104634cdadf35abf1c}{TCP}, 
+\hyperlink{main1_8c_a366728e00d588373adbfc2d6cf895fb3adb542475cf9d0636e4225e216cee9ae6}{UDP}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{main1_8c_ab91b4cb65d5b6239c904d687c191459d}{processArguments} (int args, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Procesa los Argumentos del Servidor. \end{DoxyCompactList}\item 
+void \hyperlink{main1_8c_a92dbbe915faf444f03f2074d2076b6dc}{printHelp} (const char $\ast$cmd, const short error, const char $\ast$msg)
+\begin{DoxyCompactList}\small\item\em Imprime la Ayuda y Errores de Parametros. \end{DoxyCompactList}\item 
+int \hyperlink{main1_8c_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{main1_8c_a366728e00d588373adbfc2d6cf895fb3}{proto\_\-t} \hyperlink{main1_8c_aebf847a500ae43129678b03f19db471a}{protocolo} = NO\_\-PROT
+\item 
+\hyperlink{main1_8c_a27838407176d1fcd024debf3e63b780d}{workMode\_\-t} \hyperlink{main1_8c_a4d2ebeec01c4bb95c1b0a904c279a504}{mode} = NOT\_\-DEFINE
+\item 
+char \hyperlink{main1_8c_adae0dca04d66a34843f902c36344d0d5}{listenIP} \mbox{[}18\mbox{]} = \char`\"{}192.168.1.1\char`\"{}
+\item 
+u\_\-short \hyperlink{main1_8c_ae0192edfda4f978efd0a99080c533b52}{listenPort} = 5001
+\end{DoxyCompactItemize}
+
+
+\subsection{Documentación de las enumeraciones}
+\hypertarget{main1_8c_a366728e00d588373adbfc2d6cf895fb3}{
+\index{main1.c@{main1.c}!proto\_\-t@{proto\_\-t}}
+\index{proto\_\-t@{proto\_\-t}!main1.c@{main1.c}}
+\subsubsection[{proto\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf proto\_\-t}}}
+\label{main1_8c_a366728e00d588373adbfc2d6cf895fb3}
+\begin{Desc}
+\item[Valores de enumeraciones: ]\par
+\begin{description}
+\index{NO\_\-PROT@{NO\_\-PROT}!main1.c@{main1.c}}\index{main1.c@{main1.c}!NO\_\-PROT@{NO\_\-PROT}}\item[{\em 
+\hypertarget{main1_8c_a366728e00d588373adbfc2d6cf895fb3a92800e0d8ea9c16a582134311381b2b5}{
+NO\_\-PROT}
+\label{main1_8c_a366728e00d588373adbfc2d6cf895fb3a92800e0d8ea9c16a582134311381b2b5}
+}]\index{TCP@{TCP}!main1.c@{main1.c}}\index{main1.c@{main1.c}!TCP@{TCP}}\item[{\em 
+\hypertarget{main1_8c_a366728e00d588373adbfc2d6cf895fb3aa040cd7feeb588104634cdadf35abf1c}{
+TCP}
+\label{main1_8c_a366728e00d588373adbfc2d6cf895fb3aa040cd7feeb588104634cdadf35abf1c}
+}]\index{UDP@{UDP}!main1.c@{main1.c}}\index{main1.c@{main1.c}!UDP@{UDP}}\item[{\em 
+\hypertarget{main1_8c_a366728e00d588373adbfc2d6cf895fb3adb542475cf9d0636e4225e216cee9ae6}{
+UDP}
+\label{main1_8c_a366728e00d588373adbfc2d6cf895fb3adb542475cf9d0636e4225e216cee9ae6}
+}]\end{description}
+\end{Desc}
+
+
+
+Definición en la línea 17 del archivo main1.c.
+
+
+\begin{DoxyCode}
+             {
+        NO_PROT,
+        TCP,
+        UDP
+};
+\end{DoxyCode}
+\hypertarget{main1_8c_a27838407176d1fcd024debf3e63b780d}{
+\index{main1.c@{main1.c}!workMode\_\-t@{workMode\_\-t}}
+\index{workMode\_\-t@{workMode\_\-t}!main1.c@{main1.c}}
+\subsubsection[{workMode\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf workMode\_\-t}}}
+\label{main1_8c_a27838407176d1fcd024debf3e63b780d}
+\begin{Desc}
+\item[Valores de enumeraciones: ]\par
+\begin{description}
+\index{NOT\_\-DEFINE@{NOT\_\-DEFINE}!main1.c@{main1.c}}\index{main1.c@{main1.c}!NOT\_\-DEFINE@{NOT\_\-DEFINE}}\item[{\em 
+\hypertarget{main1_8c_a27838407176d1fcd024debf3e63b780da10b1df3a8971562555b5d0d1888ae197}{
+NOT\_\-DEFINE}
+\label{main1_8c_a27838407176d1fcd024debf3e63b780da10b1df3a8971562555b5d0d1888ae197}
+}]\index{SERVER@{SERVER}!main1.c@{main1.c}}\index{main1.c@{main1.c}!SERVER@{SERVER}}\item[{\em 
+\hypertarget{main1_8c_a27838407176d1fcd024debf3e63b780da67c96b24b23bcb408bae7626730a04b7}{
+SERVER}
+\label{main1_8c_a27838407176d1fcd024debf3e63b780da67c96b24b23bcb408bae7626730a04b7}
+}]\index{CLIENT@{CLIENT}!main1.c@{main1.c}}\index{main1.c@{main1.c}!CLIENT@{CLIENT}}\item[{\em 
+\hypertarget{main1_8c_a27838407176d1fcd024debf3e63b780da48e4cb37544c8e69715d45e5a83b2109}{
+CLIENT}
+\label{main1_8c_a27838407176d1fcd024debf3e63b780da48e4cb37544c8e69715d45e5a83b2109}
+}]\end{description}
+\end{Desc}
+
+
+
+Definición en la línea 11 del archivo main1.c.
+
+
+\begin{DoxyCode}
+                {
+        NOT_DEFINE, 
+        SERVER, 
+        CLIENT,
+
+};
+\end{DoxyCode}
+
+
+\subsection{Documentación de las funciones}
+\hypertarget{main1_8c_a0ddf1224851353fc92bfbff6f499fa97}{
+\index{main1.c@{main1.c}!main@{main}}
+\index{main@{main}!main1.c@{main1.c}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}}
+\label{main1_8c_a0ddf1224851353fc92bfbff6f499fa97}
+
+
+Definición en la línea 105 del archivo main1.c.
+
+
+
+Hace referencia a CLIENT, listenIP, listenPort, mode, NO\_\-PROT, NOT\_\-DEFINE, printHelp(), processArguments(), protocolo, SERVER, startTCPServer(), startUDPClient(), startUDPServer(), TCP y UDP.
+
+
+\begin{DoxyCode}
+                                  {
+        
+        
+        int status;
+        printf(".:: Starting FTP  Server - Cliente ::.\n\n");
+        
+        status = processArguments(argc, argv);
+        
+        if(status != 0) {
+                fprintf(stderr,"Error al procesar el argumento %i\n",status);
+                return -1;
+        }
+        
+        switch(mode) {
+                case SERVER:
+                        switch(protocolo) {
+                                case UDP:
+                                        startUDPServer(listenPort);
+                                        break;
+                                case TCP:
+                                        printf("Introduce la IP del servidor: ");
+      
+                                        gets(listenIP);
+                                        startTCPServer(listenIP,listenPort);
+                                        break;
+                                case NO_PROT:
+                                        printHelp(argv[0],true,"Es necesario indi
+      car el protocolo de operacion\n");
+                                        break;
+                        }
+                        
+                        break;
+                case CLIENT:
+                        /*if(strcmp(listenIP,"0.0.0.0")==0) {
+                                printHelp(argv[0],true,"En modo cliente es necesa
+      rio especificar la IP con -i");
+                        }*/
+                        /*switch(protocolo) {
+                                case UDP:
+                                        startUDPClient(listenPort);
+                                        break;
+                                case TCP:
+                                        //printf("TCP SERVIDOR\n");
+                                        startTCPClient(listenPort);
+                                        break;
+                                case NO_PROT:
+                                        printHelp(argv[0],true,"Es necesario indi
+      car el protocolo de operacion\n");
+                                        break;
+                        }*/
+                        startUDPClient(listenPort);
+                        break;
+                case NOT_DEFINE:
+                        printHelp(argv[0],true,"Es necesario indicar el modo de o
+      peración\n");
+                        break;
+        }
+        
+        return 0;
+}
+\end{DoxyCode}
+\hypertarget{main1_8c_a92dbbe915faf444f03f2074d2076b6dc}{
+\index{main1.c@{main1.c}!printHelp@{printHelp}}
+\index{printHelp@{printHelp}!main1.c@{main1.c}}
+\subsubsection[{printHelp}]{\setlength{\rightskip}{0pt plus 5cm}void printHelp (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{cmd, }
+\item[{const short}]{error, }
+\item[{const char $\ast$}]{msg}
+\end{DoxyParamCaption}
+)}}
+\label{main1_8c_a92dbbe915faf444f03f2074d2076b6dc}
+
+
+Imprime la Ayuda y Errores de Parametros. 
+
+Imprime la ayuda del sistema, asi como los errores de los parametros
+
+
+\begin{DoxyParams}{Parámetros}
+{\em \mbox{[}cmd\mbox{]}} & Nombre del binario utilizado por el usuario \\
+\hline
+{\em \mbox{[}error\mbox{]}} & Imprimir mensaje de Error \\
+\hline
+{\em \mbox{[}msg\mbox{]}} & Mensaje de Error a Imprimir\\
+\hline
+\end{DoxyParams}
+Ejemplo de Uso 
+\begin{DoxyCode}
+                printHelp(argv[0]); // Imprime solo la ayuda 
+                printHelp(argb[0],true,"Faltan argumentos") // Imprime la ayuda d
+      esplegando el mensaje de error.
+\end{DoxyCode}
+ 
+
+Definición en la línea 81 del archivo main1.c.
+
+
+
+Referenciado por main().
+
+
+\begin{DoxyCode}
+                                                                    {
+
+        if(error) {
+                fprintf(stderr,"Error: %s\n\n",msg);
+        }
+        
+        printf(".:: Server Proyecto - Cliente Help ::.\n\n");
+        printf("Use:\t%s (-s|-c) [options]\n",cmd);
+        printf("Modes:\n");
+        printf("\t -s Server Mode\n");
+        printf("\t -c Client Mode\n");
+        printf("Protocol:\n");
+        printf("\t -t TCP Server\n");
+        printf("\t -u UDP Server\n");
+        printf("Server Options:\n");
+        printf("\t -i IP_ADDRESS Listen Interface IP Address (Default: 0.0.0.0) \
+      n");
+        printf("GLobal Options:\n");
+        printf("\t -p PORT Define Port Number (Default: 1024)\n");
+
+        printf("\n");
+        
+        return;
+}
+\end{DoxyCode}
+\hypertarget{main1_8c_ab91b4cb65d5b6239c904d687c191459d}{
+\index{main1.c@{main1.c}!processArguments@{processArguments}}
+\index{processArguments@{processArguments}!main1.c@{main1.c}}
+\subsubsection[{processArguments}]{\setlength{\rightskip}{0pt plus 5cm}int processArguments (
+\begin{DoxyParamCaption}
+\item[{int}]{args, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}}
+\label{main1_8c_ab91b4cb65d5b6239c904d687c191459d}
+
+
+Procesa los Argumentos del Servidor. 
+
+Función que procesa todo los argumentos y hace el setup de las variables globales 
+
+Definición en la línea 34 del archivo main1.c.
+
+
+
+Hace referencia a CLIENT, i, listenIP, listenPort, mode, protocolo, SERVER, TCP y UDP.
+
+
+
+Referenciado por main().
+
+
+\begin{DoxyCode}
+                                             {
+        int i;
+        
+        for(i=1; i < args; i++) {
+                if(strcmp(argv[i],"-s")==0) {
+                        //modo de trabajo
+                        mode = SERVER;
+                } else if(strcmp(argv[i],"-c")==0) {
+                        mode = CLIENT;
+                } else if(strcmp(argv[i],"-i")==0) {
+                        strncpy(listenIP,argv[i+1],18);
+                        i++;
+                } else if(strcmp(argv[i],"-p")==0) {
+                        listenPort = atoi(argv[i+1]);
+                        i++;
+                } else if(strcmp(argv[i],"-u")==0) {
+                        protocolo = UDP;
+                        i++;
+                } else if(strcmp(argv[i],"-t")==0) {
+                        protocolo = TCP;
+                        i++;
+                }               
+                else {
+                        return i;
+                }
+        }
+        
+        return 0;
+}
+\end{DoxyCode}
+
+
+\subsection{Documentación de las variables}
+\hypertarget{main1_8c_adae0dca04d66a34843f902c36344d0d5}{
+\index{main1.c@{main1.c}!listenIP@{listenIP}}
+\index{listenIP@{listenIP}!main1.c@{main1.c}}
+\subsubsection[{listenIP}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf listenIP}\mbox{[}18\mbox{]} = \char`\"{}192.168.1.1\char`\"{}}}
+\label{main1_8c_adae0dca04d66a34843f902c36344d0d5}
+
+
+Definición en la línea 24 del archivo main1.c.
+
+
+
+Referenciado por main() y processArguments().
+
+\hypertarget{main1_8c_ae0192edfda4f978efd0a99080c533b52}{
+\index{main1.c@{main1.c}!listenPort@{listenPort}}
+\index{listenPort@{listenPort}!main1.c@{main1.c}}
+\subsubsection[{listenPort}]{\setlength{\rightskip}{0pt plus 5cm}u\_\-short {\bf listenPort} = 5001}}
+\label{main1_8c_ae0192edfda4f978efd0a99080c533b52}
+
+
+Definición en la línea 25 del archivo main1.c.
+
+
+
+Referenciado por main() y processArguments().
+
+\hypertarget{main1_8c_a4d2ebeec01c4bb95c1b0a904c279a504}{
+\index{main1.c@{main1.c}!mode@{mode}}
+\index{mode@{mode}!main1.c@{main1.c}}
+\subsubsection[{mode}]{\setlength{\rightskip}{0pt plus 5cm}{\bf workMode\_\-t} {\bf mode} = NOT\_\-DEFINE}}
+\label{main1_8c_a4d2ebeec01c4bb95c1b0a904c279a504}
+
+
+Definición en la línea 23 del archivo main1.c.
+
+
+
+Referenciado por main() y processArguments().
+
+\hypertarget{main1_8c_aebf847a500ae43129678b03f19db471a}{
+\index{main1.c@{main1.c}!protocolo@{protocolo}}
+\index{protocolo@{protocolo}!main1.c@{main1.c}}
+\subsubsection[{protocolo}]{\setlength{\rightskip}{0pt plus 5cm}{\bf proto\_\-t} {\bf protocolo} = NO\_\-PROT}}
+\label{main1_8c_aebf847a500ae43129678b03f19db471a}
+
+
+Definición en la línea 22 del archivo main1.c.
+
+
+
+Referenciado por main() y processArguments().
+
